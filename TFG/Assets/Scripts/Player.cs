@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float movementSpeed;
+    public float playerVelocity;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,8 @@ public class Player : MonoBehaviour
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float horizontalvertical = Input.GetAxisRaw("Vertical");
 
-        transform.Translate(-horizontalInput + movementSpeed * Time.deltaTime, 0, 0);
-        transform.Translate(0, -horizontalvertical * movementSpeed * Time.deltaTime, 0);
+        transform.Translate(playerVelocity * Time.deltaTime, 0, 0);
+        transform.Translate(-horizontalInput * playerVelocity * 0.5f * Time.deltaTime, 0, 0);
+        transform.Translate(0, horizontalvertical * playerVelocity * 0.5f * Time.deltaTime, 0);
     }
 }
