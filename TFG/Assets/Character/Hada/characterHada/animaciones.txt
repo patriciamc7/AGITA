@@ -1,0 +1,2 @@
+Animación 'IDLE': 2-61
+Animación 'WALK': 64-88
