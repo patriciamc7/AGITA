@@ -5,16 +5,26 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
+<<<<<<< HEAD
       ticks: 637775758700390195
     m_Hash: 4213856682
+=======
+      ticks: 637769641167075164
+    m_Hash: 2906239925
+>>>>>>> main
   m_LockFileStatus:
     m_FilePath: C:/Users/sofia/Documents/TFG/TFG/TFG/TFG/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
+<<<<<<< HEAD
       ticks: 637775758700390195
     m_Hash: 1242768795
+=======
+      ticks: 637769641167035194
+    m_Hash: 1173148608
+>>>>>>> main
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
