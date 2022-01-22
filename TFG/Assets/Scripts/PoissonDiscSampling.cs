@@ -13,11 +13,12 @@ public static class PoissonDiscSampling
         //Generamos la grid donde se tendra en cuenta el size de el lado de la celda, cuantas veces puede entrar en la region de smapleo
         //Lista de puntos que vamos a generar
         //puntos de spawn, inicializamos al centro 
-        int[,] grid = new int[Mathf.CeilToInt(sampleRegionSize.x / cellSize), Mathf.CeilToInt(sampleRegionSize.y / cellSize)];
+        int[,] grid = new int[Mathf.CeilToInt(sampleRegionSize.x / cellSize), Mathf.CeilToInt(sampleRegionSize.y/ cellSize)];
         List<Vector2> points = new List<Vector2>();
         List<Vector2> spawnPoints = new List<Vector2>();
-        Vector2 init = new Vector2(34.5f,2);
+        //Vector2 init = new Vector2(-16.5f,-13f);
         spawnPoints.Add(sampleRegionSize / 2);
+        //spawnPoints.Add(init);
         while (spawnPoints.Count > 0)
         {
             int spawnIndex = Random.Range(0, spawnPoints.Count);

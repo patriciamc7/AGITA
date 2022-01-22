@@ -627,7 +627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 5
-  regionSize: {x: 90, y: 60}
+  regionSize: {x: 95.47, y: 60}
   rejectionSamples: 30
   displayRadius: 1
   objects:
@@ -798,7 +798,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076723198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.7918267, y: 5.0108366, z: -13.502551}
+  m_LocalPosition: {x: -16.5, y: 5.0108366, z: -13.502551}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

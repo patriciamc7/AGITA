@@ -34,7 +34,7 @@ public class CreationEntity : MonoBehaviour
     {
         Vector3 line = new Vector3(regionSize.x, 1, regionSize.y) / 2;
         Vector3 size = new Vector3(regionSize.x, 1, regionSize.y);
-		Gizmos.DrawWireCube(line, size);
+        Gizmos.DrawWireCube(line, size);
         if (points != null)
         {
             foreach (Vector2 point in points)
