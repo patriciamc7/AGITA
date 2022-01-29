@@ -8,6 +8,14 @@ public class KinctMovePlayer : MonoBehaviour
     public GameObject KinectParent; 
     public GameObject Body;
     public GameObject rightHand; 
+    public GameObject neck; 
+    public GameObject elbowRight; 
+    public GameObject sholderRight;
+    private Vector3 HandToNeck; 
+    private Vector3 HandToElbow; 
+    private Vector3 HandToSholder;
+    private int methodChoose = 1;
+    public Vector3 VectorInPlain  = new Vector3(0,0,2.92f); 
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +32,13 @@ public class KinctMovePlayer : MonoBehaviour
             Body.gameObject.transform.SetParent(KinectParent.gameObject.transform);
 
             rightHand = GetChildWithName(Body, "WristRight");
-            //GetChildWithName(Body, "WristLeft"); 
+            neck = GetChildWithName(Body, "Neck");
+            elbowRight = GetChildWithName(Body, "ElbowRight");
+            sholderRight = GetChildWithName(Body, "ShoulderRight");
+            
+            HandToNeck = vector2nodesNormalice(rightHand.gameObject.transform.position, neck.gameObject.transform.position);
+            HandToElbow = vector2nodesNormalice(rightHand.gameObject.transform.position, elbowRight.gameObject.transform.position);
+            HandToSholder = vector2nodesNormalice(rightHand.gameObject.transform.position, sholderRight.gameObject.transform.position);
             moveCharater(); 
         }
 
@@ -43,9 +57,49 @@ public class KinctMovePlayer : MonoBehaviour
             return null;
         }
     }
+    Vector3 vector2nodesNormalice(Vector3 hand, Vector3 otherNode) 
+    {
+        return Vector3.Normalize(hand - otherNode); 
+    }
+    void changeMethod()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            methodChoose = 1;
+            Debug.Log("CHANGE 1"); 
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            methodChoose = 2;
+            Debug.Log("CHANGE 2");
 
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            methodChoose = 3;
+            Debug.Log("CHANGE 3");
+
+        }
+    }
     void moveCharater() 
     {
-        Hada.gameObject.transform.position = rightHand.gameObject.transform.position; 
+        changeMethod();
+        if (methodChoose == 1) 
+        {
+            VectorInPlain.x = HandToNeck.x; 
+            VectorInPlain.y = HandToNeck.y;
+        }
+        if (methodChoose == 2) 
+        {
+            VectorInPlain.x = HandToElbow.x;
+            VectorInPlain.y = HandToElbow.y;
+        }
+        if (methodChoose == 3)
+        {
+            VectorInPlain.x = HandToSholder.x;
+            VectorInPlain.y = HandToSholder.y;
+        }
+        Hada.gameObject.transform.position = Hada.gameObject.transform.position  + (VectorInPlain- Hada.gameObject.transform.position)/100; 
     }
+    
 }
