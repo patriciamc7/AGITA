@@ -66,20 +66,26 @@ public class KinctMovePlayer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             methodChoose = 1;
-            Debug.Log("CHANGE 1"); 
+            Debug.Log("Hand and Neck"); 
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             methodChoose = 2;
-            Debug.Log("CHANGE 2");
+            Debug.Log("Hand and Elbow");
 
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             methodChoose = 3;
-            Debug.Log("CHANGE 3");
+            Debug.Log("Hand and Sholder");
 
         }
+    }
+
+    void obtainRecta(Vector3 VectorInPlain, Vector3 other) 
+    {
+        Vector3 recta = other + VectorInPlain; 
+
     }
     void moveCharater() 
     {
@@ -99,7 +105,7 @@ public class KinctMovePlayer : MonoBehaviour
             VectorInPlain.x = HandToSholder.x;
             VectorInPlain.y = HandToSholder.y;
         }
-        Hada.gameObject.transform.position = Hada.gameObject.transform.position  + (VectorInPlain- Hada.gameObject.transform.position)/100; 
+        Hada.gameObject.transform.position = Hada.gameObject.transform.position  + (VectorInPlain- Hada.gameObject.transform.position)/500; 
     }
     
 }
