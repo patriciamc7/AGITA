@@ -105,7 +105,7 @@ public class KinctMovePlayer : MonoBehaviour
             VectorInPlain.x = HandToSholder.x;
             VectorInPlain.y = HandToSholder.y;
         }
-        Hada.gameObject.transform.position = Hada.gameObject.transform.position  + (VectorInPlain- Hada.gameObject.transform.position)/500; 
+        Hada.gameObject.transform.position = Hada.gameObject.transform.position  + (VectorInPlain- Hada.gameObject.transform.position)/80; 
     }
     
 }
