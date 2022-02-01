@@ -410,7 +410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8052babacfd5b9940837155fdb2b142a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.13
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8052babacfd5b9940837155fdb2b142a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -826,9 +826,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66897002d9aab9542a9cbfd11927b531, type: 3}
+  m_Script: {fileID: 11500000, guid: f1efaafb819c6c8448b23bacaa77fd6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraVelocity: 5
+  totalDuration: 5
 --- !u!1 &1004879659
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,9 +1147,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1176233292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66897002d9aab9542a9cbfd11927b531, type: 3}
+  m_Script: {fileID: 11500000, guid: f1efaafb819c6c8448b23bacaa77fd6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraVelocity: -5
+  totalDuration: 5
 --- !u!81 &1176233294
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1508,6 +1512,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8052babacfd5b9940837155fdb2b142a, type: 3}
   m_PrefabInstance: {fileID: 561885859}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1701101042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701101040}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ddf05835cf4a44a9951ebbea98b5b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerVelocity: 5
+  cameraVelocity: 5
 --- !u!1 &1741787341
 GameObject:
   m_ObjectHideFlags: 0

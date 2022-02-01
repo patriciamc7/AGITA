@@ -15,7 +15,8 @@ public class KinctMovePlayer : MonoBehaviour
     private Vector3 HandToElbow; 
     private Vector3 HandToSholder;
     private int methodChoose = 1;
-    public Vector3 VectorInPlain  = new Vector3(0,0,2.92f); 
+    public Vector3 VectorInPlain  = new Vector3(0,0,2.92f);
+    private Vector3 posPlayersum; 
     // Start is called before the first frame update
     void Start()
     {
@@ -105,7 +106,12 @@ public class KinctMovePlayer : MonoBehaviour
             VectorInPlain.x = HandToSholder.x;
             VectorInPlain.y = HandToSholder.y;
         }
-        Hada.gameObject.transform.position = Hada.gameObject.transform.position  + (VectorInPlain- Hada.gameObject.transform.position)/80; 
+
+        posPlayersum += VectorInPlain + new Vector3(5 * Time.deltaTime, 0, 0);  
+        posPlayersum.x = Hada.gameObject.transform.position.x  + (posPlayersum.x - Hada.gameObject.transform.position.x)/27;
+        posPlayersum.y = Hada.gameObject.transform.position.y  + (posPlayersum.y - Hada.gameObject.transform.position.y)/27;
+        posPlayersum.z = Hada.gameObject.transform.position.z;
+        Hada.gameObject.transform.position = posPlayersum; 
     }
     
 }

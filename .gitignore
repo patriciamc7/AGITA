@@ -86,3 +86,7 @@ TFG/Logs/
 *.dll
 
 *.log
+
+*.cache
+
+*.md5
