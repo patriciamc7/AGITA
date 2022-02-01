@@ -83,6 +83,10 @@ TFG/Library/
 
 TFG/Logs/
 
+TFG/Library/
+
+TFG/[Ll]ibrary/
+
 *.dll
 
 *.log
