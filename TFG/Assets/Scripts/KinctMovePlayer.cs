@@ -17,7 +17,10 @@ public class KinctMovePlayer : MonoBehaviour
     private int methodChoose = 1;
     private Vector3 VectorInPlain  = new Vector3(0,0,2.92f);
     private Vector3 posPlayersum;
-    public float vecloctyPlayer; 
+    public float vecloctyPlayer;
+    Vector3 inversePositionHand; 
+    float range = 100f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,13 +39,18 @@ public class KinctMovePlayer : MonoBehaviour
             Body = GameObject.Find("Body_Person"); 
             Body.gameObject.transform.SetParent(KinectParent.gameObject.transform);
             //move player camioneta
-            Body.gameObject.transform.position = Body.gameObject.transform.position + new Vector3(-vecloctyPlayer * Time.deltaTime, 0, 0);
+            //Body.gameObject.transform.position = Body.gameObject.transform.position + new Vector3(-vecloctyPlayer * Time.deltaTime, 0, 0);
 
             rightHand = GetChildWithName(Body, "WristRight");
             neck = GetChildWithName(Body, "Neck");
             elbowRight = GetChildWithName(Body, "ElbowRight");
             sholderRight = GetChildWithName(Body, "ShoulderRight");
-            
+
+            rightHand.gameObject.transform.position = Vector3.Scale(rightHand.gameObject.transform.position, new Vector3(-1, 1, 1));
+            neck.gameObject.transform.position = Vector3.Scale(neck.gameObject.transform.position, new Vector3(-1, 1, 1));
+            elbowRight.gameObject.transform.position = Vector3.Scale(elbowRight.gameObject.transform.position, new Vector3(-1, 1, 1));
+            sholderRight.gameObject.transform.position = Vector3.Scale(sholderRight.gameObject.transform.position, new Vector3(-1, 1, 1));
+
             HandToNeck = vector2nodesNormalice(rightHand.gameObject.transform.position, neck.gameObject.transform.position);
             HandToElbow = vector2nodesNormalice(rightHand.gameObject.transform.position, elbowRight.gameObject.transform.position);
             HandToSholder = vector2nodesNormalice(rightHand.gameObject.transform.position, sholderRight.gameObject.transform.position);
@@ -114,14 +122,43 @@ public class KinctMovePlayer : MonoBehaviour
             VectorInPlain.y = HandToSholder.y;
         }
         //ejes al reves
-        VectorInPlain = rightHand.gameObject.transform.position;
-        VectorInPlain = Vector3.Scale(VectorInPlain, new Vector3(-1, 1, 1));
+        //VectorInPlain = rightHand.gameObject.transform.position;
+        //VectorInPlain = Vector3.Scale(VectorInPlain, new Vector3(-1, 1, 1));
+        Vector3 pointRightSide = rayWall(VectorInPlain);
+        //Debug.Log(pointRightSide); 
 
         posPlayersum = Hada.gameObject.transform.position; 
-        posPlayersum.x = posPlayersum.x + (VectorInPlain.x - posPlayersum.x) / 27;
-		posPlayersum.y = posPlayersum.y + (VectorInPlain.y - posPlayersum.y) / 27;
+        posPlayersum.x = posPlayersum.x + (pointRightSide.x - posPlayersum.x) / 27;
+		posPlayersum.y = posPlayersum.y + (pointRightSide.y - posPlayersum.y) / 27;
 		posPlayersum.z = Hada.gameObject.transform.position.z;
 		Hada.gameObject.transform.position = posPlayersum;
 	}
-    
+
+    Vector3 rayWall(Vector3 VectorInPlain) 
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(Vector3.Scale(rightHand.gameObject.transform.position, new Vector3(-1, 1, 1)), Vector3.Scale(VectorInPlain, new Vector3(1, 1, -1)), out hit, range))
+        {
+            if (hit.collider.name == "RightSide")
+            {
+                Debug.Log("RAYO: " + hit.collider.name);
+                //Debug.Log("RAYO: "+ hit.point);
+                return hit.point;
+            }
+            return Vector3.Scale(rightHand.gameObject.transform.position, new Vector3(-1, 1, 1));
+        }
+        
+        return Vector3.Scale(rightHand.gameObject.transform.position, new Vector3(-1, 1, 1)); 
+        
+    }
+	private void OnDrawGizmos()
+	{
+        if (GameObject.Find("Body_Person") != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(Vector3.Scale(rightHand.gameObject.transform.position , new Vector3(-1,1,1)), Vector3.Scale(VectorInPlain, new Vector3(1,1,-1)) * range);
+        }
+	}
+
 }
