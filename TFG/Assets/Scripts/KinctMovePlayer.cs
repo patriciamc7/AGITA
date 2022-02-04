@@ -21,6 +21,12 @@ public class KinctMovePlayer : MonoBehaviour
     Vector3 inversePositionHand; 
     float range = 100f;
 
+    public GameObject seeHand; 
+    public GameObject seeNeck; 
+    public GameObject seeElbow; 
+    public GameObject seeSholder;
+    private Vector3 initRay; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,16 +42,23 @@ public class KinctMovePlayer : MonoBehaviour
         //If Body detected assign Kineckt gameobject
         if (GameObject.Find("Body_Person") != null)
         {
-            Body = GameObject.Find("Body_Person"); 
+            Body = GameObject.Find("Body_Person");
+
             Body.gameObject.transform.SetParent(KinectParent.gameObject.transform);
             //move player camioneta
-            //Body.gameObject.transform.position = Body.gameObject.transform.position + new Vector3(-vecloctyPlayer * Time.deltaTime, 0, 0);
+            Body.gameObject.transform.position = Body.gameObject.transform.position + new Vector3(vecloctyPlayer * Time.deltaTime, 0, 0);
 
             rightHand = GetChildWithName(Body, "WristRight");
             neck = GetChildWithName(Body, "Neck");
             elbowRight = GetChildWithName(Body, "ElbowRight");
             sholderRight = GetChildWithName(Body, "ShoulderRight");
+            //__________
+            seeHand.gameObject.transform.position = rightHand.gameObject.transform.position;
+            seeNeck.gameObject.transform.position = neck.gameObject.transform.position;
+            seeElbow.gameObject.transform.position = elbowRight.gameObject.transform.position;
+            seeSholder.gameObject.transform.position = sholderRight.gameObject.transform.position;
 
+            //______
             rightHand.gameObject.transform.position = Vector3.Scale(rightHand.gameObject.transform.position, new Vector3(-1, 1, 1));
             neck.gameObject.transform.position = Vector3.Scale(neck.gameObject.transform.position, new Vector3(-1, 1, 1));
             elbowRight.gameObject.transform.position = Vector3.Scale(elbowRight.gameObject.transform.position, new Vector3(-1, 1, 1));
@@ -54,6 +67,8 @@ public class KinctMovePlayer : MonoBehaviour
             HandToNeck = vector2nodesNormalice(rightHand.gameObject.transform.position, neck.gameObject.transform.position);
             HandToElbow = vector2nodesNormalice(rightHand.gameObject.transform.position, elbowRight.gameObject.transform.position);
             HandToSholder = vector2nodesNormalice(rightHand.gameObject.transform.position, sholderRight.gameObject.transform.position);
+            
+
             moveCharater();
             
         }
@@ -79,20 +94,24 @@ public class KinctMovePlayer : MonoBehaviour
     }
     void changeMethod()
     {
+        initRay = neck.gameObject.transform.position;
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             methodChoose = 1;
+            initRay = neck.gameObject.transform.position;
             Debug.Log("Hand and Neck"); 
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             methodChoose = 2;
+            initRay = elbowRight.gameObject.transform.position;
             Debug.Log("Hand and Elbow");
 
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             methodChoose = 3;
+            initRay = sholderRight.gameObject.transform.position;
             Debug.Log("Hand and Sholder");
 
         }
@@ -138,12 +157,12 @@ public class KinctMovePlayer : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(Vector3.Scale(rightHand.gameObject.transform.position, new Vector3(-1, 1, 1)), Vector3.Scale(VectorInPlain, new Vector3(1, 1, -1)), out hit, range))
+        if (Physics.Raycast(Vector3.Scale(initRay, new Vector3(-1, 1, 1)), Vector3.Scale(VectorInPlain, new Vector3(1, 1, -1)), out hit, range))
         {
             if (hit.collider.name == "RightSide")
             {
-                Debug.Log("RAYO: " + hit.collider.name);
-                //Debug.Log("RAYO: "+ hit.point);
+                //Debug.Log("RAYO: " + hit.collider.name);
+                Debug.Log("RAYO: "+ hit.point);
                 return hit.point;
             }
             return Vector3.Scale(rightHand.gameObject.transform.position, new Vector3(-1, 1, 1));
@@ -157,7 +176,7 @@ public class KinctMovePlayer : MonoBehaviour
         if (GameObject.Find("Body_Person") != null)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawRay(Vector3.Scale(rightHand.gameObject.transform.position , new Vector3(-1,1,1)), Vector3.Scale(VectorInPlain, new Vector3(1,1,-1)) * range);
+            Gizmos.DrawRay(Vector3.Scale(initRay, new Vector3(-1,1,1)), Vector3.Scale(VectorInPlain, new Vector3(1,1,-1)) * range);
         }
 	}
 

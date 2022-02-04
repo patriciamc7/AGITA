@@ -116,7 +116,10 @@ public class BodySourceView : MonoBehaviour
         for (Kinect.JointType jt = Kinect.JointType.SpineBase; jt <= Kinect.JointType.HandRight; jt++)
         {
             GameObject jointObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            
+            Material material = new Material(Shader.Find("Transparent/Diffuse"));
+            material.color = new Color(0, 0, 0, 0);
+            jointObj.GetComponent<Renderer>().material = material;
+
             LineRenderer lr = jointObj.AddComponent<LineRenderer>();
             lr.SetVertexCount(2);
             lr.material = BoneMaterial;
@@ -144,17 +147,17 @@ public class BodySourceView : MonoBehaviour
             Transform jointObj = bodyObject.transform.Find(jt.ToString());
             jointObj.localPosition = GetVector3FromJoint(sourceJoint);
             
-            LineRenderer lr = jointObj.GetComponent<LineRenderer>();
-            if(targetJoint.HasValue)
-            {
-                lr.SetPosition(0, jointObj.localPosition);
-                lr.SetPosition(1, GetVector3FromJoint(targetJoint.Value));
-                lr.SetColors(GetColorForState (sourceJoint.TrackingState), GetColorForState(targetJoint.Value.TrackingState));
-            }
-            else
-            {
-                lr.enabled = false;
-            }
+            //LineRenderer lr = jointObj.GetComponent<LineRenderer>();
+            //if(targetJoint.HasValue)
+            //{
+            //    lr.SetPosition(0, jointObj.localPosition);
+            //    lr.SetPosition(1, GetVector3FromJoint(targetJoint.Value));
+            //    lr.SetColors(GetColorForState (sourceJoint.TrackingState), GetColorForState(targetJoint.Value.TrackingState));
+            //}
+            //else
+            //{
+            //    lr.enabled = false;
+            //}
         }
     }
     
