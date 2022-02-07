@@ -25,7 +25,10 @@ public class KinctMovePlayer : MonoBehaviour
     public GameObject seeNeck; 
     public GameObject seeElbow; 
     public GameObject seeSholder;
-    private Vector3 initRay; 
+    private Vector3 initRay;
+
+    public GameObject rightside; 
+    public GameObject leftside;
 
     // Start is called before the first frame update
     void Start()
@@ -95,6 +98,7 @@ public class KinctMovePlayer : MonoBehaviour
     void changeMethod()
     {
         initRay = neck.gameObject.transform.position;
+        
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             methodChoose = 1;
@@ -117,11 +121,6 @@ public class KinctMovePlayer : MonoBehaviour
         }
     }
 
-    void obtainRecta(Vector3 VectorInPlain, Vector3 other) 
-    {
-        Vector3 recta = other + VectorInPlain; 
-
-    }
     void moveCharater() 
     {
         changeMethod();
@@ -149,7 +148,9 @@ public class KinctMovePlayer : MonoBehaviour
         posPlayersum = Hada.gameObject.transform.position; 
         posPlayersum.x = posPlayersum.x + (pointRightSide.x - posPlayersum.x) / 27;
 		posPlayersum.y = posPlayersum.y + (pointRightSide.y - posPlayersum.y) / 27;
-		posPlayersum.z = Hada.gameObject.transform.position.z;
+
+        //only right
+		posPlayersum.z = rightside.gameObject.transform.position.z;
 		Hada.gameObject.transform.position = posPlayersum;
 	}
 
@@ -162,7 +163,7 @@ public class KinctMovePlayer : MonoBehaviour
             if (hit.collider.name == "RightSide")
             {
                 //Debug.Log("RAYO: " + hit.collider.name);
-                Debug.Log("RAYO: "+ hit.point);
+                //Debug.Log("RAYO: "+ hit.point);
                 return hit.point;
             }
             return Vector3.Scale(rightHand.gameObject.transform.position, new Vector3(-1, 1, 1));
