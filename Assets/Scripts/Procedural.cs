@@ -8,7 +8,6 @@ public class Procedural : MonoBehaviour
     public bool is_rot = true;
     public bool is_left = false;
     private Quaternion rot = Quaternion.identity;
-    // Start is called before the first frame update
     void Start()
     {
         if (is_rot)
