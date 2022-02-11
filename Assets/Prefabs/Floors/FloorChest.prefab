@@ -1080,8 +1080,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 19.880478, y: 4.8669004, z: 20.188274}
-  m_Center: {x: -0.22249842, y: 1.9334507, z: -0.9099426}
+  m_Size: {x: 7.008327, y: 3.9143176, z: 3.46035}
+  m_Center: {x: 2.9122946, y: 1.4571595, z: 3.2755928}
 --- !u!1 &6063737543229938437
 GameObject:
   m_ObjectHideFlags: 0
@@ -2734,6 +2734,10 @@ PrefabInstance:
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 9000000, guid: 1cc6cc20abc7a464a9dec49ee02361cf, type: 3}
+    - target: {fileID: 6200720779120667069, guid: 1083f87f08232f541942f4a22a00127e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1a6aac9e874e17646831952da99205e3, type: 2}
     - target: {fileID: 6200720779120667069, guid: 1083f87f08232f541942f4a22a00127e, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 1
