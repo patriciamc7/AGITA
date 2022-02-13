@@ -36,12 +36,11 @@ public class KinctMovePlayer : MonoBehaviour
         
     }
 
+
     // Update is called once per frame
     void Update()
     {
         
-       
-
         //If Body detected assign Kineckt gameobject
         if (GameObject.Find("Body_Person") != null)
         {
@@ -49,7 +48,6 @@ public class KinctMovePlayer : MonoBehaviour
 
             Body.gameObject.transform.SetParent(KinectParent.gameObject.transform);
             //move player camioneta
-            Body.gameObject.transform.position = Body.gameObject.transform.position + new Vector3(vecloctyPlayer * Time.deltaTime, 0, 0);
 
             rightHand = GetChildWithName(Body, "WristRight");
             neck = GetChildWithName(Body, "Neck");
