@@ -29,14 +29,8 @@ public class KinctMovePlayer : MonoBehaviour
 
     public GameObject rightside; 
     public GameObject leftside;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-
+    private bool initPos = true; 
+   
     // Update is called once per frame
     void Update()
     {
@@ -47,28 +41,21 @@ public class KinctMovePlayer : MonoBehaviour
             Body = GameObject.Find("Body_Person");
 
             Body.gameObject.transform.SetParent(KinectParent.gameObject.transform);
-            //move player camioneta
+            //move player middle walls
+            if (initPos)
+            {
+                Body.gameObject.transform.Rotate(0, -90, 0);
+                Body.gameObject.transform.Translate(new Vector3(-6, 0, 0));
+                initPos = false; 
+            }
+            //tralación del esqueleto con en la pisción de la camera 
+            Body.gameObject.transform.position += new Vector3(vecloctyPlayer * Time.deltaTime, 0, 0);
 
-            rightHand = GetChildWithName(Body, "WristRight");
-            neck = GetChildWithName(Body, "Neck");
-            elbowRight = GetChildWithName(Body, "ElbowRight");
-            sholderRight = GetChildWithName(Body, "ShoulderRight");
-            //__________
-            seeHand.gameObject.transform.position = rightHand.gameObject.transform.position;
-            seeNeck.gameObject.transform.position = neck.gameObject.transform.position;
-            seeElbow.gameObject.transform.position = elbowRight.gameObject.transform.position;
-            seeSholder.gameObject.transform.position = sholderRight.gameObject.transform.position;
-
-            //______
-            rightHand.gameObject.transform.position = Vector3.Scale(rightHand.gameObject.transform.position, new Vector3(-1, 1, 1));
-            neck.gameObject.transform.position = Vector3.Scale(neck.gameObject.transform.position, new Vector3(-1, 1, 1));
-            elbowRight.gameObject.transform.position = Vector3.Scale(elbowRight.gameObject.transform.position, new Vector3(-1, 1, 1));
-            sholderRight.gameObject.transform.position = Vector3.Scale(sholderRight.gameObject.transform.position, new Vector3(-1, 1, 1));
+            cubeVisisble();
 
             HandToNeck = vector2nodesNormalice(rightHand.gameObject.transform.position, neck.gameObject.transform.position);
             HandToElbow = vector2nodesNormalice(rightHand.gameObject.transform.position, elbowRight.gameObject.transform.position);
             HandToSholder = vector2nodesNormalice(rightHand.gameObject.transform.position, sholderRight.gameObject.transform.position);
-            
 
             moveCharater();
             
@@ -89,31 +76,51 @@ public class KinctMovePlayer : MonoBehaviour
             return null;
         }
     }
+
+    void cubeVisisble()
+    {
+        rightHand = GetChildWithName(Body, "WristRight");
+        neck = GetChildWithName(Body, "Neck");
+        elbowRight = GetChildWithName(Body, "ElbowRight");
+        sholderRight = GetChildWithName(Body, "ShoulderRight");
+
+        //______ cambiar eje horizontal en los cubos visibles 
+        seeHand.gameObject.transform.position = Vector3.Scale(rightHand.gameObject.transform.position, new Vector3(1, 1, -1));
+        seeNeck.gameObject.transform.position = Vector3.Scale(neck.gameObject.transform.position, new Vector3(1, 1, -1));
+        seeElbow.gameObject.transform.position = Vector3.Scale(elbowRight.gameObject.transform.position, new Vector3(1, 1, -1));
+        seeSholder.gameObject.transform.position = Vector3.Scale(sholderRight.gameObject.transform.position, new Vector3(1, 1, -1));
+
+        seeHand.gameObject.transform.position = seeHand.gameObject.transform.position + new Vector3(0, 0, -8);
+        seeNeck.gameObject.transform.position = seeNeck.gameObject.transform.position + new Vector3(0, 0, -8);
+        seeElbow.gameObject.transform.position = seeElbow.gameObject.transform.position + new Vector3(0, 0, -8);
+        seeSholder.gameObject.transform.position = seeSholder.gameObject.transform.position + new Vector3(0, 0, -8);
+
+    }
     Vector3 vector2nodesNormalice(Vector3 hand, Vector3 otherNode) 
     {
         return Vector3.Normalize(hand - otherNode); 
     }
     void changeMethod()
     {
-        initRay = neck.gameObject.transform.position;
-        
+        initRay = seeNeck.gameObject.transform.position;
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             methodChoose = 1;
-            initRay = neck.gameObject.transform.position;
+            initRay = seeNeck.gameObject.transform.position;
             Debug.Log("Hand and Neck"); 
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             methodChoose = 2;
-            initRay = elbowRight.gameObject.transform.position;
+            initRay = seeElbow.gameObject.transform.position; 
             Debug.Log("Hand and Elbow");
 
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             methodChoose = 3;
-            initRay = sholderRight.gameObject.transform.position;
+            initRay = seeSholder.gameObject.transform.position;
             Debug.Log("Hand and Sholder");
 
         }
@@ -126,16 +133,20 @@ public class KinctMovePlayer : MonoBehaviour
         {
             VectorInPlain.x = HandToNeck.x; 
             VectorInPlain.y = HandToNeck.y;
+            VectorInPlain.z = HandToNeck.z;
         }
         if (methodChoose == 2) 
         {
             VectorInPlain.x = HandToElbow.x;
             VectorInPlain.y = HandToElbow.y;
+            VectorInPlain.z = HandToElbow.z;
+
         }
         if (methodChoose == 3)
         {
             VectorInPlain.x = HandToSholder.x;
             VectorInPlain.y = HandToSholder.y;
+            VectorInPlain.z = HandToSholder.z;
         }
         //ejes al reves
         //VectorInPlain = rightHand.gameObject.transform.position;
@@ -143,39 +154,56 @@ public class KinctMovePlayer : MonoBehaviour
         Vector3 pointRightSide = rayWall(VectorInPlain);
         //Debug.Log(pointRightSide); 
 
-        posPlayersum = Hada.gameObject.transform.position; 
-        posPlayersum.x = posPlayersum.x + (pointRightSide.x - posPlayersum.x) / 27;
-		posPlayersum.y = posPlayersum.y + (pointRightSide.y - posPlayersum.y) / 27;
+        posPlayersum = Hada.gameObject.transform.position;
+        posPlayersum.x = lerp(posPlayersum, pointRightSide, 0.01f).x; 
+        posPlayersum.y = lerp(posPlayersum, pointRightSide, 0.01f).y;
 
+        //Debug.Log(VectorInPlain);
+        playerDepth(); 
         //only right
-		posPlayersum.z = rightside.gameObject.transform.position.z;
-		Hada.gameObject.transform.position = posPlayersum;
+        //Debug.Log(posPlayersum); 
+        Hada.gameObject.transform.position = posPlayersum;
 	}
 
+    //si el vector director señala el lado left, el player se situe a la profundidad del left y lo mismo con el right
+    void playerDepth()
+    {
+		if (VectorInPlain.z < 0)
+            posPlayersum.z = leftside.gameObject.transform.position.z;
+        else
+            posPlayersum.z = rightside.gameObject.transform.position.z;
+
+    }
+    //interpolación lineal a: actual position, b: future position, f: interval position
+    Vector3 lerp(Vector3 a, Vector3 b, float f)
+    {
+        return a * (1 - f) + b * f;
+    }
+
+    //ray intersaccion wall, return position. If not interation wall, future position is hand 
     Vector3 rayWall(Vector3 VectorInPlain) 
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(Vector3.Scale(initRay, new Vector3(-1, 1, 1)), Vector3.Scale(VectorInPlain, new Vector3(1, 1, -1)), out hit, range))
+        if (Physics.Raycast(initRay, Vector3.Scale(VectorInPlain, new Vector3(1, 1, -1)), out hit, range))
         {
-            if (hit.collider.name == "RightSide")
+            if (hit.collider.name == "RightSide" || hit.collider.name == "LeftSide")
             {
-                //Debug.Log("RAYO: " + hit.collider.name);
-                //Debug.Log("RAYO: "+ hit.point);
                 return hit.point;
             }
-            return Vector3.Scale(rightHand.gameObject.transform.position, new Vector3(-1, 1, 1));
+            return new Vector3(seeSholder.gameObject.transform.position.x, seeSholder.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
         }
-        
-        return Vector3.Scale(rightHand.gameObject.transform.position, new Vector3(-1, 1, 1)); 
-        
+
+        return new Vector3(seeSholder.gameObject.transform.position.x, seeSholder.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
+
     }
+    //Draw ray 
 	private void OnDrawGizmos()
 	{
         if (GameObject.Find("Body_Person") != null)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawRay(Vector3.Scale(initRay, new Vector3(-1,1,1)), Vector3.Scale(VectorInPlain, new Vector3(1,1,-1)) * range);
+            Gizmos.DrawRay(initRay,Vector3.Scale(VectorInPlain, new Vector3(1,1,-1)) * range);
         }
 	}
 
