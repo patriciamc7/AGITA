@@ -29,8 +29,13 @@ public class KinctMovePlayer : MonoBehaviour
 
     public GameObject rightside; 
     public GameObject leftside;
-    private bool initPos = true; 
-   
+    private bool initPos = true;
+    private bool init_value = true;
+    private float Time_i;
+    private Vector3 Pos_i;
+
+    private Vector3 pointtSideWall; 
+
     // Update is called once per frame
     void Update()
     {
@@ -58,7 +63,8 @@ public class KinctMovePlayer : MonoBehaviour
             HandToSholder = vector2nodesNormalice(rightHand.gameObject.transform.position, sholderRight.gameObject.transform.position);
 
             moveCharater();
-            
+
+            knowVelocity();
         }
 
     }
@@ -94,7 +100,6 @@ public class KinctMovePlayer : MonoBehaviour
         seeNeck.gameObject.transform.position = seeNeck.gameObject.transform.position + new Vector3(0, 0, -8);
         seeElbow.gameObject.transform.position = seeElbow.gameObject.transform.position + new Vector3(0, 0, -8);
         seeSholder.gameObject.transform.position = seeSholder.gameObject.transform.position + new Vector3(0, 0, -8);
-
     }
     Vector3 vector2nodesNormalice(Vector3 hand, Vector3 otherNode) 
     {
@@ -149,19 +154,13 @@ public class KinctMovePlayer : MonoBehaviour
             VectorInPlain.z = HandToSholder.z;
         }
         //ejes al reves
-        //VectorInPlain = rightHand.gameObject.transform.position;
-        //VectorInPlain = Vector3.Scale(VectorInPlain, new Vector3(-1, 1, 1));
-        Vector3 pointRightSide = rayWall(VectorInPlain);
-        //Debug.Log(pointRightSide); 
+        pointtSideWall = rayWall(VectorInPlain);
 
         posPlayersum = Hada.gameObject.transform.position;
-        posPlayersum.x = lerp(posPlayersum, pointRightSide, 0.01f).x; 
-        posPlayersum.y = lerp(posPlayersum, pointRightSide, 0.01f).y;
+        posPlayersum.x = lerp(posPlayersum, pointtSideWall, 0.01f).x; 
+        posPlayersum.y = lerp(posPlayersum, pointtSideWall, 0.01f).y;
 
-        //Debug.Log(VectorInPlain);
         playerDepth(); 
-        //only right
-        //Debug.Log(posPlayersum); 
         Hada.gameObject.transform.position = posPlayersum;
 	}
 
@@ -207,4 +206,25 @@ public class KinctMovePlayer : MonoBehaviour
         }
 	}
 
+    void knowVelocity()
+    {
+        if (init_value)
+        {
+            Time_i = Time.deltaTime;
+            Pos_i = pointtSideWall;
+            init_value = false;
+        }
+        else {
+            float Delta_t = Time.deltaTime - Time_i;
+            Vector3 Delta_pos = pointtSideWall - Pos_i;
+
+            Vector3 velocity_Hand = Delta_pos / Delta_t;
+
+            Debug.Log(velocity_Hand); 
+
+            Time_i = Time.deltaTime;
+            Pos_i = pointtSideWall;
+
+        }
+    }
 }
