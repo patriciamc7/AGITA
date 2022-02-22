@@ -7,7 +7,8 @@ public class KinctMovePlayer : MonoBehaviour
     public GameObject Hada;
     public GameObject KinectParent;
     private GameObject Body;
-    private GameObject rightHand;
+	private GameObject Pvisible;
+	private GameObject rightHand;
     private GameObject neck;
     private GameObject elbowRight;
     private GameObject sholderRight;
@@ -31,8 +32,9 @@ public class KinctMovePlayer : MonoBehaviour
     public GameObject leftside;
     private bool initPos = true;
     private bool init_value = true;
-    private float Time_i;
     private Vector3 Pos_i;
+
+    public Vector3 BodyTranlate = new Vector3(-10, 1.5f, -8); 
 
     private Vector3 pointtSideWall; 
 
@@ -50,15 +52,17 @@ public class KinctMovePlayer : MonoBehaviour
             if (initPos)
             {
                 Body.gameObject.transform.Rotate(0, -90, 0);
-                Body.gameObject.transform.Translate(new Vector3(-6, 0, 0));
+                Body.gameObject.transform.Translate(BodyTranlate);
                 initPos = false; 
             }
             //tralación del esqueleto con en la pisción de la camera 
-            Body.gameObject.transform.position += new Vector3(vecloctyPlayer * Time.deltaTime, 0, 0);
+            //Al dividir entre 4 el esqueleto la velocidad debe multiplicarse por 4
+            Body.gameObject.transform.position += new Vector3(vecloctyPlayer *4 * Time.deltaTime, 0, 0);
 
             cubeVisisble();
-
-            HandToNeck = vector2nodesNormalice(rightHand.gameObject.transform.position, neck.gameObject.transform.position);
+			Pvisible = GameObject.Find("PersonaVisible");
+			Pvisible.gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+			HandToNeck = vector2nodesNormalice(rightHand.gameObject.transform.position, neck.gameObject.transform.position);
             HandToElbow = vector2nodesNormalice(rightHand.gameObject.transform.position, elbowRight.gameObject.transform.position);
             HandToSholder = vector2nodesNormalice(rightHand.gameObject.transform.position, sholderRight.gameObject.transform.position);
 
@@ -95,11 +99,16 @@ public class KinctMovePlayer : MonoBehaviour
         seeNeck.gameObject.transform.position = Vector3.Scale(neck.gameObject.transform.position, new Vector3(1, 1, -1));
         seeElbow.gameObject.transform.position = Vector3.Scale(elbowRight.gameObject.transform.position, new Vector3(1, 1, -1));
         seeSholder.gameObject.transform.position = Vector3.Scale(sholderRight.gameObject.transform.position, new Vector3(1, 1, -1));
-
+        //misma posición que el original
         seeHand.gameObject.transform.position = seeHand.gameObject.transform.position + new Vector3(0, 0, -8);
         seeNeck.gameObject.transform.position = seeNeck.gameObject.transform.position + new Vector3(0, 0, -8);
         seeElbow.gameObject.transform.position = seeElbow.gameObject.transform.position + new Vector3(0, 0, -8);
         seeSholder.gameObject.transform.position = seeSholder.gameObject.transform.position + new Vector3(0, 0, -8);
+
+        seeHand.gameObject.transform.position = seeHand.gameObject.transform.position / 4;
+        seeNeck.gameObject.transform.position = seeNeck.gameObject.transform.position /4;
+        seeElbow.gameObject.transform.position = seeElbow.gameObject.transform.position /4;
+        seeSholder.gameObject.transform.position = seeSholder.gameObject.transform.position /4;
     }
     Vector3 vector2nodesNormalice(Vector3 hand, Vector3 otherNode) 
     {
@@ -190,10 +199,10 @@ public class KinctMovePlayer : MonoBehaviour
             {
                 return hit.point;
             }
-            return new Vector3(seeSholder.gameObject.transform.position.x, seeSholder.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
+            return new Vector3(seeHand.gameObject.transform.position.x, seeHand.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
         }
 
-        return new Vector3(seeSholder.gameObject.transform.position.x, seeSholder.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
+        return new Vector3(seeHand.gameObject.transform.position.x, seeHand.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
 
     }
     //Draw ray 
@@ -210,19 +219,17 @@ public class KinctMovePlayer : MonoBehaviour
     {
         if (init_value)
         {
-            Time_i = Time.deltaTime;
             Pos_i = pointtSideWall;
             init_value = false;
         }
         else {
-            float Delta_t = Time.deltaTime - Time_i;
+           
             Vector3 Delta_pos = pointtSideWall - Pos_i;
 
-            Vector3 velocity_Hand = Delta_pos / Delta_t;
+            Vector3 velocity_Hand = Delta_pos ;
 
-            Debug.Log(velocity_Hand); 
+            //Debug.Log(velocity_Hand); 
 
-            Time_i = Time.deltaTime;
             Pos_i = pointtSideWall;
 
         }
