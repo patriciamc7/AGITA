@@ -4,10 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Chest
   - Floor
-  - FloorChest
   - FloorFountain
+  - FloorChest
+  - FloorCrystal
+  - FloorMushroom
   layers:
   - Default
   - TransparentFX
