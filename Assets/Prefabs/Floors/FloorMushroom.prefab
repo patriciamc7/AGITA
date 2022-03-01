@@ -2648,6 +2648,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bolets
       objectReference: {fileID: 0}
+    - target: {fileID: 2228708808885614941, guid: d6755cb16e508ab4eba8fb9510689f92, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6bf5fdb56063d4746aee45df00b7374b, type: 2}
+    - target: {fileID: 2581244462510266403, guid: d6755cb16e508ab4eba8fb9510689f92, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 275d10b94bb113e41bbfa7f0f206b64b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6755cb16e508ab4eba8fb9510689f92, type: 3}
 --- !u!4 &1267384366984724409 stripped

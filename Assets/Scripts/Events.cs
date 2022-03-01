@@ -25,8 +25,10 @@ public class Events : MonoBehaviour
                 if (fireflies != null)
                     fireflies.Play();
                 if (light != null)
+                {
                     StartCoroutine(DelayedAnimation(light, 0.9f));
-
+                }
+                    
             }
         }
         //Fountain event
@@ -75,8 +77,36 @@ public class Events : MonoBehaviour
 
             }
         }
+        //Fireflies event
+        if (other.gameObject.CompareTag("FloorFireflies"))
+        {
+            Transform trans = other.transform;
+            ParticleSystem fireflies = other.gameObject.GetComponentInChildren<ParticleSystem>();
+
+            if (fireflies != null)
+            {
+                fireflies.gameObject.transform.position = this.gameObject.transform.position;
+                Object.Destroy(fireflies, 5.0f);
+
+            }
+        }
+
+        //Bubble event
+        if (other.gameObject.CompareTag("FloorBubbles"))
+        {
+            Transform trans = other.transform;
+            ParticleSystem bubbles = other.gameObject.GetComponentInChildren<ParticleSystem>();
+           
+            if (bubbles != null)
+            {
+                var subEmittersModule = bubbles.subEmitters;
+                subEmittersModule.enabled = true;
+            }
+        }
+
     }
 
+    
     // The delay coroutine
     public IEnumerator DelayedAnimation(ParticleSystem ps, float time)
     {
