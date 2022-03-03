@@ -11,6 +11,7 @@ TagManager:
   - FloorMushroom
   - FloorFireflies
   - FloorBubbles
+  - Bubbles
   layers:
   - Default
   - TransparentFX
