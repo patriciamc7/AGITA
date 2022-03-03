@@ -34,7 +34,7 @@ public class KinctMovePlayer : MonoBehaviour
     private bool init_value = true;
     private Vector3 Pos_i;
 
-    public Vector3 BodyTranlate = new Vector3(-10, 1.5f, -8); 
+    public Vector3 BodyTranlate = new Vector3(-8, 1.5f, -8); 
 
     private Vector3 pointtSideWall; 
 
