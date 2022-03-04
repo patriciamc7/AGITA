@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class KinctMovePlayer : MonoBehaviour
 {
+    public GameObject collisionPoint; 
     public GameObject CameraRight;
     public GameObject Hada;
     public GameObject KinectParent;
@@ -53,14 +54,19 @@ public class KinctMovePlayer : MonoBehaviour
             //move player middle walls
             if (initPos)
             {
-                Body.gameObject.transform.Rotate(0, -90, 0);
-                Body.gameObject.transform.Translate(BodyTranlate);
+                //Body.gameObject.transform.Rotate(0, -90, 0);
+                //Vector3 aux = Body.gameObject.transform.position;
+                //Body.gameObject.transform.position.x = aux.z; 
+                //Body.gameObject.transform.position.z = aux.x;
+                //function cambiar origen punts kinect
+                //functin posicionar punts en la posició fisica del usuari
+
+                //Body.gameObject.transform.Translate(BodyTranlate);
                 initPos = false; 
             }
 
             cubeVisisble();
-			Pvisible = GameObject.Find("PersonaVisible");
-			Pvisible.gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+			//Pvisible.gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
 			HandToNeck = vector2nodesNormalice(rightHand.gameObject.transform.position, neck.gameObject.transform.position);
             HandToElbow = vector2nodesNormalice(rightHand.gameObject.transform.position, elbowRight.gameObject.transform.position);
             HandToSholder = vector2nodesNormalice(rightHand.gameObject.transform.position, sholderRight.gameObject.transform.position);
@@ -71,7 +77,10 @@ public class KinctMovePlayer : MonoBehaviour
         }
 
     }
+    void zero() 
+    {
 
+    }
     GameObject GetChildWithName(GameObject obj, string name)
     {
         Transform trans = obj.transform;
@@ -93,16 +102,31 @@ public class KinctMovePlayer : MonoBehaviour
         elbowRight = GetChildWithName(Body, "ElbowRight");
         sholderRight = GetChildWithName(Body, "ShoulderRight");
 
-        //______ cambiar eje horizontal en los cubos visibles 
-        seeHand.gameObject.transform.position = Vector3.Scale(rightHand.gameObject.transform.position, new Vector3(1, 1, -1));
-        seeNeck.gameObject.transform.position = Vector3.Scale(neck.gameObject.transform.position, new Vector3(1, 1, -1));
-        seeElbow.gameObject.transform.position = Vector3.Scale(elbowRight.gameObject.transform.position, new Vector3(1, 1, -1));
-        seeSholder.gameObject.transform.position = Vector3.Scale(sholderRight.gameObject.transform.position, new Vector3(1, 1, -1));
+        //______ cambiar simetria del que detecta la kinect a els nodes del esquelet pasa x y z
+
+        seeNeck.gameObject.transform.position = new Vector3(neck.gameObject.transform.position.z, neck.gameObject.transform.position.y, neck.gameObject.transform.position.x);
+        seeHand.gameObject.transform.position = new Vector3(rightHand.gameObject.transform.position.z, rightHand.gameObject.transform.position.y, rightHand.gameObject.transform.position.x);
+        seeElbow.gameObject.transform.position = new Vector3(elbowRight.gameObject.transform.position.z, elbowRight.gameObject.transform.position.y, elbowRight.gameObject.transform.position.x);
+        seeSholder.gameObject.transform.position = new Vector3(sholderRight.gameObject.transform.position.z, sholderRight.gameObject.transform.position.y, sholderRight.gameObject.transform.position.x);
+
+        // traslladem a on esta el coll tots respectivament
+        Pvisible = GameObject.Find("PersonaVisible");
+        Pvisible.gameObject.transform.Translate(seeNeck.gameObject.transform.position);
+        Pvisible.gameObject.transform.Rotate(0,180,0);
+        Pvisible.gameObject.transform.Translate(-1.2f,1,0);
+
+        //
+
+
+        //seeHand.gameObject.transform.position = Vector3.Scale(rightHand.gameObject.transform.position, new Vector3(1, 1, -1));
+        //seeNeck.gameObject.transform.position = Vector3.Scale(neck.gameObject.transform.position, new Vector3(1, 1, -1));
+        //seeElbow.gameObject.transform.position = Vector3.Scale(elbowRight.gameObject.transform.position, new Vector3(1, 1, -1));
+        //seeSholder.gameObject.transform.position = Vector3.Scale(seeSholder.gameObject.transform.position, new Vector3(1, 1, -1));
         //misma posición que el original
-        seeHand.gameObject.transform.position = seeHand.gameObject.transform.position + new Vector3(0, 0, -8);
-        seeNeck.gameObject.transform.position = seeNeck.gameObject.transform.position + new Vector3(0, 0, -8);
-        seeElbow.gameObject.transform.position = seeElbow.gameObject.transform.position + new Vector3(0, 0, -8);
-        seeSholder.gameObject.transform.position = seeSholder.gameObject.transform.position + new Vector3(0, 0, -8);
+        //seeHand.gameObject.transform.position = seeHand.gameObject.transform.position + new Vector3(0, 0, -8);
+        //seeNeck.gameObject.transform.position = seeNeck.gameObject.transform.position + new Vector3(0, 0, -8);
+        //seeElbow.gameObject.transform.position = seeElbow.gameObject.transform.position + new Vector3(0, 0, -8);
+        //seeSholder.gameObject.transform.position = seeSholder.gameObject.transform.position + new Vector3(0, 0, -8);
 
     }
     Vector3 vector2nodesNormalice(Vector3 hand, Vector3 otherNode) 
@@ -194,8 +218,10 @@ public class KinctMovePlayer : MonoBehaviour
             {
                 return hit.point;
             }
+            collisionPoint.gameObject.transform.position = new Vector3(seeHand.gameObject.transform.position.x, seeHand.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
             return new Vector3(seeHand.gameObject.transform.position.x, seeHand.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
         }
+        collisionPoint.gameObject.transform.position = new Vector3(seeHand.gameObject.transform.position.x, seeHand.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
 
         return new Vector3(seeHand.gameObject.transform.position.x, seeHand.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
 
