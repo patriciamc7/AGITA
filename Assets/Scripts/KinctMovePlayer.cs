@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class KinctMovePlayer : MonoBehaviour
 {
+    public GameObject CameraRight;
     public GameObject Hada;
     public GameObject KinectParent;
     private GameObject Body;
@@ -34,7 +35,7 @@ public class KinctMovePlayer : MonoBehaviour
     private bool init_value = true;
     private Vector3 Pos_i;
 
-    public Vector3 BodyTranlate = new Vector3(-8, 1.5f, -8); 
+    private Vector3 BodyTranlate = new Vector3(-8, 1f, -1); 
 
     private Vector3 pointtSideWall; 
 
@@ -46,8 +47,9 @@ public class KinctMovePlayer : MonoBehaviour
         if (GameObject.Find("Body_Person") != null)
         {
             Body = GameObject.Find("Body_Person");
+            Body.gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
 
-            Body.gameObject.transform.SetParent(KinectParent.gameObject.transform);
+            Body.gameObject.transform.SetParent(CameraRight.gameObject.transform);
             //move player middle walls
             if (initPos)
             {
@@ -55,9 +57,6 @@ public class KinctMovePlayer : MonoBehaviour
                 Body.gameObject.transform.Translate(BodyTranlate);
                 initPos = false; 
             }
-            //tralación del esqueleto con en la pisción de la camera 
-            //Al dividir entre 4 el esqueleto la velocidad debe multiplicarse por 4
-            Body.gameObject.transform.position += new Vector3(vecloctyPlayer *4 * Time.deltaTime, 0, 0);
 
             cubeVisisble();
 			Pvisible = GameObject.Find("PersonaVisible");
@@ -105,10 +104,6 @@ public class KinctMovePlayer : MonoBehaviour
         seeElbow.gameObject.transform.position = seeElbow.gameObject.transform.position + new Vector3(0, 0, -8);
         seeSholder.gameObject.transform.position = seeSholder.gameObject.transform.position + new Vector3(0, 0, -8);
 
-        seeHand.gameObject.transform.position = seeHand.gameObject.transform.position / 4;
-        seeNeck.gameObject.transform.position = seeNeck.gameObject.transform.position /4;
-        seeElbow.gameObject.transform.position = seeElbow.gameObject.transform.position /4;
-        seeSholder.gameObject.transform.position = seeSholder.gameObject.transform.position /4;
     }
     Vector3 vector2nodesNormalice(Vector3 hand, Vector3 otherNode) 
     {
