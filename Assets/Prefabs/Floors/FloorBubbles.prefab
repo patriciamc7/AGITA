@@ -649,7 +649,7 @@ Transform:
   m_GameObject: {fileID: 2881421970978512187}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4434925167063784548}
   - {fileID: 2881421971479383057}
@@ -2896,7 +2896,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 0.2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -3012,7 +3012,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3388,13 +3388,13 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 31.338715
+    angle: 47.68226
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
-    m_Position: {x: 0, y: 1.9914875, z: 0.9955616}
-    m_Rotation: {x: -0.00011591216, y: 0, z: 0}
+    m_Position: {x: 0.00000019822036, y: 0.28674212, z: 0.1650429}
+    m_Rotation: {x: -0.000115912175, y: -0.0009852534, z: 5.7276524e-11}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -3474,7 +3474,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 5.4229536
+      value: 0.5196022
       mode: 0
       spread: 0
       speed:
@@ -5419,7 +5419,7 @@ ParticleSystem:
     strength:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5576,7 +5576,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     separateAxes: 0
-    frequency: 0.5
+    frequency: 0.2
     damping: 1
     octaves: 1
     octaveMultiplier: 0.5
@@ -6528,7 +6528,7 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 2
     inside: 0
     outside: 0
@@ -6544,7 +6544,7 @@ ParticleSystem:
     subEmitters:
     - serializedVersion: 3
       emitter: {fileID: 4766685919805134522}
-      type: 3
+      type: 2
       properties: 0
       emitProbability: 1
   LightsModule:
@@ -7650,8 +7650,44 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5757337594975822730, guid: cb29ae9bc17a6e243986a6cf8ed84d96, type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5757337594975822730, guid: cb29ae9bc17a6e243986a6cf8ed84d96, type: 3}
       propertyPath: playOnAwake
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5757337594975822730, guid: cb29ae9bc17a6e243986a6cf8ed84d96, type: 3}
+      propertyPath: simulationSpeed
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5757337594975822730, guid: cb29ae9bc17a6e243986a6cf8ed84d96, type: 3}
+      propertyPath: ShapeModule.arc.value
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 5757337594975822730, guid: cb29ae9bc17a6e243986a6cf8ed84d96, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 5757337594975822730, guid: cb29ae9bc17a6e243986a6cf8ed84d96, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5757337594975822730, guid: cb29ae9bc17a6e243986a6cf8ed84d96, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5757337594975822730, guid: cb29ae9bc17a6e243986a6cf8ed84d96, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5757337594975822730, guid: cb29ae9bc17a6e243986a6cf8ed84d96, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5757337594975822730, guid: cb29ae9bc17a6e243986a6cf8ed84d96, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb29ae9bc17a6e243986a6cf8ed84d96, type: 3}
