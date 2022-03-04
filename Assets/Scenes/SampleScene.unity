@@ -1617,7 +1617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8052babacfd5b9940837155fdb2b142a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.75
+      value: -0.305
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8052babacfd5b9940837155fdb2b142a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3748,6 +3748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed70592dc9e4fb4a94b2092cc495300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionPoint: {fileID: 0}
   CameraRight: {fileID: 209244624}
   Hada: {fileID: 283538860}
   KinectParent: {fileID: 1441788784}

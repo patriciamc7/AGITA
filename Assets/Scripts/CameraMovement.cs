@@ -32,6 +32,12 @@ public class CameraMovement : MonoBehaviour
 
             }
         }
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float horizontalvertical = Input.GetAxisRaw("Vertical");
+        if (horizontalInput != 0 || horizontalvertical != 0)
+        {
+            transform.Translate(-1 * Time.deltaTime, 0, 0);
+        }
     }
 	
 }
