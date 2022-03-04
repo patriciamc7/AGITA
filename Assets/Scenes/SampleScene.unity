@@ -466,7 +466,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 89907452}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -1.39}
+  m_LocalPosition: {x: 0, y: 1, z: -0.914}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -799,7 +799,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209244624}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 1, z: 1.39}
+  m_LocalPosition: {x: 0, y: 1, z: 0.914}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1481,7 +1481,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 538528472}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1493,7 +1493,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6f0cfe2cac282604c80cb4eae13d71af, type: 2}
+  - {fileID: 2100000, guid: 2da1afa2b9c21f6489b658414c0ab320, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1617,7 +1617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8052babacfd5b9940837155fdb2b142a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.75
+      value: -0.305
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8052babacfd5b9940837155fdb2b142a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2937,7 +2937,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 921191845}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2949,7 +2949,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6f0cfe2cac282604c80cb4eae13d71af, type: 2}
+  - {fileID: 2100000, guid: 2da1afa2b9c21f6489b658414c0ab320, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3748,16 +3748,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed70592dc9e4fb4a94b2092cc495300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionPoint: {fileID: 0}
+  CameraRight: {fileID: 209244624}
   Hada: {fileID: 283538860}
   KinectParent: {fileID: 1441788784}
-  vecloctyPlayer: 1
+  vecloctyPlayer: 0
   seeHand: {fileID: 2137993540}
   seeNeck: {fileID: 2063892106}
   seeElbow: {fileID: 567680393}
   seeSholder: {fileID: 1680845486}
   rightside: {fileID: 538528472}
   leftside: {fileID: 921191845}
-  BodyTranlate: {x: -10, y: 1.5, z: -8}
 --- !u!1 &1450676365
 GameObject:
   m_ObjectHideFlags: 0

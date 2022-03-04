@@ -23,7 +23,13 @@ public class CameraMovement : MonoBehaviour
                 LeftSide.gameObject.transform.position += new Vector3(KinectScript.vecloctyPlayer * Time.deltaTime, 0, 0);
 
             }
-        //}
+        }
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float horizontalvertical = Input.GetAxisRaw("Vertical");
+        if (horizontalInput != 0 || horizontalvertical != 0)
+        {
+            transform.Translate(-1 * Time.deltaTime, 0, 0);
+        }
     }
 	
 }
