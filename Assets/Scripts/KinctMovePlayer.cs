@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KinctMovePlayer : MonoBehaviour
 {
-    public GameObject collisionPoint; 
+    //public GameObject collisionPoint; 
     public GameObject CameraRight;
     public GameObject Hada;
     public GameObject KinectParent;
@@ -38,7 +38,9 @@ public class KinctMovePlayer : MonoBehaviour
 
     private Vector3 BodyTranlate = new Vector3(-8, 1f, -1); 
 
-    private Vector3 pointtSideWall; 
+    private Vector3 pointtSideWall;
+
+    private Vector3[] area; 
 
     // Update is called once per frame
     void Update()
@@ -67,9 +69,9 @@ public class KinctMovePlayer : MonoBehaviour
 
             cubeVisisble();
 			//Pvisible.gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-			HandToNeck = vector2nodesNormalice(rightHand.gameObject.transform.position, neck.gameObject.transform.position);
-            HandToElbow = vector2nodesNormalice(rightHand.gameObject.transform.position, elbowRight.gameObject.transform.position);
-            HandToSholder = vector2nodesNormalice(rightHand.gameObject.transform.position, sholderRight.gameObject.transform.position);
+			HandToNeck = vector2nodesNormalice(seeHand.gameObject.transform.position, seeNeck.gameObject.transform.position);
+            HandToElbow = vector2nodesNormalice(seeHand.gameObject.transform.position, seeElbow.gameObject.transform.position);
+            HandToSholder = vector2nodesNormalice(seeHand.gameObject.transform.position, seeSholder.gameObject.transform.position);
 
             moveCharater();
 
@@ -77,10 +79,8 @@ public class KinctMovePlayer : MonoBehaviour
         }
 
     }
-    void zero() 
-    {
 
-    }
+  
     GameObject GetChildWithName(GameObject obj, string name)
     {
         Transform trans = obj.transform;
@@ -113,20 +113,8 @@ public class KinctMovePlayer : MonoBehaviour
         Pvisible = GameObject.Find("PersonaVisible");
         Pvisible.gameObject.transform.Translate(seeNeck.gameObject.transform.position);
         Pvisible.gameObject.transform.Rotate(0,180,0);
-        Pvisible.gameObject.transform.Translate(-1.2f,1,0);
-
-        //
-
-
-        //seeHand.gameObject.transform.position = Vector3.Scale(rightHand.gameObject.transform.position, new Vector3(1, 1, -1));
-        //seeNeck.gameObject.transform.position = Vector3.Scale(neck.gameObject.transform.position, new Vector3(1, 1, -1));
-        //seeElbow.gameObject.transform.position = Vector3.Scale(elbowRight.gameObject.transform.position, new Vector3(1, 1, -1));
-        //seeSholder.gameObject.transform.position = Vector3.Scale(seeSholder.gameObject.transform.position, new Vector3(1, 1, -1));
-        //misma posición que el original
-        //seeHand.gameObject.transform.position = seeHand.gameObject.transform.position + new Vector3(0, 0, -8);
-        //seeNeck.gameObject.transform.position = seeNeck.gameObject.transform.position + new Vector3(0, 0, -8);
-        //seeElbow.gameObject.transform.position = seeElbow.gameObject.transform.position + new Vector3(0, 0, -8);
-        //seeSholder.gameObject.transform.position = seeSholder.gameObject.transform.position + new Vector3(0, 0, -8);
+        Pvisible.gameObject.transform.Translate(0,1,0);
+        
 
     }
     Vector3 vector2nodesNormalice(Vector3 hand, Vector3 otherNode) 
@@ -195,7 +183,7 @@ public class KinctMovePlayer : MonoBehaviour
     //si el vector director señala el lado left, el player se situe a la profundidad del left y lo mismo con el right
     void playerDepth()
     {
-		if (VectorInPlain.z < 0)
+		if (VectorInPlain.z > 0)
             posPlayersum.z = leftside.gameObject.transform.position.z;
         else
             posPlayersum.z = rightside.gameObject.transform.position.z;
@@ -212,16 +200,18 @@ public class KinctMovePlayer : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(initRay, Vector3.Scale(VectorInPlain, new Vector3(1, 1, -1)), out hit, range))
+        if (Physics.Raycast(initRay, VectorInPlain, out hit, range))
         {
             if (hit.collider.name == "RightSide" || hit.collider.name == "LeftSide")
             {
+                //collisionPoint.gameObject.transform.position = hit.point;
+
                 return hit.point;
             }
-            collisionPoint.gameObject.transform.position = new Vector3(seeHand.gameObject.transform.position.x, seeHand.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
+            //collisionPoint.gameObject.transform.position = new Vector3(seeHand.gameObject.transform.position.x, seeHand.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
             return new Vector3(seeHand.gameObject.transform.position.x, seeHand.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
         }
-        collisionPoint.gameObject.transform.position = new Vector3(seeHand.gameObject.transform.position.x, seeHand.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
+        //collisionPoint.gameObject.transform.position = new Vector3(seeHand.gameObject.transform.position.x, seeHand.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
 
         return new Vector3(seeHand.gameObject.transform.position.x, seeHand.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
 
@@ -232,7 +222,7 @@ public class KinctMovePlayer : MonoBehaviour
         if (GameObject.Find("Body_Person") != null)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawRay(initRay,Vector3.Scale(VectorInPlain, new Vector3(1,1,-1)) * range);
+            Gizmos.DrawRay(initRay,VectorInPlain * range);
         }
 	}
 
