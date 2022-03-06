@@ -2239,8 +2239,8 @@ GameObject:
   - component: {fileID: 8965795219792919556}
   - component: {fileID: 66983749099019301}
   m_Layer: 0
-  m_Name: FloorCrystal
-  m_TagString: FloorCrystal
+  m_Name: FloorCrystalPink
+  m_TagString: FloorCrystalPink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2318,8 +2318,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.911854, y: 8.181656, z: 8.739183}
-  m_Center: {x: -3.4529858, y: 3.5908284, z: 3.4306872}
+  m_Size: {x: 2.078434, y: 8.181656, z: 8.739183}
+  m_Center: {x: -3.112936, y: 3.5908284, z: 3.4306872}
 --- !u!1 &8965795219841990562
 GameObject:
   m_ObjectHideFlags: 0

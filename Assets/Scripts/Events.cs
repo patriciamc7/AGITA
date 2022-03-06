@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Events : MonoBehaviour
 {
-    public Material material;
+    public Material materialPink;
+    public Material materialGreen;
+    public Material materialBlue;
     public Vector3 scale;
     public void OnTriggerEnter(Collider other)
     {
@@ -48,7 +50,7 @@ public class Events : MonoBehaviour
         }
 
         //Crystal event
-        if (other.gameObject.CompareTag("FloorCrystal"))
+        if (other.gameObject.CompareTag("FloorCrystalPink"))
         {
             Transform trans = other.transform;
             Transform child = trans.Find("Cristal");
@@ -57,7 +59,33 @@ public class Events : MonoBehaviour
             {
                 Transform mesh = this.gameObject.transform.Find("mesh");
                 if (mesh != null)
-                    mesh.gameObject.GetComponent<Renderer>().material = material;
+                    mesh.gameObject.GetComponent<Renderer>().material = materialPink;
+
+            }
+        }
+        if (other.gameObject.CompareTag("FloorCrystalGreen"))
+        {
+            Transform trans = other.transform;
+            Transform child = trans.Find("Cristal");
+
+            if (child != null)
+            {
+                Transform mesh = this.gameObject.transform.Find("mesh");
+                if (mesh != null)
+                    mesh.gameObject.GetComponent<Renderer>().material = materialGreen;
+
+            }
+        }
+        if (other.gameObject.CompareTag("FloorCrystalBlue"))
+        {
+            Transform trans = other.transform;
+            Transform child = trans.Find("Cristal");
+
+            if (child != null)
+            {
+                Transform mesh = this.gameObject.transform.Find("mesh");
+                if (mesh != null)
+                    mesh.gameObject.GetComponent<Renderer>().material = materialBlue;
 
             }
         }
@@ -67,13 +95,19 @@ public class Events : MonoBehaviour
         {
             Transform trans = other.transform;
             Transform child = trans.Find("Bolets");
+            Transform child1 = child.Find("mushroom_1");
+            Transform child2 = child.Find("mushroom_2");
 
-            if (child != null)
+            if (child2 != null)
             {
                 child.gameObject.transform.localScale = new Vector3(scale.x *Time.deltaTime , scale.y *Time.deltaTime , scale.z *Time.deltaTime );
                 //Animator anim = child.GetComponent<Animator>();
                 //if (anim != null)
                 //    anim.Play("Animated PBR Chest _Opening_UnCommon");
+
+            }
+            else if(child2 != null)
+            {
 
             }
         }

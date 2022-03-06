@@ -12,6 +12,9 @@ TagManager:
   - FloorFireflies
   - FloorBubbles
   - Bubbles
+  - FloorCrystalPink
+  - FloorCrystalBlue
+  - FloorCrystalGreen
   layers:
   - Default
   - TransparentFX

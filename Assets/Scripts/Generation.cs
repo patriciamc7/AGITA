@@ -7,7 +7,7 @@ public class Generation : MonoBehaviour
     public int numElements;
     public int depth;
     public GameObject[] modules;
-    // Start is called before the first frame update
+
     void Start()
     {
        for (int i = 0; i < numElements; i++)
@@ -23,9 +23,4 @@ public class Generation : MonoBehaviour
        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
