@@ -7,17 +7,20 @@ public class Generation : MonoBehaviour
     public int numElements;
     public int depth;
     public GameObject[] modules;
-
+    private Procedural proceduralScript;
     void Start()
     {
        for (int i = 0; i < numElements; i++)
             {
                 for (int j = 0; j < depth; j++)
                 {
+                    modules[j].GetComponent<Procedural>().is_left = false;
                     Vector3 rightPosition = new Vector3(2 * i, 0, -1-2*j);
                     Instantiate(modules[j], rightPosition, Quaternion.identity);
                     Vector3 leftPosition = new Vector3(2 * i, 0, 1+2*j);
-                    Instantiate(modules[j], leftPosition, Quaternion.Euler(Vector3.up * 180));
+                    modules[j].GetComponent<Procedural>().is_left = true;
+                    Instantiate(modules[j], leftPosition, Quaternion.identity);
+                    
                 }
             }
        

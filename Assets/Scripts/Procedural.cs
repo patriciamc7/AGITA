@@ -12,12 +12,9 @@ public class Procedural : MonoBehaviour
     {
         if (is_rot)
             rot = Quaternion.Euler(Vector3.up * (Random.Range(0, 4) * 90));
-        else if (is_left)
+        if (is_left)
             rot = Quaternion.Euler(Vector3.up * 180);
-
         Instantiate(objects[Random.Range(0, objects.Length)], transform.position, rot);
 
     }
-
- 
 }
