@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class KinctMovePlayer : MonoBehaviour
 {
-    //public GameObject collisionPoint; 
     public GameObject CameraRight;
     public GameObject Hada;
     public GameObject KinectParent;
@@ -21,7 +20,6 @@ public class KinctMovePlayer : MonoBehaviour
     private Vector3 VectorInPlain  = new Vector3(0,0,2.92f);
     private Vector3 posPlayersum;
     public float vecloctyPlayer;
-    Vector3 inversePositionHand; 
     float range = 100f;
 
     public GameObject seeHand; 
@@ -32,11 +30,9 @@ public class KinctMovePlayer : MonoBehaviour
 
     public GameObject rightside; 
     public GameObject leftside;
-    private bool initPos = true;
     private bool init_value = true;
     private Vector3 Pos_i;
-
-    private Vector3 BodyTranlate = new Vector3(-8, 1f, -1); 
+    private Vector3 auxpos; 
 
     private Vector3 pointtSideWall;
 
@@ -53,22 +49,10 @@ public class KinctMovePlayer : MonoBehaviour
             Body.gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
 
             Body.gameObject.transform.SetParent(CameraRight.gameObject.transform);
-            //move player middle walls
-            if (initPos)
-            {
-                //Body.gameObject.transform.Rotate(0, -90, 0);
-                //Vector3 aux = Body.gameObject.transform.position;
-                //Body.gameObject.transform.position.x = aux.z; 
-                //Body.gameObject.transform.position.z = aux.x;
-                //function cambiar origen punts kinect
-                //functin posicionar punts en la posició fisica del usuari
-
-                //Body.gameObject.transform.Translate(BodyTranlate);
-                initPos = false; 
-            }
+            
 
             cubeVisisble();
-			//Pvisible.gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+
 			HandToNeck = vector2nodesNormalice(seeHand.gameObject.transform.position, seeNeck.gameObject.transform.position);
             HandToElbow = vector2nodesNormalice(seeHand.gameObject.transform.position, seeElbow.gameObject.transform.position);
             HandToSholder = vector2nodesNormalice(seeHand.gameObject.transform.position, seeSholder.gameObject.transform.position);
@@ -183,10 +167,19 @@ public class KinctMovePlayer : MonoBehaviour
     //si el vector director señala el lado left, el player se situe a la profundidad del left y lo mismo con el right
     void playerDepth()
     {
-		if (VectorInPlain.z > 0)
+        BoxCollider hada_Collider = Hada.GetComponent<BoxCollider>();
+
+        if (VectorInPlain.z > 0)
+        {
             posPlayersum.z = leftside.gameObject.transform.position.z;
+            hada_Collider.center = new Vector3(0,0,7); 
+        }
         else
+        {
             posPlayersum.z = rightside.gameObject.transform.position.z;
+            hada_Collider.center = new Vector3(0, 0, -7);
+
+        }
 
     }
     //interpolación lineal a: actual position, b: future position, f: interval position
@@ -199,22 +192,17 @@ public class KinctMovePlayer : MonoBehaviour
     Vector3 rayWall(Vector3 VectorInPlain) 
     {
         RaycastHit hit;
-
+        
         if (Physics.Raycast(initRay, VectorInPlain, out hit, range))
         {
             if (hit.collider.name == "RightSide" || hit.collider.name == "LeftSide")
             {
-                //collisionPoint.gameObject.transform.position = hit.point;
-
+                auxpos = hit.point; 
                 return hit.point;
             }
-            //collisionPoint.gameObject.transform.position = new Vector3(seeHand.gameObject.transform.position.x, seeHand.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
-            return new Vector3(seeHand.gameObject.transform.position.x, seeHand.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
         }
-        //collisionPoint.gameObject.transform.position = new Vector3(seeHand.gameObject.transform.position.x, seeHand.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
 
-        return new Vector3(seeHand.gameObject.transform.position.x, seeHand.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
-
+        return auxpos;
     }
     //Draw ray 
 	private void OnDrawGizmos()
