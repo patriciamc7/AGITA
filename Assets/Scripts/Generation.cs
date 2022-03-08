@@ -9,6 +9,8 @@ public class Generation : MonoBehaviour
     public GameObject[] modules;
     public GameObject[] LakeModules;
     public GameObject FirstDepthtWithoutLake;
+    public bool oneTime = false;
+
     void Start()
     {
        for (int i = 0; i < numElements; i++)
@@ -42,8 +44,17 @@ public class Generation : MonoBehaviour
     
 
         }
+        
+
     }
     void Update()
+    {
+        if(!oneTime)
+            LakeGeneration();
+        
+    }
+
+    public void LakeGeneration()
     {
         int numChilds = this.transform.GetChildCount();
         int count = 0;
@@ -59,11 +70,11 @@ public class Generation : MonoBehaviour
                 {
                     if (childModule.CompareTag("FloorLake"))
                     {
-                        for (int j = 0; j < depth*3; j++)
+                        for (int j = 0; j < depth * 3; j++)
                         {
-                            if(j==0|| j == 1|| j == 4||j == 5 || j == 8 || j == 9)
+                            if (j == 0 || j == 1 || j == 4 || j == 5 || j == 8 || j == 9)
                             {
-                                if(i+ depth*3 >= numElements)
+                                if (i + depth * 3 >= numElements)
                                 {
                                     GameObject child1 = this.transform.GetChild(i + j).gameObject;
                                     GameObject childFloor = child1.transform.GetChild(0).gameObject;
@@ -76,20 +87,21 @@ public class Generation : MonoBehaviour
                                 else
                                 {
                                     Vector3 position = childDepth.transform.position;
-                                    Destroy(childDepth);
+                                    Destroy(childDepth.gameObject);
                                     GameObject rightDepth = Instantiate(FirstDepthtWithoutLake, position, Quaternion.identity);
                                 }
 
 
                             }
                         }
-                        i += depth * 3+1;
+                        i += depth * 3 + 1;
                     }
                 }
             }
 
         }
+        oneTime = true;
     }
- 
+    
 }
 

@@ -219,35 +219,46 @@ public class Events : MonoBehaviour
 
             }
         }
-        ////Fireflies event
-        //if (other.gameObject.CompareTag("FloorFireflies"))
-        //{
-        //    Transform trans = other.transform;
-        //    ParticleSystem fireflies = other.gameObject.GetComponentInChildren<ParticleSystem>();
 
-        //    if (fireflies != null)
-        //    {
-        //        fireflies.gameObject.transform.position = this.gameObject.transform.position;
-        //        Object.Destroy(fireflies, 5.0f);
+        //Fountain effects event
+        if (other.gameObject.CompareTag("FloorLake"))
+        {
+            ParticleSystem[] water = other.gameObject.GetComponentsInChildren<ParticleSystem>();
+            for (int i = 0; i < water.Length; i++)
+            {
+                water[i].Play();
+            }
+            
+        }
+            ////Fireflies event
+            //if (other.gameObject.CompareTag("FloorFireflies"))
+            //{
+            //    Transform trans = other.transform;
+            //    ParticleSystem fireflies = other.gameObject.GetComponentInChildren<ParticleSystem>();
 
-        //    }
-        //}
+            //    if (fireflies != null)
+            //    {
+            //        fireflies.gameObject.transform.position = this.gameObject.transform.position;
+            //        Object.Destroy(fireflies, 5.0f);
 
-        //Bubble event
-        //if (other.gameObject.CompareTag("FloorBubbles"))
-        //{
-        //    Transform trans = other.transform;
-        //    ParticleSystem bubbles = other.gameObject.GetComponentInChildren<ParticleSystem>();
+            //    }
+            //}
 
-        //    if (bubbles != null)
-        //    {
-        //        var subEmittersModule = bubbles.subEmitters;
-        //        subEmittersModule.enabled = true;
-        //    }
-        //}
-    }
+            //Bubble event
+            //if (other.gameObject.CompareTag("FloorBubbles"))
+            //{
+            //    Transform trans = other.transform;
+            //    ParticleSystem bubbles = other.gameObject.GetComponentInChildren<ParticleSystem>();
 
-    public void onTriggerExit(Collider other)
+            //    if (bubbles != null)
+            //    {
+            //        var subEmittersModule = bubbles.subEmitters;
+            //        subEmittersModule.enabled = true;
+            //    }
+            //}
+        }
+
+        public void onTriggerExit(Collider other)
     {
         //Fireflies event
         if (other.gameObject.CompareTag("FloorFireflies"))
