@@ -1406,15 +1406,18 @@ MonoBehaviour:
   numElements: 100
   depth: 4
   modules:
-  - {fileID: 7139843177496614670, guid: c0ab61865d953134c9b4e440e809160b, type: 3}
+  - {fileID: 6728470966592981319, guid: 5bc2eefcee08a0540b825de58712002c, type: 3}
   - {fileID: 2909660344536995698, guid: 2020c381a4550164d9b9539357d857e1, type: 3}
   - {fileID: 7892122783963832776, guid: c3c0319427ec83b41847efe0cbba23fb, type: 3}
   - {fileID: 7892122783963832776, guid: c3c0319427ec83b41847efe0cbba23fb, type: 3}
   LakeModules:
   - {fileID: 1753630153897805038, guid: 4e4af612012ed7a44a4ab62c42205d22, type: 3}
-  isLake: 0
-  lakeElement: 0
-  lakeDepth: 0
+  - {fileID: 1753630153897805038, guid: 4e4af612012ed7a44a4ab62c42205d22, type: 3}
+  - {fileID: 1753630153897805038, guid: 4e4af612012ed7a44a4ab62c42205d22, type: 3}
+  - {fileID: 1753630153897805038, guid: 4e4af612012ed7a44a4ab62c42205d22, type: 3}
+  - {fileID: 1753630153897805038, guid: 4e4af612012ed7a44a4ab62c42205d22, type: 3}
+  - {fileID: 1753630153897805038, guid: 4e4af612012ed7a44a4ab62c42205d22, type: 3}
+  FirstDepthtWithoutLake: {fileID: 6589001618013531843, guid: 6db2604bf1bfdf14187a2f72ca47a2a0, type: 3}
 --- !u!4 &996421865
 Transform:
   m_ObjectHideFlags: 0
