@@ -5,16 +5,37 @@ using UnityEngine;
 public class Procedural : MonoBehaviour
 {
     public GameObject[] objects;
-    public bool is_rot = true;
-    public bool is_left = false;
+    public bool isRot = false;
+    public bool isLeft = false;
+    private bool awa = false;
     private Quaternion rot = Quaternion.identity;
+
     void Start()
     {
-        if (is_rot)
+        if (isRot)
             rot = Quaternion.Euler(Vector3.up * (Random.Range(0, 4) * 90));
-        if (is_left)
+        if (isLeft)
             rot = Quaternion.Euler(Vector3.up * 180);
-        Instantiate(objects[Random.Range(0, objects.Length)], transform.position, rot);
+        GameObject floor = Instantiate(objects[Random.Range(0, objects.Length)], transform.position, rot);
+        floor.transform.SetParent(this.transform);
 
+        //Lake
+        if (floor.CompareTag("FloorLake"))
+        {
+            awa = true;
+        }
+        else if (floor.layer.Equals("Floor"))
+        {
+            awa = false;
+        }
+
+    }
+    public void SetIsLake(bool isShown)
+    {
+        awa = isShown;
+    }
+    public bool GetIsLake()
+    {
+        return awa;
     }
 }

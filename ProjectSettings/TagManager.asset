@@ -15,6 +15,7 @@ TagManager:
   - FloorCrystalPink
   - FloorCrystalBlue
   - FloorCrystalGreen
+  - FloorLake
   layers:
   - Default
   - TransparentFX

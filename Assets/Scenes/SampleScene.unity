@@ -244,7 +244,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
+  m_TargetDisplay: 1
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -679,6 +679,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrailBlue
       objectReference: {fileID: 0}
+    - target: {fileID: 2288805964407154964, guid: 8a462249d8df9c948933a57ade53ffce, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a462249d8df9c948933a57ade53ffce, type: 3}
 --- !u!1001 &190012513
@@ -691,6 +695,10 @@ PrefabInstance:
     - target: {fileID: 7992617754862687750, guid: de21e13c12a06ee498fe87073afefe84, type: 3}
       propertyPath: m_Name
       value: TrailGreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 7992617754862687750, guid: de21e13c12a06ee498fe87073afefe84, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7992617754862687769, guid: de21e13c12a06ee498fe87073afefe84, type: 3}
       propertyPath: m_RootOrder
@@ -820,7 +828,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 1
+  m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -1177,6 +1185,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrailPink
       objectReference: {fileID: 0}
+    - target: {fileID: 1204855773140529577, guid: 6d4af449f7026324f8258da9cb68a6db, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1204855773140529588, guid: 6d4af449f7026324f8258da9cb68a6db, type: 3}
       propertyPath: playOnAwake
       value: 0
@@ -1398,6 +1410,11 @@ MonoBehaviour:
   - {fileID: 2909660344536995698, guid: 2020c381a4550164d9b9539357d857e1, type: 3}
   - {fileID: 7892122783963832776, guid: c3c0319427ec83b41847efe0cbba23fb, type: 3}
   - {fileID: 7892122783963832776, guid: c3c0319427ec83b41847efe0cbba23fb, type: 3}
+  LakeModules:
+  - {fileID: 1753630153897805038, guid: 4e4af612012ed7a44a4ab62c42205d22, type: 3}
+  isLake: 0
+  lakeElement: 0
+  lakeDepth: 0
 --- !u!4 &996421865
 Transform:
   m_ObjectHideFlags: 0
@@ -2630,6 +2647,14 @@ PrefabInstance:
     - target: {fileID: 2175222233384588865, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2175222234306257000, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
+      propertyPath: m_Size.z
+      value: 16.801193
+      objectReference: {fileID: 0}
+    - target: {fileID: 2175222234306257000, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
+      propertyPath: m_Center.z
+      value: -7.0689797
       objectReference: {fileID: 0}
     - target: {fileID: 2175222234306257015, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
       propertyPath: material
