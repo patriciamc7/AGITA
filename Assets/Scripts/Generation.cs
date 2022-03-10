@@ -37,11 +37,51 @@ public class Generation : MonoBehaviour
     void Update()
     {
         if(!oneTime)
-            LakeGeneration();
+            noRepetition();
        
     }
 
-    public void LakeGeneration()
+    public void overwriteFloor(Transform depth, Transform side, bool isLake)
+    {
+        GameObject aux = null;
+        Vector3 position = depth.transform.position;
+        Destroy(depth.gameObject);
+        if (isLake)
+            aux = FirstDepthtWithoutLake;
+        else
+            aux = modules[0];
+        GameObject noLakeDepth = Instantiate(aux, position, Quaternion.identity);
+        noLakeDepth.transform.SetParent(side.transform);
+    }
+    public int LakeGeneration(Transform depth, Transform side, int i, int count, int actDepth)
+    {
+        if (i + actDepth * 3 <= numElements)
+        {
+            for (int j = 0; j < actDepth * 3; j++)
+            {
+                if (j == 0 || j == 1 || j == 4 || j == 5 || j == 8 || j == 9)
+                {
+
+                    GameObject childDepths = side.transform.GetChild(i + j).gameObject;
+                    GameObject childFloor = childDepths.transform.GetChild(0).gameObject;
+                    Vector3 position = childFloor.transform.position;
+                    Destroy(childFloor);
+                    GameObject Lake1 = Instantiate(LakeModules[count], position, Quaternion.identity);
+                    Lake1.transform.SetParent(childDepths.transform);
+                    count += 1;
+
+                }
+            }
+            i += actDepth * 3 + 1;
+            if (side.transform.GetChild(i).transform.GetChild(0).CompareTag("FloorLake"))
+                overwriteFloor(depth, side,true);
+
+        }
+        else
+            overwriteFloor(depth, side,true);
+        return i;
+    }
+    public void noRepetition()
     {
         int numChilds = this.transform.GetChildCount();
         int count = 0;
@@ -56,36 +96,9 @@ public class Generation : MonoBehaviour
                 Transform childDepth = sideChild.transform.GetChild(i);
                 GameObject childModule = childDepth.transform.GetChild(0).gameObject;
                 if (childModule.CompareTag("FloorLake"))
-                {
-
-                    if (i + depth * 3 >= numElements)
-                    {
-                        for (int j = 0; j < depth * 3; j++)
-                        {
-                            if (j == 0 || j == 1 || j == 4 || j == 5 || j == 8 || j == 9)
-                            {
-
-                                GameObject child1 = sideChild.transform.GetChild(i + j).gameObject;
-                                GameObject childFloor = child1.transform.GetChild(0).gameObject;
-                                Vector3 position = childFloor.transform.position;
-                                Destroy(childFloor);
-                                GameObject Lake1 = Instantiate(LakeModules[count], position, Quaternion.identity);
-                                Lake1.transform.SetParent(child1.transform);
-                                count += 1;
-
-                            }
-                        }
-                        i += depth * 3 + 1;
-                    }
-                    else
-                    {
-                        Vector3 position = childDepth.transform.position;
-                        Destroy(childDepth.gameObject);
-                        GameObject noLakeDepth = Instantiate(FirstDepthtWithoutLake, position, Quaternion.identity);
-                        noLakeDepth.transform.SetParent(sideChild.transform);
-                    }
-
-                }
+                    i = LakeGeneration(childDepth, sideChild, i, count, depth);
+                if (childDepth.CompareTag("FirstDepth") && childModule.tag.Equals(sideChild.transform.GetChild(i + 1).GetChild(0).tag) && !childModule.CompareTag("Floor"))
+                    overwriteFloor(sideChild.transform.GetChild(i + 1).GetChild(0), sideChild,false);
             }
 
         }

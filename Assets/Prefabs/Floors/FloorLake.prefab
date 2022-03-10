@@ -156,7 +156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 373117067673564442, guid: 45abf600f033e8a4c996d4c40f1a8cf7, type: 3}
       propertyPath: m_TagString
-      value: FloorLake
+      value: Fountain
       objectReference: {fileID: 0}
     - target: {fileID: 665146197126306045, guid: 45abf600f033e8a4c996d4c40f1a8cf7, type: 3}
       propertyPath: m_RootOrder
@@ -222,7 +222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 373117067673564442, guid: 45abf600f033e8a4c996d4c40f1a8cf7, type: 3}
       propertyPath: m_TagString
-      value: FloorLake
+      value: Fountain
       objectReference: {fileID: 0}
     - target: {fileID: 665146197126306045, guid: 45abf600f033e8a4c996d4c40f1a8cf7, type: 3}
       propertyPath: m_RootOrder

@@ -16,6 +16,9 @@ TagManager:
   - FloorCrystalBlue
   - FloorCrystalGreen
   - FloorLake
+  - FirstDepth
+  - Fountain
+  - FloorCamping
   layers:
   - Default
   - TransparentFX

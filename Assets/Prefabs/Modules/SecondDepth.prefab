@@ -47,4 +47,5 @@ MonoBehaviour:
   - {fileID: 2305061368691127710, guid: 71d094a2d2ee35c4395f0d12ab40fd1e, type: 3}
   - {fileID: 5317689653690281148, guid: b26462ae9e091fd47bf7dbf5fcd0ec4b, type: 3}
   - {fileID: 2185075583532764764, guid: 27d9061fdfd51e04886ffce043867685, type: 3}
-  is_rot: 0
+  isRot: 0
+  isLeft: 0

@@ -46,6 +46,10 @@ PrefabInstance:
       propertyPath: autoRandomSeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 351435855676727673, guid: 5956dfc1d3ef0bc4e8b9b42bf80817ab, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.009
+      objectReference: {fileID: 0}
     - target: {fileID: 3799824585740328674, guid: 5956dfc1d3ef0bc4e8b9b42bf80817ab, type: 3}
       propertyPath: m_RootOrder
       value: 0

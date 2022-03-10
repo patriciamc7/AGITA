@@ -45,5 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objects:
   - {fileID: 2185075583532764764, guid: 27d9061fdfd51e04886ffce043867685, type: 3}
-  is_rot: 0
-  is_left: 0
+  isRot: 0
+  isLeft: 0
