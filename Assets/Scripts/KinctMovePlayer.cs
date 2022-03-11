@@ -32,7 +32,7 @@ public class KinctMovePlayer : MonoBehaviour
     public GameObject leftside;
     private bool init_value = true;
     private Vector3 Pos_i;
-    private Vector3 auxpos; 
+    private Vector3 auxpos;
 
     private Vector3 pointtSideWall;
 
@@ -86,18 +86,22 @@ public class KinctMovePlayer : MonoBehaviour
         elbowRight = GetChildWithName(Body, "ElbowRight");
         sholderRight = GetChildWithName(Body, "ShoulderRight");
 
-        //______ cambiar simetria del que detecta la kinect a els nodes del esquelet pasa x y z
+		//______ cambiar simetria del que detecta la kinect a els nodes del esquelet pasa x y z
 
-        seeNeck.gameObject.transform.position = new Vector3(neck.gameObject.transform.position.z, neck.gameObject.transform.position.y, neck.gameObject.transform.position.x);
-        seeHand.gameObject.transform.position = new Vector3(rightHand.gameObject.transform.position.z, rightHand.gameObject.transform.position.y, rightHand.gameObject.transform.position.x);
-        seeElbow.gameObject.transform.position = new Vector3(elbowRight.gameObject.transform.position.z, elbowRight.gameObject.transform.position.y, elbowRight.gameObject.transform.position.x);
-        seeSholder.gameObject.transform.position = new Vector3(sholderRight.gameObject.transform.position.z, sholderRight.gameObject.transform.position.y, sholderRight.gameObject.transform.position.x);
+		//seeNeck.gameObject.transform.position = new Vector3(neck.gameObject.transform.position.z, neck.gameObject.transform.position.y, neck.gameObject.transform.position.x);
+		//seeHand.gameObject.transform.position = new Vector3(rightHand.gameObject.transform.position.z, rightHand.gameObject.transform.position.y, rightHand.gameObject.transform.position.x);
+		//seeElbow.gameObject.transform.position = new Vector3(elbowRight.gameObject.transform.position.z, elbowRight.gameObject.transform.position.y, elbowRight.gameObject.transform.position.x);
+		//seeSholder.gameObject.transform.position = new Vector3(sholderRight.gameObject.transform.position.z, sholderRight.gameObject.transform.position.y, sholderRight.gameObject.transform.position.x);
 
-        // traslladem a on esta el coll tots respectivament
-        Pvisible = GameObject.Find("PersonaVisible");
+		seeNeck.gameObject.transform.position = Vector3.Scale(neck.gameObject.transform.position, new Vector3(-1, 1, 1));
+		seeHand.gameObject.transform.position = Vector3.Scale(rightHand.gameObject.transform.position, new Vector3(-1, 1, 1));
+		seeElbow.gameObject.transform.position = Vector3.Scale(elbowRight.gameObject.transform.position, new Vector3(-1, 1, 1));
+		seeSholder.gameObject.transform.position = Vector3.Scale(sholderRight.gameObject.transform.position, new Vector3(-1, 1, 1));
+		// traslladem a on esta el coll tots respectivament
+		Pvisible = GameObject.Find("PersonaVisible");
         Pvisible.gameObject.transform.Translate(seeNeck.gameObject.transform.position);
         Pvisible.gameObject.transform.Rotate(0,180,0);
-        Pvisible.gameObject.transform.Translate(0,1,0);
+        Pvisible.gameObject.transform.Translate(2.5f,1,0);
         
 
     }
@@ -201,6 +205,7 @@ public class KinctMovePlayer : MonoBehaviour
                 return hit.point;
             }
         }
+        auxpos += new Vector3(vecloctyPlayer * Time.deltaTime, 0, 0);
 
         return auxpos;
     }
@@ -226,9 +231,12 @@ public class KinctMovePlayer : MonoBehaviour
             Vector3 Delta_pos = pointtSideWall - Pos_i;
 
             Vector3 velocity_Hand = Delta_pos ;
-
-            //Debug.Log(velocity_Hand); 
-
+            float modulo = Mathf.Sqrt(Mathf.Pow(velocity_Hand.x, 2) + Mathf.Pow(velocity_Hand.y, 2) + Mathf.Pow(velocity_Hand.z, 2)); 
+            //Debug.Log(modulo);
+            if (modulo > 0.1)
+            {
+                Debug.Log("Hacer animacion");
+            }
             Pos_i = pointtSideWall;
 
         }
