@@ -1882,7 +1882,7 @@ MonoBehaviour:
   coll: {fileID: 368205958}
   Hada: {fileID: 919132148641861618}
   KinectParent: {fileID: 1441788784}
-  vecloctyPlayer: 0.2
+  vecloctyPlayer: 0
   seeHand: {fileID: 2137993540}
   seeNeck: {fileID: 2063892106}
   seeElbow: {fileID: 567680393}
