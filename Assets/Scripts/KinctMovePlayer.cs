@@ -5,6 +5,7 @@ using UnityEngine;
 public class KinctMovePlayer : MonoBehaviour
 {
     public GameObject CameraRight;
+    public GameObject coll;
     public GameObject Hada;
     public GameObject KinectParent;
     private GameObject Body;
@@ -32,12 +33,19 @@ public class KinctMovePlayer : MonoBehaviour
     public GameObject leftside;
     private bool init_value = true;
     private Vector3 Pos_i;
+    private bool ini1 = true; 
     private Vector3 auxpos;
 
     private Vector3 pointtSideWall;
 
-    private Vector3[] area; 
+    private Vector3[] area;
+    //void Start() {
 
+    //    Pvisible = GameObject.Find("PersonaVisible");
+    //    //      Pvisible.gameObject.transform.Translate(seeNeck.gameObject.transform.position);
+
+    //    Pvisible.gameObject.transform.Rotate(0, 180, 0);
+    //}
     // Update is called once per frame
     void Update()
     {
@@ -48,7 +56,7 @@ public class KinctMovePlayer : MonoBehaviour
             Body = GameObject.Find("Body_Person");
             Body.gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
 
-            Body.gameObject.transform.SetParent(CameraRight.gameObject.transform);
+            //Body.gameObject.transform.SetParent(CameraRight.gameObject.transform);
             
 
             cubeVisisble();
@@ -88,21 +96,18 @@ public class KinctMovePlayer : MonoBehaviour
 
 		//______ cambiar simetria del que detecta la kinect a els nodes del esquelet pasa x y z
 
-		//seeNeck.gameObject.transform.position = new Vector3(neck.gameObject.transform.position.z, neck.gameObject.transform.position.y, neck.gameObject.transform.position.x);
-		//seeHand.gameObject.transform.position = new Vector3(rightHand.gameObject.transform.position.z, rightHand.gameObject.transform.position.y, rightHand.gameObject.transform.position.x);
-		//seeElbow.gameObject.transform.position = new Vector3(elbowRight.gameObject.transform.position.z, elbowRight.gameObject.transform.position.y, elbowRight.gameObject.transform.position.x);
-		//seeSholder.gameObject.transform.position = new Vector3(sholderRight.gameObject.transform.position.z, sholderRight.gameObject.transform.position.y, sholderRight.gameObject.transform.position.x);
+		seeNeck.gameObject.transform.position = new Vector3(neck.gameObject.transform.position.z, neck.gameObject.transform.position.y, neck.gameObject.transform.position.x);
+		seeHand.gameObject.transform.position= new Vector3(rightHand.gameObject.transform.position.z, rightHand.gameObject.transform.position.y, rightHand.gameObject.transform.position.x);
+		seeElbow.gameObject.transform.position= new Vector3(elbowRight.gameObject.transform.position.z, elbowRight.gameObject.transform.position.y, elbowRight.gameObject.transform.position.x);
+		seeSholder.gameObject.transform.position= new Vector3(sholderRight.gameObject.transform.position.z, sholderRight.gameObject.transform.position.y, sholderRight.gameObject.transform.position.x);
 
-		seeNeck.gameObject.transform.position = Vector3.Scale(neck.gameObject.transform.position, new Vector3(-1, 1, 1));
-		seeHand.gameObject.transform.position = Vector3.Scale(rightHand.gameObject.transform.position, new Vector3(-1, 1, 1));
-		seeElbow.gameObject.transform.position = Vector3.Scale(elbowRight.gameObject.transform.position, new Vector3(-1, 1, 1));
-		seeSholder.gameObject.transform.position = Vector3.Scale(sholderRight.gameObject.transform.position, new Vector3(-1, 1, 1));
 		// traslladem a on esta el coll tots respectivament
 		Pvisible = GameObject.Find("PersonaVisible");
-        Pvisible.gameObject.transform.Translate(seeNeck.gameObject.transform.position);
-        Pvisible.gameObject.transform.Rotate(0,180,0);
-        Pvisible.gameObject.transform.Translate(2.5f,1,0);
-        
+		Pvisible.gameObject.transform.Translate(seeNeck.gameObject.transform.position);
+
+		Pvisible.gameObject.transform.Rotate(0, 180, 0);
+        Pvisible.gameObject.transform.Translate(2.5f, 1f, 1f);
+
 
     }
     Vector3 vector2nodesNormalice(Vector3 hand, Vector3 otherNode) 
@@ -202,9 +207,13 @@ public class KinctMovePlayer : MonoBehaviour
             if (hit.collider.name == "RightSide" || hit.collider.name == "LeftSide")
             {
                 auxpos = hit.point; 
+                coll.gameObject.transform.position = hit.point; 
                 return hit.point;
             }
         }
+        coll.gameObject.transform.position = auxpos;
+
+        //return seeNeck.gameObject.transform.position; 
         auxpos += new Vector3(vecloctyPlayer * Time.deltaTime, 0, 0);
 
         return auxpos;

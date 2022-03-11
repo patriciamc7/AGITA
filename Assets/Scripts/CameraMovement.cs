@@ -23,12 +23,12 @@ public class CameraMovement : MonoBehaviour
         if (GameObject.Find("Body_Person") != null)
         {
             if (this.name == "RightCamera")
-                transform.Translate(-KinectScript.vecloctyPlayer * Time.deltaTime, 0, 0);
+                transform.position += new Vector3(KinectScript.vecloctyPlayer * Time.deltaTime, 0, 0);
             else
             {
-                transform.Translate(KinectScript.vecloctyPlayer * Time.deltaTime, 0, 0);
-                RightSide.gameObject.transform.position += new Vector3(KinectScript.vecloctyPlayer * Time.deltaTime, 0, 0);
-                LeftSide.gameObject.transform.position += new Vector3(KinectScript.vecloctyPlayer * Time.deltaTime, 0, 0);
+                transform.position += new Vector3(KinectScript.vecloctyPlayer * Time.deltaTime, 0, 0);
+                //RightSide.gameObject.transform.position = new Vector3(KinectScript.vecloctyPlayer * Time.deltaTime, 0, 0);
+                //LeftSide.gameObject.transform.position = new Vector3(KinectScript.vecloctyPlayer * Time.deltaTime, 0, 0);
 
             }
         }
