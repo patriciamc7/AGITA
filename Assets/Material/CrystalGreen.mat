@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CrystalGreen
+  m_Shader: {fileID: -6465566751694194690, guid: a8791859ebefdf34ebfd67bcc8a020cb, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_66e724f68e8c4b76b8111b10546921cc: 0.65
+    - Vector1_76e8e3354dc341778e1a4b3cdfd515f9: 0.6
+    - Vector1_a158db241b2944b6b1b256e8693c86b9: 0.35
+    - Vector1_aae00fc4b5c24b65887c60b58b9890e3: 1
+    - Vector1_d1bbcce315b5452ea3744b2e0706b5c2: 0
+    m_Colors:
+    - Color_a8c992215ae64fc38d8daa0afcbcbe3f: {r: 0, g: 29.663342, b: 23.48348, a: 1}
+    - Color_bb045f31e0094c2f859415de709b2093: {r: 0, g: 1, b: 0.89932394, a: 1}
+    - Color_bd81231dc3c344f1a598fc59e83a0e91: {r: 0.58592916, g: 0.9339623, b: 0.702833, a: 1}
+  m_BuildTextureStacks: []

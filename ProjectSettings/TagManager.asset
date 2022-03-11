@@ -12,6 +12,13 @@ TagManager:
   - FloorFireflies
   - FloorBubbles
   - Bubbles
+  - FloorCrystalPink
+  - FloorCrystalBlue
+  - FloorCrystalGreen
+  - FloorLake
+  - FirstDepth
+  - Fountain
+  - FloorCamping
   layers:
   - Default
   - TransparentFX
@@ -20,7 +27,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - Floor
   - 
   - 
   - 
