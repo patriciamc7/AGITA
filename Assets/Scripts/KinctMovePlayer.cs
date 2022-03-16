@@ -9,7 +9,6 @@ public class KinctMovePlayer : MonoBehaviour
     public GameObject Hada;
     public GameObject KinectParent;
     private GameObject Body;
-	private GameObject Pvisible;
 	private GameObject rightHand;
     private GameObject neck;
     private GameObject elbowRight;
@@ -27,6 +26,7 @@ public class KinctMovePlayer : MonoBehaviour
     public GameObject seeNeck; 
     public GameObject seeElbow; 
     public GameObject seeSholder;
+    public GameObject pvisible; 
     private Vector3 initRay;
 
     public GameObject rightside; 
@@ -38,16 +38,9 @@ public class KinctMovePlayer : MonoBehaviour
 
     private Vector3 pointtSideWall;
 
-    private Vector3[] area;
-    //void Start() {
-
-    //    Pvisible = GameObject.Find("PersonaVisible");
-    //    //      Pvisible.gameObject.transform.Translate(seeNeck.gameObject.transform.position);
-
-    //    Pvisible.gameObject.transform.Rotate(0, 180, 0);
-    //}
-    // Update is called once per frame
-    void Update()
+	
+	// Update is called once per frame
+	void Update()
     {
         
         //If Body detected assign Kineckt gameobject
@@ -55,9 +48,12 @@ public class KinctMovePlayer : MonoBehaviour
         {
             Body = GameObject.Find("Body_Person");
             Body.gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-
-            //Body.gameObject.transform.SetParent(CameraRight.gameObject.transform);
-            
+            GameObject vagon = GameObject.Find("vagon"); 
+            Body.gameObject.transform.SetParent(vagon.gameObject.transform);
+            if (ini1) {
+                Body.gameObject.transform.Rotate(0, 180, 0);
+                ini1 = false; 
+            }
 
             cubeVisisble();
 
@@ -95,19 +91,14 @@ public class KinctMovePlayer : MonoBehaviour
         sholderRight = GetChildWithName(Body, "ShoulderRight");
 
 		//______ cambiar simetria del que detecta la kinect a els nodes del esquelet pasa x y z
-
 		seeNeck.gameObject.transform.position = new Vector3(neck.gameObject.transform.position.z, neck.gameObject.transform.position.y, neck.gameObject.transform.position.x);
 		seeHand.gameObject.transform.position= new Vector3(rightHand.gameObject.transform.position.z, rightHand.gameObject.transform.position.y, rightHand.gameObject.transform.position.x);
 		seeElbow.gameObject.transform.position= new Vector3(elbowRight.gameObject.transform.position.z, elbowRight.gameObject.transform.position.y, elbowRight.gameObject.transform.position.x);
 		seeSholder.gameObject.transform.position= new Vector3(sholderRight.gameObject.transform.position.z, sholderRight.gameObject.transform.position.y, sholderRight.gameObject.transform.position.x);
-
 		// traslladem a on esta el coll tots respectivament
-		Pvisible = GameObject.Find("PersonaVisible");
-		Pvisible.gameObject.transform.Translate(seeNeck.gameObject.transform.position);
-
-		Pvisible.gameObject.transform.Rotate(0, 180, 0);
-        Pvisible.gameObject.transform.Translate(2.5f, 1f, 1f);
-
+        pvisible.gameObject.transform.Translate(seeNeck.gameObject.transform.position); 
+        //trasladar el esqueleto que detecta la kinect y a consecuencia se mueve el persona visible 
+        Body.gameObject.transform.Translate(0,0, -vecloctyPlayer * Time.deltaTime);
 
     }
     Vector3 vector2nodesNormalice(Vector3 hand, Vector3 otherNode) 
