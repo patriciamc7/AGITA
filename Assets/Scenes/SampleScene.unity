@@ -235,7 +235,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 50
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -819,7 +819,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 50
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1881,7 +1881,7 @@ MonoBehaviour:
   coll: {fileID: 368205958}
   Hada: {fileID: 919132148641861618}
   KinectParent: {fileID: 1441788784}
-  vecloctyPlayer: 0
+  vecloctyPlayer: 0.2
   seeHand: {fileID: 2137993540}
   seeNeck: {fileID: 2063892106}
   seeElbow: {fileID: 567680393}
