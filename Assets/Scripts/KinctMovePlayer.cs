@@ -52,7 +52,7 @@ public class KinctMovePlayer : MonoBehaviour
             Body.gameObject.transform.SetParent(vagon.gameObject.transform);
             if (ini1) {
                 Body.gameObject.transform.Rotate(0, 180, 0);
-                Body.gameObject.transform.Translate(0,0,-1f);
+                Body.gameObject.transform.Translate(0,0.8f,-0.5f);
                 ini1 = false; 
             }
 
@@ -208,7 +208,8 @@ public class KinctMovePlayer : MonoBehaviour
                 return aux;
             }
         }
-        aux = Vector3.Lerp(seeHand.gameObject.transform.position + new Vector3(0, 1, 0),Hada.gameObject.transform.position, 0.1f);
+        
+        aux = Vector3.Lerp(seeHand.gameObject.transform.position, pointtSideWall, 0.1f);
         return aux; 
         //return seeNeck.gameObject.transform.position; 
         //auxpos += new Vector3(vecloctyPlayer * Time.deltaTime, 0, 0);
