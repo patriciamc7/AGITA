@@ -153,6 +153,8 @@ public class KinctMovePlayer : MonoBehaviour
             VectorInPlain.y = HandToSholder.y;
             VectorInPlain.z = HandToSholder.z;
         }
+        //Debug.Log(VectorInPlain);
+
         //ejes al reves
         pointtSideWall = rayWall(VectorInPlain);
 
@@ -231,6 +233,7 @@ public class KinctMovePlayer : MonoBehaviour
             Vector3 Delta_pos = pointtSideWall - Pos_i;
 
             Vector3 velocity_Hand = Delta_pos ;
+            //Debug.Log(velocity_Hand); 
             float modulo = Mathf.Sqrt(Mathf.Pow(velocity_Hand.x, 2) + Mathf.Pow(velocity_Hand.y, 2) + Mathf.Pow(velocity_Hand.z, 2)); 
             //Debug.Log(modulo);
             if (modulo > 0.1)
