@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class KinctMovePlayer : MonoBehaviour
 {
-    public GameObject collisionPoint; 
     public GameObject CameraRight;
+    //public GameObject coll;
     public GameObject Hada;
     public GameObject KinectParent;
     private GameObject Body;
-	private GameObject Pvisible;
 	private GameObject rightHand;
     private GameObject neck;
     private GameObject elbowRight;
@@ -21,27 +20,27 @@ public class KinctMovePlayer : MonoBehaviour
     private Vector3 VectorInPlain  = new Vector3(0,0,2.92f);
     private Vector3 posPlayersum;
     public float vecloctyPlayer;
-    Vector3 inversePositionHand; 
     float range = 100f;
 
     public GameObject seeHand; 
     public GameObject seeNeck; 
     public GameObject seeElbow; 
     public GameObject seeSholder;
+    public GameObject pvisible; 
     private Vector3 initRay;
 
     public GameObject rightside; 
     public GameObject leftside;
-    private bool initPos = true;
     private bool init_value = true;
     private Vector3 Pos_i;
+    private bool ini1 = true; 
+    //private Vector3 auxpos = new Vector3(0,0,0);
+    private GameObject vagon; 
+    private Vector3 pointtSideWall;
 
-    private Vector3 BodyTranlate = new Vector3(-8, 1f, -1); 
-
-    private Vector3 pointtSideWall; 
-
-    // Update is called once per frame
-    void Update()
+	
+	// Update is called once per frame
+	void Update()
     {
         
         //If Body detected assign Kineckt gameobject
@@ -49,27 +48,19 @@ public class KinctMovePlayer : MonoBehaviour
         {
             Body = GameObject.Find("Body_Person");
             Body.gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-
-            Body.gameObject.transform.SetParent(CameraRight.gameObject.transform);
-            //move player middle walls
-            if (initPos)
-            {
-                //Body.gameObject.transform.Rotate(0, -90, 0);
-                //Vector3 aux = Body.gameObject.transform.position;
-                //Body.gameObject.transform.position.x = aux.z; 
-                //Body.gameObject.transform.position.z = aux.x;
-                //function cambiar origen punts kinect
-                //functin posicionar punts en la posició fisica del usuari
-
-                //Body.gameObject.transform.Translate(BodyTranlate);
-                initPos = false; 
+            vagon = GameObject.Find("vagon"); 
+            Body.gameObject.transform.SetParent(vagon.gameObject.transform);
+            if (ini1) {
+                Body.gameObject.transform.Rotate(0, 180, 0);
+                Body.gameObject.transform.Translate(0,0.6f,0f);
+                ini1 = false; 
             }
 
             cubeVisisble();
-			//Pvisible.gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-			HandToNeck = vector2nodesNormalice(rightHand.gameObject.transform.position, neck.gameObject.transform.position);
-            HandToElbow = vector2nodesNormalice(rightHand.gameObject.transform.position, elbowRight.gameObject.transform.position);
-            HandToSholder = vector2nodesNormalice(rightHand.gameObject.transform.position, sholderRight.gameObject.transform.position);
+
+			HandToNeck = vector2nodesNormalice(seeHand.gameObject.transform.position, seeNeck.gameObject.transform.position);
+            HandToElbow = vector2nodesNormalice(seeHand.gameObject.transform.position, seeElbow.gameObject.transform.position);
+            HandToSholder = vector2nodesNormalice(seeHand.gameObject.transform.position, seeSholder.gameObject.transform.position);
 
             moveCharater();
 
@@ -77,10 +68,8 @@ public class KinctMovePlayer : MonoBehaviour
         }
 
     }
-    void zero() 
-    {
 
-    }
+  
     GameObject GetChildWithName(GameObject obj, string name)
     {
         Transform trans = obj.transform;
@@ -102,32 +91,16 @@ public class KinctMovePlayer : MonoBehaviour
         elbowRight = GetChildWithName(Body, "ElbowRight");
         sholderRight = GetChildWithName(Body, "ShoulderRight");
 
-        //______ cambiar simetria del que detecta la kinect a els nodes del esquelet pasa x y z
-
-        seeNeck.gameObject.transform.position = new Vector3(neck.gameObject.transform.position.z, neck.gameObject.transform.position.y, neck.gameObject.transform.position.x);
-        seeHand.gameObject.transform.position = new Vector3(rightHand.gameObject.transform.position.z, rightHand.gameObject.transform.position.y, rightHand.gameObject.transform.position.x);
-        seeElbow.gameObject.transform.position = new Vector3(elbowRight.gameObject.transform.position.z, elbowRight.gameObject.transform.position.y, elbowRight.gameObject.transform.position.x);
-        seeSholder.gameObject.transform.position = new Vector3(sholderRight.gameObject.transform.position.z, sholderRight.gameObject.transform.position.y, sholderRight.gameObject.transform.position.x);
-
-        // traslladem a on esta el coll tots respectivament
-        Pvisible = GameObject.Find("PersonaVisible");
-        Pvisible.gameObject.transform.Translate(seeNeck.gameObject.transform.position);
-        Pvisible.gameObject.transform.Rotate(0,180,0);
-        Pvisible.gameObject.transform.Translate(-1.2f,1,0);
-
-        //
-
-
-        //seeHand.gameObject.transform.position = Vector3.Scale(rightHand.gameObject.transform.position, new Vector3(1, 1, -1));
-        //seeNeck.gameObject.transform.position = Vector3.Scale(neck.gameObject.transform.position, new Vector3(1, 1, -1));
-        //seeElbow.gameObject.transform.position = Vector3.Scale(elbowRight.gameObject.transform.position, new Vector3(1, 1, -1));
-        //seeSholder.gameObject.transform.position = Vector3.Scale(seeSholder.gameObject.transform.position, new Vector3(1, 1, -1));
-        //misma posición que el original
-        //seeHand.gameObject.transform.position = seeHand.gameObject.transform.position + new Vector3(0, 0, -8);
-        //seeNeck.gameObject.transform.position = seeNeck.gameObject.transform.position + new Vector3(0, 0, -8);
-        //seeElbow.gameObject.transform.position = seeElbow.gameObject.transform.position + new Vector3(0, 0, -8);
-        //seeSholder.gameObject.transform.position = seeSholder.gameObject.transform.position + new Vector3(0, 0, -8);
-
+		//______ cambiar simetria del que detecta la kinect a els nodes del esquelet pasa x y z
+		seeNeck.gameObject.transform.position = new Vector3(neck.gameObject.transform.position.z, neck.gameObject.transform.position.y, neck.gameObject.transform.position.x);
+		seeHand.gameObject.transform.position= new Vector3(rightHand.gameObject.transform.position.z, rightHand.gameObject.transform.position.y, rightHand.gameObject.transform.position.x);
+		seeElbow.gameObject.transform.position= new Vector3(elbowRight.gameObject.transform.position.z, elbowRight.gameObject.transform.position.y, elbowRight.gameObject.transform.position.x);
+		seeSholder.gameObject.transform.position= new Vector3(sholderRight.gameObject.transform.position.z, sholderRight.gameObject.transform.position.y, sholderRight.gameObject.transform.position.x);
+		// traslladem a on esta el coll tots respectivament
+        //pvisible.gameObject.transform.Translate(seeNeck.gameObject.transform.position); 
+        //trasladar el esqueleto que detecta la kinect y a consecuencia se mueve el persona visible 
+        Body.gameObject.transform.position +=new Vector3(0,0, vecloctyPlayer * Time.deltaTime);
+       
     }
     Vector3 vector2nodesNormalice(Vector3 hand, Vector3 otherNode) 
     {
@@ -181,50 +154,67 @@ public class KinctMovePlayer : MonoBehaviour
             VectorInPlain.y = HandToSholder.y;
             VectorInPlain.z = HandToSholder.z;
         }
+        //Debug.Log(VectorInPlain);
+
         //ejes al reves
         pointtSideWall = rayWall(VectorInPlain);
+        //pointtSideWall += new Vector3(vecloctyPlayer * Time.deltaTime, 0, 0);
+        //coll.gameObject.transform.position = pointtSideWall;
 
         posPlayersum = Hada.gameObject.transform.position;
-        posPlayersum.x = lerp(posPlayersum, pointtSideWall, 0.01f).x; 
-        posPlayersum.y = lerp(posPlayersum, pointtSideWall, 0.01f).y;
+        posPlayersum.x = Vector3.Lerp(posPlayersum, pointtSideWall, 0.1f).x; 
+        posPlayersum.y = Vector3.Lerp(posPlayersum, pointtSideWall, 0.1f).y;
 
         playerDepth(); 
         Hada.gameObject.transform.position = posPlayersum;
-	}
+        //Hada.gameObject.transform.Translate(vecloctyPlayer * Time.deltaTime, 0, 0); 
+    }
 
     //si el vector director señala el lado left, el player se situe a la profundidad del left y lo mismo con el right
     void playerDepth()
     {
-		if (VectorInPlain.z < 0)
+        BoxCollider hada_Collider = Hada.GetComponent<BoxCollider>();
+
+        if (VectorInPlain.z > 0)
+        {
             posPlayersum.z = leftside.gameObject.transform.position.z;
+            hada_Collider.center = new Vector3(0,0,7); 
+        }
         else
+        {
             posPlayersum.z = rightside.gameObject.transform.position.z;
+            hada_Collider.center = new Vector3(0, 0, -7);
+
+        }
 
     }
-    //interpolación lineal a: actual position, b: future position, f: interval position
-    Vector3 lerp(Vector3 a, Vector3 b, float f)
-    {
-        return a * (1 - f) + b * f;
-    }
+    ////interpolación lineal a: actual position, b: future position, f: interval position
+    //Vector3 lerp(Vector3 a, Vector3 b, float f)
+    //{
+    //    return a * (1 - f) + b * f;
+    //}
 
     //ray intersaccion wall, return position. If not interation wall, future position is hand 
     Vector3 rayWall(Vector3 VectorInPlain) 
     {
         RaycastHit hit;
-
-        if (Physics.Raycast(initRay, Vector3.Scale(VectorInPlain, new Vector3(1, 1, -1)), out hit, range))
+        Vector3 aux; 
+        if (Physics.Raycast(initRay, VectorInPlain, out hit, range))
         {
             if (hit.collider.name == "RightSide" || hit.collider.name == "LeftSide")
             {
-                return hit.point;
+                aux = hit.point; 
+               
+                return aux;
             }
-            collisionPoint.gameObject.transform.position = new Vector3(seeHand.gameObject.transform.position.x, seeHand.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
-            return new Vector3(seeHand.gameObject.transform.position.x, seeHand.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
         }
-        collisionPoint.gameObject.transform.position = new Vector3(seeHand.gameObject.transform.position.x, seeHand.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
+        
+        aux = Vector3.Lerp(seeHand.gameObject.transform.position, pointtSideWall, 0.9f);
+        return aux; 
+        //return seeNeck.gameObject.transform.position; 
+        //auxpos += new Vector3(vecloctyPlayer * Time.deltaTime, 0, 0);
 
-        return new Vector3(seeHand.gameObject.transform.position.x, seeHand.gameObject.transform.position.y, rightside.gameObject.transform.position.z);
-
+        //return pointtSideWall;
     }
     //Draw ray 
 	private void OnDrawGizmos()
@@ -232,7 +222,7 @@ public class KinctMovePlayer : MonoBehaviour
         if (GameObject.Find("Body_Person") != null)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawRay(initRay,Vector3.Scale(VectorInPlain, new Vector3(1,1,-1)) * range);
+            Gizmos.DrawRay(initRay,VectorInPlain * range);
         }
 	}
 
@@ -248,9 +238,13 @@ public class KinctMovePlayer : MonoBehaviour
             Vector3 Delta_pos = pointtSideWall - Pos_i;
 
             Vector3 velocity_Hand = Delta_pos ;
-
             //Debug.Log(velocity_Hand); 
-
+            float modulo = Mathf.Sqrt(Mathf.Pow(velocity_Hand.x, 2) + Mathf.Pow(velocity_Hand.y, 2) + Mathf.Pow(velocity_Hand.z, 2)); 
+            //Debug.Log(modulo);
+            if (modulo > 0.1)
+            {
+                Debug.Log("Hacer animacion");
+            }
             Pos_i = pointtSideWall;
 
         }
