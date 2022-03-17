@@ -1624,13 +1624,7 @@ MonoBehaviour:
   - {fileID: 2909660344536995698, guid: 2020c381a4550164d9b9539357d857e1, type: 3}
   - {fileID: 7892122783963832776, guid: c3c0319427ec83b41847efe0cbba23fb, type: 3}
   - {fileID: 7892122783963832776, guid: c3c0319427ec83b41847efe0cbba23fb, type: 3}
-  LakeModules:
-  - {fileID: 1753630153897805038, guid: 4e4af612012ed7a44a4ab62c42205d22, type: 3}
-  - {fileID: 1753630153897805038, guid: 4e4af612012ed7a44a4ab62c42205d22, type: 3}
-  - {fileID: 1753630153897805038, guid: 4e4af612012ed7a44a4ab62c42205d22, type: 3}
-  - {fileID: 1753630153897805038, guid: 4e4af612012ed7a44a4ab62c42205d22, type: 3}
-  - {fileID: 1753630153897805038, guid: 4e4af612012ed7a44a4ab62c42205d22, type: 3}
-  - {fileID: 1753630153897805038, guid: 4e4af612012ed7a44a4ab62c42205d22, type: 3}
+  LakeModule: {fileID: 1753630153897805038, guid: 4e4af612012ed7a44a4ab62c42205d22, type: 3}
   FirstDepthtWithoutLake: {fileID: 6589001618013531843, guid: 6db2604bf1bfdf14187a2f72ca47a2a0, type: 3}
   oneTime: 0
 --- !u!4 &996421865
@@ -2899,6 +2893,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 19dff5150754bd648ac5da7688fa6433, type: 2}
     - target: {fileID: 2175222234306257015, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
+      propertyPath: materialBlue
+      value: 
+      objectReference: {fileID: 2100000, guid: 7380a0e58a1aa004fa15629b7525ed0f, type: 2}
+    - target: {fileID: 2175222234306257015, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
+      propertyPath: materialPink
+      value: 
+      objectReference: {fileID: 2100000, guid: 866c597bf48e3ea429d1c0d7fc3a0a19, type: 2}
+    - target: {fileID: 2175222234306257015, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
+      propertyPath: materialGreen
+      value: 
+      objectReference: {fileID: 2100000, guid: 970098e54c305d048a6c353de90b35e3, type: 2}
+    - target: {fileID: 2175222234306257015, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
       propertyPath: trailDarkBlue
       value: 
       objectReference: {fileID: 2100000, guid: 8c9f0f52efc6b944cb2bec07062943e0, type: 2}
@@ -2918,6 +2924,10 @@ PrefabInstance:
       propertyPath: trailLightPink
       value: 
       objectReference: {fileID: 2100000, guid: 5c7312a0e6e33784b8562ca85559d07c, type: 2}
+    - target: {fileID: 2175222234306257015, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
+      propertyPath: firefliesModule
+      value: 
+      objectReference: {fileID: 6538888613999687441, guid: 8be238f1c52fdd747a0e8b12dc0c2ccd, type: 3}
     - target: {fileID: 2175222234306257015, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
       propertyPath: trailLightGreen
       value: 
@@ -3026,6 +3036,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3279514209506162959, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e3c23dc149606341b4ab2e5bc209293, type: 2}
+    - target: {fileID: 3284159206554108288, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e3c23dc149606341b4ab2e5bc209293, type: 2}
     - target: {fileID: 3368681366761700463, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -3046,6 +3064,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5c7312a0e6e33784b8562ca85559d07c, type: 2}
+    - target: {fileID: 8425990641203212423, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e3c23dc149606341b4ab2e5bc209293, type: 2}
     - target: {fileID: 8492649719496719652, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
       propertyPath: m_RootOrder
       value: 1

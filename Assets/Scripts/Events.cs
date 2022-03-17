@@ -21,7 +21,18 @@ public class Events : MonoBehaviour
     public Material trailDarkBlue;
 
     public Vector3 scale;
-    
+    public GameObject firefliesModule;
+    private ParticleSystem fireflies = null;
+   
+    void Update()
+    {
+        if (fireflies!=null)
+        {
+            fireflies.transform.position = Vector3.Lerp(fireflies.transform.position, this.transform.position, 0.05f);
+            Object.Destroy(fireflies.gameObject, 5.0f);
+        }
+
+    }
     public void OnTriggerEnter(Collider other)
     {
 
@@ -66,6 +77,8 @@ public class Events : MonoBehaviour
 
         //Crystal event
         Transform mesh = this.gameObject.transform.Find("mesh");
+        Transform wingLeft = this.gameObject.transform.Find("Bip001").Find("Bip001 Pelvis").Find("Bip001 Spine").Find("Bip001 Spine1").Find("wing_left");
+        Transform wingRight = this.gameObject.transform.Find("Bip001").Find("Bip001 Pelvis").Find("Bip001 Spine").Find("Bip001 Spine1").Find("wing_right");
         Transform TrailLight = this.gameObject.transform.Find("TrailLight");
         Transform TrailDark = TrailLight.gameObject.transform.Find("TrailDark");
         ParticleSystem[] Trail = TrailLight.gameObject.GetComponentsInChildren<ParticleSystem>();
@@ -80,6 +93,10 @@ public class Events : MonoBehaviour
             {
                 if (mesh != null)
                     mesh.gameObject.GetComponent<Renderer>().material = material;
+                if (wingLeft != null)
+                    wingLeft.gameObject.GetComponent<Renderer>().material = material;
+                if (wingRight != null)
+                    wingRight.gameObject.GetComponent<Renderer>().material = material;
                 if (TrailLight != null)
                 {
                     TrailLight.GetComponent<Renderer>().material = trailLight;
@@ -111,6 +128,10 @@ public class Events : MonoBehaviour
             {
                 if (mesh != null)
                     mesh.gameObject.GetComponent<Renderer>().material = materialPink;
+                if (wingLeft != null)
+                    wingLeft.gameObject.GetComponent<Renderer>().material = materialPink;
+                if (wingRight != null)
+                    wingRight.gameObject.GetComponent<Renderer>().material = materialPink;
                 if (TrailLight != null)
                 {
                     TrailLight.GetComponent<Renderer>().material = trailLightPink;
@@ -143,6 +164,10 @@ public class Events : MonoBehaviour
             {
                 if (mesh != null)
                     mesh.gameObject.GetComponent<Renderer>().material = materialGreen;
+                if (wingLeft != null)
+                    wingLeft.gameObject.GetComponent<Renderer>().material = materialGreen;
+                if (wingRight != null)
+                    wingRight.gameObject.GetComponent<Renderer>().material = materialGreen;
                 if (TrailLight != null)
                 {
                     TrailLight.GetComponent<Renderer>().material = trailLightGreen;
@@ -175,6 +200,10 @@ public class Events : MonoBehaviour
             {
                 if (mesh != null)
                     mesh.gameObject.GetComponent<Renderer>().material = materialBlue;
+                if (wingLeft != null)
+                    wingLeft.gameObject.GetComponent<Renderer>().material = materialBlue;
+                if (wingRight != null)
+                    wingRight.gameObject.GetComponent<Renderer>().material = materialBlue;
                 if (TrailLight != null)
                 {
                     TrailLight.GetComponent<Renderer>().material = trailLightBlue;
@@ -230,47 +259,18 @@ public class Events : MonoBehaviour
             }
             
         }
-        //////if (other.gameObject.CompareTag("FloorLake"))
-        //////{
-        //////    ParticleSystem water = this.gameObject.GetComponentInChildren<ParticleSystem>();
-        //////    for (int i = 0; i < water.Length; i++)
-        //////    {
-        //////        water[i].Play();
-        //////    }
-
-        //}
-        ////Fireflies event
-        //if (other.gameObject.CompareTag("FloorFireflies"))
-        //{
-        //    Transform trans = other.transform;
-        //    ParticleSystem fireflies = other.gameObject.GetComponentInChildren<ParticleSystem>();
-
-        //    if (fireflies != null)
-        //    {
-        //        fireflies.gameObject.transform.position = this.gameObject.transform.position;
-        //        Object.Destroy(fireflies, 5.0f);
-
-        //    }
-        //}
+        
     }
-
-        public void onTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         //Fireflies event
         if (other.gameObject.CompareTag("FloorFireflies"))
         {
-            Transform trans = other.transform;
-            ParticleSystem fireflies = other.gameObject.GetComponentInChildren<ParticleSystem>();
-
-            if (fireflies != null)
-            {
-                fireflies.gameObject.transform.position = this.gameObject.transform.position;
-                Object.Destroy(fireflies, 5.0f);
-
-            }
+            fireflies = other.gameObject.GetComponentInChildren<ParticleSystem>();
         }
     }
-        // The delay coroutine
+
+    //The delay coroutine
     public IEnumerator DelayedAnimation(ParticleSystem ps, float time)
     {
         yield return new WaitForSeconds(time);
