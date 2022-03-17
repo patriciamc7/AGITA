@@ -5,7 +5,7 @@ using UnityEngine;
 public class KinctMovePlayer : MonoBehaviour
 {
     public GameObject CameraRight;
-    //public GameObject coll;
+    public GameObject coll;
     public GameObject Hada;
     public GameObject KinectParent;
     private GameObject Body;
@@ -20,7 +20,7 @@ public class KinctMovePlayer : MonoBehaviour
     private Vector3 VectorInPlain  = new Vector3(0,0,2.92f);
     private Vector3 posPlayersum;
     public float vecloctyPlayer;
-    float range = 100f;
+    float range = 20f;
 
     public GameObject seeHand; 
     public GameObject seeNeck; 
@@ -104,7 +104,7 @@ public class KinctMovePlayer : MonoBehaviour
     }
     Vector3 vector2nodesNormalice(Vector3 hand, Vector3 otherNode) 
     {
-        return Vector3.Normalize(hand - otherNode); 
+        return Vector3.Normalize(hand -otherNode); 
     }
     void changeMethod()
     {
@@ -204,7 +204,8 @@ public class KinctMovePlayer : MonoBehaviour
             if (hit.collider.name == "RightSide" || hit.collider.name == "LeftSide")
             {
                 aux = hit.point; 
-               
+                coll.gameObject.transform.position = aux;
+
                 return aux;
             }
         }
