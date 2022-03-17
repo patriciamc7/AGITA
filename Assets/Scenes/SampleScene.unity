@@ -1021,7 +1021,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &368205959
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1878,7 +1878,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraRight: {fileID: 209244624}
-  coll: {fileID: 368205958}
   Hada: {fileID: 919132148641861618}
   KinectParent: {fileID: 1441788784}
   vecloctyPlayer: 0.2

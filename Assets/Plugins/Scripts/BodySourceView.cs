@@ -116,9 +116,7 @@ public class BodySourceView : MonoBehaviour
         for (Kinect.JointType jt = Kinect.JointType.SpineBase; jt <= Kinect.JointType.HandRight; jt++)
         {
             GameObject jointObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            Material material = new Material(Shader.Find("Transparent/Diffuse"));
-            material.color = new Color(0, 0, 0, 0);
-            jointObj.GetComponent<Renderer>().material = material;
+            jointObj.GetComponent<Renderer>().material = BoneMaterial;
 
             LineRenderer lr = jointObj.AddComponent<LineRenderer>();
             lr.SetVertexCount(2);

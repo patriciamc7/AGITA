@@ -5,7 +5,7 @@ using UnityEngine;
 public class KinctMovePlayer : MonoBehaviour
 {
     public GameObject CameraRight;
-    public GameObject coll;
+    //public GameObject coll;
     public GameObject Hada;
     public GameObject KinectParent;
     private GameObject Body;
@@ -34,7 +34,7 @@ public class KinctMovePlayer : MonoBehaviour
     private bool init_value = true;
     private Vector3 Pos_i;
     private bool ini1 = true; 
-    private Vector3 auxpos = new Vector3(0,0,0);
+    //private Vector3 auxpos = new Vector3(0,0,0);
     private GameObject vagon; 
     private Vector3 pointtSideWall;
 
@@ -52,7 +52,7 @@ public class KinctMovePlayer : MonoBehaviour
             Body.gameObject.transform.SetParent(vagon.gameObject.transform);
             if (ini1) {
                 Body.gameObject.transform.Rotate(0, 180, 0);
-                Body.gameObject.transform.Translate(0,0.8f,-0.5f);
+                Body.gameObject.transform.Translate(0,0.6f,0f);
                 ini1 = false; 
             }
 
@@ -159,7 +159,7 @@ public class KinctMovePlayer : MonoBehaviour
         //ejes al reves
         pointtSideWall = rayWall(VectorInPlain);
         //pointtSideWall += new Vector3(vecloctyPlayer * Time.deltaTime, 0, 0);
-        coll.gameObject.transform.position = pointtSideWall;
+        //coll.gameObject.transform.position = pointtSideWall;
 
         posPlayersum = Hada.gameObject.transform.position;
         posPlayersum.x = Vector3.Lerp(posPlayersum, pointtSideWall, 0.1f).x; 
@@ -209,7 +209,7 @@ public class KinctMovePlayer : MonoBehaviour
             }
         }
         
-        aux = Vector3.Lerp(seeHand.gameObject.transform.position, pointtSideWall, 0.1f);
+        aux = Vector3.Lerp(seeHand.gameObject.transform.position, pointtSideWall, 0.9f);
         return aux; 
         //return seeNeck.gameObject.transform.position; 
         //auxpos += new Vector3(vecloctyPlayer * Time.deltaTime, 0, 0);
