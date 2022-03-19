@@ -42,25 +42,12 @@ public class KinctMovePlayer : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-        
         //If Body detected assign Kineckt gameobject
         if (GameObject.Find("Body_Person") != null)
         {
-            Body = GameObject.Find("Body_Person");
-            Body.gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-            vagon = GameObject.Find("vagon"); 
-            Body.gameObject.transform.SetParent(vagon.gameObject.transform);
-            if (ini1) {
-                Body.gameObject.transform.Rotate(0, 180, 0);
-                Body.gameObject.transform.Translate(0,0.6f,0f);
-                ini1 = false; 
-            }
+            esqueleto(); 
 
-            cubeVisisble();
-
-			HandToNeck = vector2nodesNormalice(seeHand.gameObject.transform.position, seeNeck.gameObject.transform.position);
-            HandToElbow = vector2nodesNormalice(seeHand.gameObject.transform.position, seeElbow.gameObject.transform.position);
-            HandToSholder = vector2nodesNormalice(seeHand.gameObject.transform.position, seeSholder.gameObject.transform.position);
+			
 
             moveCharater();
 
@@ -69,7 +56,7 @@ public class KinctMovePlayer : MonoBehaviour
 
     }
 
-  
+    //guardar nodo del esqueleto a variable 
     GameObject GetChildWithName(GameObject obj, string name)
     {
         Transform trans = obj.transform;
@@ -83,7 +70,21 @@ public class KinctMovePlayer : MonoBehaviour
             return null;
         }
     }
+    void esqueleto()
+    {
+        Body = GameObject.Find("Body_Person");
+        Body.gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        vagon = GameObject.Find("vagon");
+        Body.gameObject.transform.SetParent(vagon.gameObject.transform);
+        if (ini1)
+        {
+            Body.gameObject.transform.Rotate(0, 180, 0);
+            Body.gameObject.transform.Translate(0, 0.6f, 0f);
+            ini1 = false;
+        }
+        cubeVisisble();
 
+    }
     void cubeVisisble()
     {
         rightHand = GetChildWithName(Body, "WristRight");
@@ -134,6 +135,10 @@ public class KinctMovePlayer : MonoBehaviour
 
     void moveCharater() 
     {
+        HandToNeck = vector2nodesNormalice(seeHand.gameObject.transform.position, seeNeck.gameObject.transform.position);
+        HandToElbow = vector2nodesNormalice(seeHand.gameObject.transform.position, seeElbow.gameObject.transform.position);
+        HandToSholder = vector2nodesNormalice(seeHand.gameObject.transform.position, seeSholder.gameObject.transform.position);
+
         changeMethod();
         if (methodChoose == 1) 
         {
@@ -158,16 +163,15 @@ public class KinctMovePlayer : MonoBehaviour
 
         //ejes al reves
         pointtSideWall = rayWall(VectorInPlain);
-        //pointtSideWall += new Vector3(vecloctyPlayer * Time.deltaTime, 0, 0);
-        //coll.gameObject.transform.position = pointtSideWall;
+        
 
         posPlayersum = Hada.gameObject.transform.position;
-        posPlayersum.x = Vector3.Lerp(posPlayersum, pointtSideWall, 0.1f).x; 
-        posPlayersum.y = Vector3.Lerp(posPlayersum, pointtSideWall, 0.1f).y;
+        posPlayersum.x = Vector3.Lerp(posPlayersum, pointtSideWall, 0.01f).x; 
+        posPlayersum.y = Vector3.Lerp(posPlayersum, pointtSideWall, 0.01f).y;
 
         playerDepth(); 
         Hada.gameObject.transform.position = posPlayersum;
-        //Hada.gameObject.transform.Translate(vecloctyPlayer * Time.deltaTime, 0, 0); 
+
     }
 
     //si el vector director señala el lado left, el player se situe a la profundidad del left y lo mismo con el right
@@ -188,34 +192,20 @@ public class KinctMovePlayer : MonoBehaviour
         }
 
     }
-    ////interpolación lineal a: actual position, b: future position, f: interval position
-    //Vector3 lerp(Vector3 a, Vector3 b, float f)
-    //{
-    //    return a * (1 - f) + b * f;
-    //}
 
-    //ray intersaccion wall, return position. If not interation wall, future position is hand 
     Vector3 rayWall(Vector3 VectorInPlain) 
     {
-        RaycastHit hit;
-        Vector3 aux; 
-        if (Physics.Raycast(initRay, VectorInPlain, out hit, range))
-        {
-            if (hit.collider.name == "RightSide" || hit.collider.name == "LeftSide")
-            {
-                aux = hit.point; 
-                coll.gameObject.transform.position = aux;
 
-                return aux;
-            }
-        }
-        
-        aux = Vector3.Lerp(seeHand.gameObject.transform.position, pointtSideWall, 0.9f);
+        Vector3 puntPla = new Vector3(0, 0, -1);
+        Vector3 normal = new Vector3(0, 0, -1); 
+        Vector3 aux;
+
+        aux.x = seeNeck.gameObject.transform.position.x - VectorInPlain.x * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
+        aux.y = seeNeck.gameObject.transform.position.y - VectorInPlain.y * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
+        aux.z = 2 * seeNeck.gameObject.transform.position.z + 1 ; 
+                
         return aux; 
-        //return seeNeck.gameObject.transform.position; 
-        //auxpos += new Vector3(vecloctyPlayer * Time.deltaTime, 0, 0);
-
-        //return pointtSideWall;
+        
     }
     //Draw ray 
 	private void OnDrawGizmos()
