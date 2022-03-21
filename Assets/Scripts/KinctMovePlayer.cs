@@ -5,7 +5,7 @@ using UnityEngine;
 public class KinctMovePlayer : MonoBehaviour
 {
     public GameObject CameraRight;
-    public GameObject coll;
+    //public GameObject coll;
     public GameObject Hada;
     public GameObject KinectParent;
     private GameObject Body;
@@ -19,7 +19,8 @@ public class KinctMovePlayer : MonoBehaviour
     private int methodChoose = 1;
     private Vector3 VectorInPlain  = new Vector3(0,0,2.92f);
     private Vector3 posPlayersum;
-    public float vecloctyPlayer;
+    public CameraMovement cameraMovement;
+    //public float vecloctyPlayer;
     float range = 20f;
 
     public GameObject seeHand; 
@@ -29,8 +30,8 @@ public class KinctMovePlayer : MonoBehaviour
     public GameObject pvisible; 
     private Vector3 initRay;
 
-    public GameObject rightside; 
-    public GameObject leftside;
+    //public GameObject rightside; 
+    //public GameObject leftside;
     private bool init_value = true;
     private Vector3 Pos_i;
     private bool ini1 = true; 
@@ -38,7 +39,7 @@ public class KinctMovePlayer : MonoBehaviour
     private GameObject vagon; 
     private Vector3 pointtSideWall;
 
-	
+    public ScriptRebotar ScriptRebotar; 
 	// Update is called once per frame
 	void Update()
     {
@@ -46,8 +47,6 @@ public class KinctMovePlayer : MonoBehaviour
         if (GameObject.Find("Body_Person") != null)
         {
             esqueleto(); 
-
-			
 
             moveCharater();
 
@@ -100,7 +99,7 @@ public class KinctMovePlayer : MonoBehaviour
 		// traslladem a on esta el coll tots respectivament
         //pvisible.gameObject.transform.Translate(seeNeck.gameObject.transform.position); 
         //trasladar el esqueleto que detecta la kinect y a consecuencia se mueve el persona visible 
-        Body.gameObject.transform.position +=new Vector3(0,0, vecloctyPlayer * Time.deltaTime);
+        Body.gameObject.transform.position +=new Vector3(0,0, cameraMovement.velocitycamera * Time.deltaTime);
        
     }
     Vector3 vector2nodesNormalice(Vector3 hand, Vector3 otherNode) 
@@ -162,53 +161,59 @@ public class KinctMovePlayer : MonoBehaviour
         //Debug.Log(VectorInPlain);
 
         //ejes al reves
-        pointtSideWall = rayWall(VectorInPlain);
-        
+        rayWall(VectorInPlain); 
 
-        posPlayersum = Hada.gameObject.transform.position;
-        posPlayersum.x = Vector3.Lerp(posPlayersum, pointtSideWall, 0.01f).x; 
-        posPlayersum.y = Vector3.Lerp(posPlayersum, pointtSideWall, 0.01f).y;
-
-        playerDepth(); 
-        Hada.gameObject.transform.position = posPlayersum;
+        //playerDepth(); 
 
     }
 
     //si el vector director señala el lado left, el player se situe a la profundidad del left y lo mismo con el right
-    void playerDepth()
-    {
-        BoxCollider hada_Collider = Hada.GetComponent<BoxCollider>();
+    //void playerDepth()
+    //{
+        
 
-        if (VectorInPlain.z > 0)
-        {
-            posPlayersum.z = leftside.gameObject.transform.position.z;
-            hada_Collider.center = new Vector3(0,0,7); 
-        }
-        else
-        {
-            posPlayersum.z = rightside.gameObject.transform.position.z;
-            hada_Collider.center = new Vector3(0, 0, -7);
+    //}
 
-        }
-
-    }
-
-    Vector3 rayWall(Vector3 VectorInPlain) 
+    void rayWall(Vector3 VectorInPlain) 
     {
 
         Vector3 puntPla = new Vector3(0, 0, -1);
         Vector3 normal = new Vector3(0, 0, -1); 
         Vector3 aux;
 
-        aux.x = seeNeck.gameObject.transform.position.x - VectorInPlain.x * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
+        posPlayersum = Hada.gameObject.transform.position;
+
+        BoxCollider hada_Collider = Hada.GetComponent<BoxCollider>();
         aux.y = seeNeck.gameObject.transform.position.y - VectorInPlain.y * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
-        aux.z = 2 * seeNeck.gameObject.transform.position.z + 1 ; 
-                
-        return aux; 
+        aux.x = seeNeck.gameObject.transform.position.x - VectorInPlain.x * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
+
+        if (VectorInPlain.z > 0) //lado left
+        {
+            aux.x = seeNeck.gameObject.transform.position.x + VectorInPlain.x * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
+            aux.y = seeNeck.gameObject.transform.position.y + VectorInPlain.y * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
+            posPlayersum.z = 1f;
+            hada_Collider.center = new Vector3(0, 0, 7);
+        }
+        else //lado right
+        {
+            posPlayersum.z = -1f;
+            hada_Collider.center = new Vector3(0, 0, -7);
+        }
+        aux.z = 2 * seeNeck.gameObject.transform.position.z + 1 ;
+        pointtSideWall = aux;
+        //revotar saltaria poner centro del collider 
+        if (ScriptRebotar.Bolexit)
+        {
+            pointtSideWall = new Vector3(0, 0, 1); 
+        }
+        posPlayersum.x = Vector3.Lerp(posPlayersum, pointtSideWall, 0.1f).x;
+        posPlayersum.y = Vector3.Lerp(posPlayersum, pointtSideWall, 0.1f).y;
+        Hada.gameObject.transform.position = posPlayersum;
+
         
     }
     //Draw ray 
-	private void OnDrawGizmos()
+    private void OnDrawGizmos()
 	{
         if (GameObject.Find("Body_Person") != null)
         {
