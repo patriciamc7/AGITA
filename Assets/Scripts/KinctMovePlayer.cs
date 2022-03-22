@@ -51,6 +51,8 @@ public class KinctMovePlayer : MonoBehaviour
 
             moveCharater();
 
+            changeDirection(); 
+
             knowVelocity();
         }
 
@@ -168,12 +170,6 @@ public class KinctMovePlayer : MonoBehaviour
 
     }
 
-    //si el vector director señala el lado left, el player se situe a la profundidad del left y lo mismo con el right
-    //void playerDepth()
-    //{
-        
-
-    //}
 
     void rayWall(Vector3 VectorInPlain) 
     {
@@ -247,5 +243,15 @@ public class KinctMovePlayer : MonoBehaviour
             Pos_i = pointtSideWall;
 
         }
+    }
+    void changeDirection()
+    {
+        Vector3 dir = pointtSideWall - Hada.gameObject.transform.position;
+
+        if (dir.x < 0)
+            Hada.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);     
+        else
+            Hada.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+
     }
 }
