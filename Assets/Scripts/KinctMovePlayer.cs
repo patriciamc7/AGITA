@@ -39,7 +39,7 @@ public class KinctMovePlayer : MonoBehaviour
     private GameObject vagon; 
     private Vector3 pointtSideWall;
 
-    public ScriptRebotar ScriptRebotar;
+    public NotExitCollider ScriptRebotar;
     public GameObject cubePoint; 
     // Update is called once per frame
     void Update()
@@ -175,22 +175,28 @@ public class KinctMovePlayer : MonoBehaviour
         posPlayersum = Hada.gameObject.transform.position;
 
         BoxCollider hada_Collider = Hada.GetComponent<BoxCollider>();
-        aux.y = seeNeck.gameObject.transform.position.y + VectorInPlain.y * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
-        aux.x = seeNeck.gameObject.transform.position.x + VectorInPlain.x * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
 
-        if (VectorInPlain.z > 0) //lado left
+
+        //aux.z = 2 * seeNeck.gameObject.transform.position.z - 1 ;
+
+        //Debug.Log(VectorInPlain); 
+        if (VectorInPlain.z > 0) //lado right
         {
-            //aux.x = seeNeck.gameObject.transform.position.x + VectorInPlain.x * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
-            //aux.y = seeNeck.gameObject.transform.position.y + VectorInPlain.y * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
-            posPlayersum.z = 1f;
-            hada_Collider.center = new Vector3(0, 0, 7);
-        }
-        else //lado right
-        {
-            posPlayersum.z = -1f;
+            aux.y = seeNeck.gameObject.transform.position.y + VectorInPlain.y * (seeNeck.gameObject.transform.position.z - 1) / VectorInPlain.z;
+            aux.x = seeNeck.gameObject.transform.position.x + VectorInPlain.x * (seeNeck.gameObject.transform.position.z - 1) / VectorInPlain.z;
+            //posPlayersum.z = 1f;
+            aux.z = -1f; 
             hada_Collider.center = new Vector3(0, 0, -7);
         }
-        aux.z = 2 * seeNeck.gameObject.transform.position.z + 1 ;
+        else //lado left
+        {
+            aux.x = seeNeck.gameObject.transform.position.x + VectorInPlain.x * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
+            aux.y = seeNeck.gameObject.transform.position.y + VectorInPlain.y * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
+            //posPlayersum.z = 1f;
+            aux.z = 1f;
+
+            hada_Collider.center = new Vector3(0, 0, 7);
+        }
         pointtSideWall = aux;
         cubePoint.gameObject.transform.position = aux; 
         //revotar saltaria poner centro del collider 
@@ -202,21 +208,20 @@ public class KinctMovePlayer : MonoBehaviour
         
         posPlayersum.x = Vector3.Lerp(posPlayersum, pointtSideWall, 0.1f).x;
         posPlayersum.y = Vector3.Lerp(posPlayersum, pointtSideWall, 0.1f).y;
+        posPlayersum.z = aux.z;
         Hada.gameObject.transform.position = posPlayersum;
-
-        
     }
-    //Draw ray 
- //   private void OnDrawGizmos()
-	//{
- //       if (GameObject.Find("Body_Person") != null)
- //       {
- //           Gizmos.color = Color.red;
- //           Gizmos.DrawRay(initRay,VectorInPlain * range);
- //       }
-	//}
+	//Draw ray 
+	private void OnDrawGizmos()
+	{
+		if (GameObject.Find("Body_Person") != null)
+		{
+			Gizmos.color = Color.red;
+			Gizmos.DrawRay(initRay, HandToNeck*-1 * range);
+		}
+	}
 
-    void knowVelocity()
+	void knowVelocity()
     {
         if (init_value)
         {

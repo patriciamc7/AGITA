@@ -766,7 +766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalDuration: 100
-  velocitycamera: 0.2
+  velocitycamera: 0
   cameraleft: {fileID: 89907452}
   sideright: {fileID: 418571135}
 --- !u!81 &209244626
@@ -1055,12 +1055,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 418571135}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3972e52308c2b7e44a5b7c4e52e6eaa6, type: 3}
+  m_Script: {fileID: 11500000, guid: 102203a84b9d118478172d33d51f170c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 919132148641861618}
   Bolexit: 0
   collName: 
 --- !u!4 &556003631 stripped
@@ -1567,6 +1566,7 @@ GameObject:
   - component: {fileID: 1173789415}
   - component: {fileID: 1173789414}
   - component: {fileID: 1173789413}
+  - component: {fileID: 1173789416}
   m_Layer: 0
   m_Name: Cube
   m_TagString: PointRay
@@ -1596,7 +1596,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173789411}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1650,6 +1650,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173789411}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1173789416
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173789411}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1220782897
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class ScriptRebotar : MonoBehaviour
 {
-	public GameObject player;
+
+	//public GameObject player;
 	public bool Bolexit = false; 
 	public string collName;
 	private void OnTriggerExit(Collider other)
 	{
+		Debug.Log("hola");
+
 		if (other.gameObject.name == "PointRay")
 		{
 			Bolexit = true;
-			collName = name; 
-			Debug.Log("hola"); 
+			collName = name;
+			Debug.Log("hola");
 		}
-		
+
 	}
 
 	private void OnTriggerEnter(Collider other)
