@@ -19,6 +19,7 @@ TagManager:
   - FirstDepth
   - Fountain
   - FloorCamping
+  - PointRay
   layers:
   - Default
   - TransparentFX
