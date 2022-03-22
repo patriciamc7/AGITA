@@ -9,6 +9,7 @@ public class CameraMovement : MonoBehaviour
     //public KinctMovePlayer KinectScript;
     public float velocitycamera;
     public GameObject cameraleft; 
+    public GameObject sideright;
 
     // Update is called once per frame
     void Update()

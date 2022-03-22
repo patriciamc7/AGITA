@@ -6,12 +6,14 @@ public class ScriptRebotar : MonoBehaviour
 {
 	public GameObject player;
 	public bool Bolexit = false; 
+	public string collName;
 	private void OnTriggerExit(Collider other)
 	{
 		if (other.gameObject.name == "Player")
 		{
 			Bolexit = true;
-			//Debug.Log("sale"); 
+			collName = name; 
+			//Debug.Log(collName); 
 		}
 		
 	}

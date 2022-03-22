@@ -40,8 +40,9 @@ public class KinctMovePlayer : MonoBehaviour
     private Vector3 pointtSideWall;
 
     public ScriptRebotar ScriptRebotar; 
-	// Update is called once per frame
-	void Update()
+
+    // Update is called once per frame
+    void Update()
     {
         //If Body detected assign Kineckt gameobject
         if (GameObject.Find("Body_Person") != null)
@@ -202,10 +203,12 @@ public class KinctMovePlayer : MonoBehaviour
         aux.z = 2 * seeNeck.gameObject.transform.position.z + 1 ;
         pointtSideWall = aux;
         //revotar saltaria poner centro del collider 
-        if (ScriptRebotar.Bolexit)
+            
+        if (ScriptRebotar.Bolexit )
         {
-            pointtSideWall = new Vector3(0, 0, 1); 
+            pointtSideWall = cameraMovement.sideright.gameObject.transform.position; 
         }
+        
         posPlayersum.x = Vector3.Lerp(posPlayersum, pointtSideWall, 0.1f).x;
         posPlayersum.y = Vector3.Lerp(posPlayersum, pointtSideWall, 0.1f).y;
         Hada.gameObject.transform.position = posPlayersum;
@@ -239,7 +242,7 @@ public class KinctMovePlayer : MonoBehaviour
             //Debug.Log(modulo);
             if (modulo > 0.1)
             {
-                Debug.Log("Hacer animacion");
+                //Debug.Log("Hacer animacion");
             }
             Pos_i = pointtSideWall;
 
