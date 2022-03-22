@@ -9,11 +9,11 @@ public class ScriptRebotar : MonoBehaviour
 	public string collName;
 	private void OnTriggerExit(Collider other)
 	{
-		if (other.gameObject.name == "Player")
+		if (other.gameObject.name == "PointRay")
 		{
 			Bolexit = true;
 			collName = name; 
-			//Debug.Log(collName); 
+			Debug.Log("hola"); 
 		}
 		
 	}

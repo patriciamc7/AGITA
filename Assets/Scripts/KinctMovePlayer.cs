@@ -17,7 +17,7 @@ public class KinctMovePlayer : MonoBehaviour
     private Vector3 HandToElbow;
     private Vector3 HandToSholder;
     private int methodChoose = 1;
-    private Vector3 VectorInPlain  = new Vector3(0,0,2.92f);
+    //private Vector3 VectorInPlain  = new Vector3(0,0,2.92f);
     private Vector3 posPlayersum;
     public CameraMovement cameraMovement;
     //public float vecloctyPlayer;
@@ -39,8 +39,8 @@ public class KinctMovePlayer : MonoBehaviour
     private GameObject vagon; 
     private Vector3 pointtSideWall;
 
-    public ScriptRebotar ScriptRebotar; 
-
+    public ScriptRebotar ScriptRebotar;
+    public GameObject cubePoint; 
     // Update is called once per frame
     void Update()
     {
@@ -107,7 +107,7 @@ public class KinctMovePlayer : MonoBehaviour
     }
     Vector3 vector2nodesNormalice(Vector3 hand, Vector3 otherNode) 
     {
-        return Vector3.Normalize(hand -otherNode); 
+        return Vector3.Normalize(otherNode - hand); 
     }
     void changeMethod()
     {
@@ -137,34 +137,28 @@ public class KinctMovePlayer : MonoBehaviour
 
     void moveCharater() 
     {
-        HandToNeck = vector2nodesNormalice(seeHand.gameObject.transform.position, seeNeck.gameObject.transform.position);
-        HandToElbow = vector2nodesNormalice(seeHand.gameObject.transform.position, seeElbow.gameObject.transform.position);
-        HandToSholder = vector2nodesNormalice(seeHand.gameObject.transform.position, seeSholder.gameObject.transform.position);
 
         changeMethod();
-        if (methodChoose == 1) 
+        switch (methodChoose)
         {
-            VectorInPlain.x = HandToNeck.x; 
-            VectorInPlain.y = HandToNeck.y;
-            VectorInPlain.z = HandToNeck.z;
-        }
-        if (methodChoose == 2) 
-        {
-            VectorInPlain.x = HandToElbow.x;
-            VectorInPlain.y = HandToElbow.y;
-            VectorInPlain.z = HandToElbow.z;
 
-        }
-        if (methodChoose == 3)
-        {
-            VectorInPlain.x = HandToSholder.x;
-            VectorInPlain.y = HandToSholder.y;
-            VectorInPlain.z = HandToSholder.z;
+            case 1:
+                    HandToNeck = vector2nodesNormalice(seeHand.gameObject.transform.position, seeNeck.gameObject.transform.position);
+                    rayWall(HandToNeck);
+                    break;
+            case 2:
+                    HandToElbow = vector2nodesNormalice(seeHand.gameObject.transform.position, seeElbow.gameObject.transform.position);
+                    rayWall(HandToElbow);
+                    break;
+            case 3:
+                    HandToSholder = vector2nodesNormalice(seeHand.gameObject.transform.position, seeSholder.gameObject.transform.position);
+                    rayWall(HandToSholder);
+                    break; 
         }
         //Debug.Log(VectorInPlain);
 
         //ejes al reves
-        rayWall(VectorInPlain); 
+        //rayWall(VectorInPlain); 
 
         //playerDepth(); 
 
@@ -181,13 +175,13 @@ public class KinctMovePlayer : MonoBehaviour
         posPlayersum = Hada.gameObject.transform.position;
 
         BoxCollider hada_Collider = Hada.GetComponent<BoxCollider>();
-        aux.y = seeNeck.gameObject.transform.position.y - VectorInPlain.y * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
-        aux.x = seeNeck.gameObject.transform.position.x - VectorInPlain.x * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
+        aux.y = seeNeck.gameObject.transform.position.y + VectorInPlain.y * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
+        aux.x = seeNeck.gameObject.transform.position.x + VectorInPlain.x * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
 
         if (VectorInPlain.z > 0) //lado left
         {
-            aux.x = seeNeck.gameObject.transform.position.x + VectorInPlain.x * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
-            aux.y = seeNeck.gameObject.transform.position.y + VectorInPlain.y * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
+            //aux.x = seeNeck.gameObject.transform.position.x + VectorInPlain.x * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
+            //aux.y = seeNeck.gameObject.transform.position.y + VectorInPlain.y * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
             posPlayersum.z = 1f;
             hada_Collider.center = new Vector3(0, 0, 7);
         }
@@ -198,11 +192,12 @@ public class KinctMovePlayer : MonoBehaviour
         }
         aux.z = 2 * seeNeck.gameObject.transform.position.z + 1 ;
         pointtSideWall = aux;
+        cubePoint.gameObject.transform.position = aux; 
         //revotar saltaria poner centro del collider 
-            
+
         if (ScriptRebotar.Bolexit )
         {
-            pointtSideWall = cameraMovement.sideright.gameObject.transform.position; 
+            pointtSideWall = seeSholder.gameObject.transform.position; 
         }
         
         posPlayersum.x = Vector3.Lerp(posPlayersum, pointtSideWall, 0.1f).x;
@@ -212,14 +207,14 @@ public class KinctMovePlayer : MonoBehaviour
         
     }
     //Draw ray 
-    private void OnDrawGizmos()
-	{
-        if (GameObject.Find("Body_Person") != null)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawRay(initRay,VectorInPlain * range);
-        }
-	}
+ //   private void OnDrawGizmos()
+	//{
+ //       if (GameObject.Find("Body_Person") != null)
+ //       {
+ //           Gizmos.color = Color.red;
+ //           Gizmos.DrawRay(initRay,VectorInPlain * range);
+ //       }
+	//}
 
     void knowVelocity()
     {
