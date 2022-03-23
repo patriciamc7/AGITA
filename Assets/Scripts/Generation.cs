@@ -65,14 +65,14 @@ public class Generation : MonoBehaviour
                     GameObject childDepths = side.transform.GetChild(i + j).gameObject;
                     GameObject childFloor = childDepths.transform.GetChild(0).gameObject;
 
-                    if (j == 0)
+                    if (j == 9)
                     {
                         Vector3 position = childFloor.transform.position;
                         Quaternion rotation = Quaternion.identity;
                         if (side.name.Equals("Left"))
                         {
                             rotation = Quaternion.Euler(Vector3.up * 180);
-                            position += new Vector3(4, 0, 0);
+                            position += new Vector3(-4, 0, 0);
                         }
                         GameObject Lake1 = Instantiate(LakeModule, position, rotation);
                         Lake1.transform.SetParent(childDepths.transform);
