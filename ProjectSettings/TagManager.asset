@@ -19,6 +19,8 @@ TagManager:
   - FirstDepth
   - Fountain
   - FloorCamping
+  - FloorFlower
+  - FloorButterfly
   layers:
   - Default
   - TransparentFX

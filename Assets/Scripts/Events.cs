@@ -23,6 +23,7 @@ public class Events : MonoBehaviour
     public Vector3 scale;
     public GameObject firefliesModule;
     private ParticleSystem fireflies = null;
+    private bool isFlower = false;
    
     void Update()
     {
@@ -259,7 +260,23 @@ public class Events : MonoBehaviour
             }
             
         }
-        
+
+        //Flower event
+        if (other.gameObject.CompareTag("FloorFlower"))
+        {
+            isFlower = true;
+            Transform flower = other.transform.Find("flower");
+            flower.SetParent(this.transform);
+
+        }
+        if (other.gameObject.CompareTag("FloorButterfly"))
+        {
+            if (isFlower)
+            {
+                Destroy(this.transform.Find("flower").gameObject);
+                isFlower = false;
+            }
+        }
     }
     void OnTriggerExit(Collider other)
     {
