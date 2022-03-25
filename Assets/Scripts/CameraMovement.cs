@@ -6,37 +6,28 @@ public class CameraMovement : MonoBehaviour
 {
     //public float cameraVelocity;
     public float totalDuration;
-    public KinctMovePlayer KinectScript;
-    public GameObject RightSide;
-    public GameObject LeftSide;
-    //public boo
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    //public KinctMovePlayer KinectScript;
+    public float velocitycamera;
+    public GameObject cameraleft; 
+    public GameObject sideright;
 
     // Update is called once per frame
     void Update()
     {
-        // if (Time.time < totalDuration)
-        if (GameObject.Find("Body_Person") != null)
-        {
-            if (this.name == "RightCamera")
-                transform.position += new Vector3(KinectScript.vecloctyPlayer * Time.deltaTime, 0, 0);
-            else
-            {
-                transform.position += new Vector3(KinectScript.vecloctyPlayer * Time.deltaTime, 0, 0);
-                //RightSide.gameObject.transform.position = new Vector3(KinectScript.vecloctyPlayer * Time.deltaTime, 0, 0);
-                //LeftSide.gameObject.transform.position = new Vector3(KinectScript.vecloctyPlayer * Time.deltaTime, 0, 0);
+        //if (GameObject.Find("Body_Person") != null)
+        //{
+            
+        //    transform.position += new Vector3(velocitycamera * Time.deltaTime, 0, 0);
+            
+        //    cameraleft.gameObject.transform.position += new Vector3(velocitycamera * Time.deltaTime, 0, 0);
+        //}
 
-            }
-        }
+        //movimeinto flechas
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float horizontalvertical = Input.GetAxisRaw("Vertical");
         if (horizontalInput != 0 || horizontalvertical != 0)
         {
-            transform.Translate(-1 * Time.deltaTime, 0, 0);
+            transform.Translate(Time.deltaTime* horizontalInput, Time.deltaTime * horizontalvertical, 0);
         }
     }
 
