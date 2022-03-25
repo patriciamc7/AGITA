@@ -5,6 +5,8 @@ using UnityEngine;
 public class KinctMovePlayer : MonoBehaviour
 {
     public GameObject CameraRight;
+    //public float USER_DESP_X = ; 
+    //public float USER_DESP_Y;
     //public GameObject coll;
     public GameObject Hada;
     public GameObject KinectParent;
@@ -75,7 +77,7 @@ public class KinctMovePlayer : MonoBehaviour
     void esqueleto()
     {
         Body = GameObject.Find("Body_Person");
-        Body.gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        //Body.gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
         vagon = GameObject.Find("vagon");
         Body.gameObject.transform.SetParent(vagon.gameObject.transform);
         if (ini1)
@@ -84,6 +86,8 @@ public class KinctMovePlayer : MonoBehaviour
             Body.gameObject.transform.Translate(0, 0.6f, 0f);
             ini1 = false;
         }
+        vagon.gameObject.transform.position += new Vector3(cameraMovement.velocitycamera * Time.deltaTime, 0, 0);
+
         cubeVisisble();
 
     }
@@ -95,19 +99,20 @@ public class KinctMovePlayer : MonoBehaviour
         sholderRight = GetChildWithName(Body, "ShoulderRight");
 
 		//______ cambiar simetria del que detecta la kinect a els nodes del esquelet pasa x y z
-		seeNeck.gameObject.transform.position = new Vector3(neck.gameObject.transform.position.z, neck.gameObject.transform.position.y, neck.gameObject.transform.position.x);
-		seeHand.gameObject.transform.position= new Vector3(rightHand.gameObject.transform.position.z, rightHand.gameObject.transform.position.y, rightHand.gameObject.transform.position.x);
-		seeElbow.gameObject.transform.position= new Vector3(elbowRight.gameObject.transform.position.z, elbowRight.gameObject.transform.position.y, elbowRight.gameObject.transform.position.x);
-		seeSholder.gameObject.transform.position= new Vector3(sholderRight.gameObject.transform.position.z, sholderRight.gameObject.transform.position.y, sholderRight.gameObject.transform.position.x);
+		seeNeck.gameObject.transform.position = new Vector3(neck.gameObject.transform.position.z +vagon.gameObject.transform.position.x, neck.gameObject.transform.position.y, neck.gameObject.transform.position.x);
+		seeHand.gameObject.transform.position = new Vector3(rightHand.gameObject.transform.position.z + vagon.gameObject.transform.position.x, rightHand.gameObject.transform.position.y, rightHand.gameObject.transform.position.x);
+		seeElbow.gameObject.transform.position = new Vector3(elbowRight.gameObject.transform.position.z + vagon.gameObject.transform.position.x, elbowRight.gameObject.transform.position.y, elbowRight.gameObject.transform.position.x);
+		seeSholder.gameObject.transform.position = new Vector3(sholderRight.gameObject.transform.position.z + vagon.gameObject.transform.position.x, sholderRight.gameObject.transform.position.y, sholderRight.gameObject.transform.position.x);
+
 		// traslladem a on esta el coll tots respectivament
-        //pvisible.gameObject.transform.Translate(seeNeck.gameObject.transform.position); 
-        //trasladar el esqueleto que detecta la kinect y a consecuencia se mueve el persona visible 
-        Body.gameObject.transform.position +=new Vector3(0,0, cameraMovement.velocitycamera * Time.deltaTime);
-       
-    }
-    Vector3 vector2nodesNormalice(Vector3 hand, Vector3 otherNode) 
+		//pvisible.gameObject.transform.Translate(seeNeck.gameObject.transform.position); 
+		//trasladar el esqueleto que detecta la kinect y a consecuencia se mueve el persona visible 
+		//Body.gameObject.transform.position +=new Vector3(0,0, cameraMovement.velocitycamera * Time.deltaTime);
+
+	}
+	Vector3 vector2nodesNormalice(Vector3 hand, Vector3 otherNode) 
     {
-        return Vector3.Normalize(otherNode - hand); 
+        return Vector3.Normalize(hand - otherNode); 
     }
     void changeMethod()
     {
@@ -167,9 +172,6 @@ public class KinctMovePlayer : MonoBehaviour
 
     void rayWall(Vector3 VectorInPlain) 
     {
-
-        Vector3 puntPla = new Vector3(0, 0, -1);
-        Vector3 normal = new Vector3(0, 0, -1); 
         Vector3 aux;
 
         posPlayersum = Hada.gameObject.transform.position;
@@ -177,23 +179,22 @@ public class KinctMovePlayer : MonoBehaviour
         BoxCollider hada_Collider = Hada.GetComponent<BoxCollider>();
 
 
-        //aux.z = 2 * seeNeck.gameObject.transform.position.z - 1 ;
+        //aux.z = 2 * seeNeck.gameObject.transform.position.z + 1 ;
 
         //Debug.Log(VectorInPlain); 
-        if (VectorInPlain.z > 0) //lado right
+        if (VectorInPlain.z > 0) //lado left
         {
-            aux.y = seeNeck.gameObject.transform.position.y + VectorInPlain.y * (seeNeck.gameObject.transform.position.z - 1) / VectorInPlain.z;
-            aux.x = seeNeck.gameObject.transform.position.x + VectorInPlain.x * (seeNeck.gameObject.transform.position.z - 1) / VectorInPlain.z;
-            //posPlayersum.z = 1f;
-            aux.z = -1f; 
+            aux.y = seeNeck.gameObject.transform.position.y + VectorInPlain.y * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
+            aux.x = seeNeck.gameObject.transform.position.x + VectorInPlain.x * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
+            aux.z = 2 * seeNeck.gameObject.transform.position.z + 1 ;
+
             hada_Collider.center = new Vector3(0, 0, -7);
         }
-        else //lado left
+        else //lado  right
         {
-            aux.x = seeNeck.gameObject.transform.position.x + VectorInPlain.x * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
-            aux.y = seeNeck.gameObject.transform.position.y + VectorInPlain.y * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
-            //posPlayersum.z = 1f;
-            aux.z = 1f;
+            aux.x = seeNeck.gameObject.transform.position.x + VectorInPlain.x * (seeNeck.gameObject.transform.position.z - 1) / VectorInPlain.z;
+            aux.y = seeNeck.gameObject.transform.position.y + VectorInPlain.y * (seeNeck.gameObject.transform.position.z - 1) / VectorInPlain.z;
+            aux.z = 2 * seeNeck.gameObject.transform.position.z - 1 ;
 
             hada_Collider.center = new Vector3(0, 0, 7);
         }

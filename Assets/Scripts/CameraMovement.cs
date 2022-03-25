@@ -14,13 +14,13 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("Body_Person") != null)
-        {
+        //if (GameObject.Find("Body_Person") != null)
+        //{
             
-            transform.position += new Vector3(velocitycamera * Time.deltaTime, 0, 0);
+        //    transform.position += new Vector3(velocitycamera * Time.deltaTime, 0, 0);
             
-            cameraleft.gameObject.transform.position += new Vector3(velocitycamera * Time.deltaTime, 0, 0);
-        }
+        //    cameraleft.gameObject.transform.position += new Vector3(velocitycamera * Time.deltaTime, 0, 0);
+        //}
 
         //movimeinto flechas
         float horizontalInput = Input.GetAxisRaw("Horizontal");
