@@ -7,7 +7,6 @@ public class CameraMovement : MonoBehaviour
     //public float cameraVelocity;
     public float totalDuration;
     //public KinctMovePlayer KinectScript;
-    public float velocitycamera;
     public GameObject cameraleft; 
     public GameObject sideright;
 
