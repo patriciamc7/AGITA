@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 66983749099019301}
   m_Layer: 7
   m_Name: FloorCrystalPink
-  m_TagString: FloorCrystalPink
+  m_TagString: PinkCrystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -213,8 +213,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.078434, y: 8.181656, z: 8.739183}
-  m_Center: {x: -3.112936, y: 3.5908284, z: 3.4306872}
+  m_Size: {x: 21.292698, y: 1.4646317, z: 21.896423}
+  m_Center: {x: -0.5122602, y: -0.7150393, z: -0.98731637}
 --- !u!1001 &185034603958680057
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2763,6 +2763,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 379528406b0e40746a170e1aa0309df9, type: 3}
   m_PrefabInstance: {fileID: 7589296242979831258}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7319459251708608651 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 379528406b0e40746a170e1aa0309df9, type: 3}
+  m_PrefabInstance: {fileID: 7589296242979831258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &6693259264056398037
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7319459251708608651}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.0784342, y: 7.0594544, z: 3.4295197}
+  m_Center: {x: -0.35, y: 4.78, z: -10.15}
 --- !u!1001 &7889958893075282326
 PrefabInstance:
   m_ObjectHideFlags: 0

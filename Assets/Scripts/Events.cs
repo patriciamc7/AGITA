@@ -22,6 +22,7 @@ public class Events : MonoBehaviour
 
     public Vector3 scale;
     public GameObject firefliesModule;
+    public GameObject butterfly;
     private ParticleSystem fireflies = null;
     private bool isFlower = false;
    
@@ -38,17 +39,16 @@ public class Events : MonoBehaviour
     {
 
         //Chest event
-        if (other.gameObject.CompareTag("FloorChest"))
+        if (other.gameObject.CompareTag("Chest"))
         {
             Transform trans = other.transform;
-            Transform child = trans.Find("Chest");
             ParticleSystem fireflies = other.gameObject.GetComponentInChildren<ParticleSystem>();
 
-            Transform child2 = child.transform.Find("Base");
+            Transform child2 = trans.transform.Find("Base");
             ParticleSystem light = child2.gameObject.GetComponentInChildren<ParticleSystem>();
-            if (child != null)
+            if (trans != null)
             {
-                Animator anim = child.GetComponent<Animator>();
+                Animator anim = trans.GetComponent<Animator>();
                 if (anim != null)
                     anim.Play("Animated PBR Chest _Opening_UnCommon");
                 if (fireflies != null)
@@ -61,12 +61,11 @@ public class Events : MonoBehaviour
             }
         }
         //Fountain event
-        if (other.gameObject.CompareTag("FloorFountain"))
+        if (other.gameObject.CompareTag("fountain"))
         {
             Transform trans = other.transform;
-            Transform child = trans.Find("Fountain");
-            ParticleSystem[] water = other.gameObject.GetComponentsInChildren<ParticleSystem>();
-            if (child != null)
+            ParticleSystem[] water = trans.gameObject.GetComponentsInChildren<ParticleSystem>();
+            if (trans != null)
             {
                 for (int i = 0; i < water.Length; i++)
                 {
@@ -85,12 +84,11 @@ public class Events : MonoBehaviour
         ParticleSystem[] Trail = TrailLight.gameObject.GetComponentsInChildren<ParticleSystem>();
         VisualEffect[] Effects = TrailLight.gameObject.GetComponentsInChildren<VisualEffect>();
 
-        if (other.gameObject.CompareTag("FloorCrystal"))
+        if (other.gameObject.CompareTag("WhiteCrystal"))
         {
             Transform trans = other.transform;
-            Transform child = trans.Find("Cristal");
 
-            if (child != null)
+            if (trans != null)
             {
                 if (mesh != null)
                     mesh.gameObject.GetComponent<Renderer>().material = material;
@@ -120,7 +118,7 @@ public class Events : MonoBehaviour
                 
             }
         }
-        if (other.gameObject.CompareTag("FloorCrystalPink"))
+        if (other.gameObject.CompareTag("PinkCrystal"))
         {
             Transform trans = other.transform;
             Transform child = trans.Find("Cristal");
@@ -156,7 +154,7 @@ public class Events : MonoBehaviour
 
             }
         }
-        if (other.gameObject.CompareTag("FloorCrystalGreen"))
+        if (other.gameObject.CompareTag("GreenCrystal"))
         {
             Transform trans = other.transform;
             Transform child = trans.Find("Cristal");
@@ -192,7 +190,7 @@ public class Events : MonoBehaviour
 
             }
         }
-        if (other.gameObject.CompareTag("FloorCrystalBlue"))
+        if (other.gameObject.CompareTag("BlueCrystal"))
         {
             Transform trans = other.transform;
             Transform child = trans.Find("Cristal");
@@ -229,7 +227,7 @@ public class Events : MonoBehaviour
         }
 
         //Mushroom event
-        if (other.gameObject.CompareTag("FloorMushroom"))
+        if (other.gameObject.CompareTag("Mushroom"))
         {
             Transform trans = other.transform;
             Transform child = trans.Find("Bolets");
@@ -251,29 +249,28 @@ public class Events : MonoBehaviour
         }
 
         //Fountain effects event
-        if (other.gameObject.CompareTag("Fountain"))
+        if (other.gameObject.CompareTag("FountainEffect"))
         {
-            ParticleSystem[] water = other.gameObject.GetComponentsInChildren<ParticleSystem>();
-            for (int i = 0; i < water.Length; i++)
-            {
-                water[i].Play();
-            }
-            
+            ParticleSystem water = other.gameObject.GetComponentInChildren<ParticleSystem>();
+            water.Play();
         }
 
         //Flower event
-        if (other.gameObject.CompareTag("FloorFlower"))
+        if (other.gameObject.CompareTag("Flower"))
         {
             isFlower = true;
-            Transform flower = other.transform.Find("flower");
-            flower.SetParent(this.transform);
+            other.transform.SetParent(this.transform);
 
         }
-        if (other.gameObject.CompareTag("FloorButterfly"))
+
+        //Butterfly event
+        if (other.gameObject.CompareTag("Orb"))
         {
             if (isFlower)
             {
                 Destroy(this.transform.Find("flower").gameObject);
+                GameObject butterflyInstance = Instantiate(butterfly, other.transform.position, Quaternion.identity);
+                butterflyInstance.GetComponent<Animation>().Play();
                 isFlower = false;
             }
         }
@@ -281,7 +278,7 @@ public class Events : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         //Fireflies event
-        if (other.gameObject.CompareTag("FloorFireflies"))
+        if (other.gameObject.CompareTag("Fireflies"))
         {
             fireflies = other.gameObject.GetComponentInChildren<ParticleSystem>();
         }

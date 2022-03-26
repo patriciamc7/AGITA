@@ -1726,7 +1726,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1441788785
 Transform:
   m_ObjectHideFlags: 0
@@ -2037,7 +2037,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1746967039
 Transform:
   m_ObjectHideFlags: 0
@@ -2803,11 +2803,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2175222233384588864, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2175222233384588865, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2175222233384588866, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2175222233384588866, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 2175222234306257000, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
       propertyPath: m_Size.z
@@ -2837,6 +2845,10 @@ PrefabInstance:
       propertyPath: material
       value: 
       objectReference: {fileID: 2100000, guid: 0e3c23dc149606341b4ab2e5bc209293, type: 2}
+    - target: {fileID: 2175222234306257015, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
+      propertyPath: butterfly
+      value: 
+      objectReference: {fileID: 138252, guid: be999fe03c257ec4cb0a3a4b5ca72217, type: 3}
     - target: {fileID: 2175222234306257015, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
       propertyPath: trailDark
       value: 

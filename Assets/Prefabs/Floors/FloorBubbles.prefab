@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4723712021265289066}
   m_Layer: 7
   m_Name: FloorBubbles
-  m_TagString: FloorBubbles
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,8 +45,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 21.410103, y: 1, z: 20.94463}
-  m_Center: {x: 0.40114164, y: 0, z: -0.9660214}
+  m_Size: {x: 21.292698, y: 1.4646317, z: 21.896423}
+  m_Center: {x: -0.5122602, y: -0.7150393, z: -0.98731637}
 --- !u!1 &2881421971479383054
 GameObject:
   m_ObjectHideFlags: 0

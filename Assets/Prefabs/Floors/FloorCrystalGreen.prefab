@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 3181018772076024289}
   m_Layer: 7
   m_Name: FloorCrystalGreen
-  m_TagString: FloorCrystalGreen
+  m_TagString: GreenCrystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,8 +122,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.078434, y: 8.181656, z: 8.739183}
-  m_Center: {x: -3.112936, y: 3.5908284, z: 3.4306872}
+  m_Size: {x: 21.292698, y: 1.4646317, z: 21.896423}
+  m_Center: {x: -0.5122602, y: -0.7150393, z: -0.98731637}
 --- !u!1 &5810806642709995764
 GameObject:
   m_ObjectHideFlags: 0
@@ -2324,6 +2324,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 379528406b0e40746a170e1aa0309df9, type: 3}
   m_PrefabInstance: {fileID: 5015424885966598174}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5285879668555926863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 379528406b0e40746a170e1aa0309df9, type: 3}
+  m_PrefabInstance: {fileID: 5015424885966598174}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &7247482259087107910
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5285879668555926863}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.0784342, y: 7.0594544, z: 3.4295197}
+  m_Center: {x: -0.35, y: 4.78, z: -10.15}
 --- !u!1001 &5249175889008641795
 PrefabInstance:
   m_ObjectHideFlags: 0

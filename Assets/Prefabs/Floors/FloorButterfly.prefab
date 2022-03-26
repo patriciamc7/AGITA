@@ -9620,7 +9620,7 @@ GameObject:
   - component: {fileID: 5602126788065128937}
   m_Layer: 7
   m_Name: FloorButterfly
-  m_TagString: FloorButterfly
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9653,8 +9653,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.1303608, y: 2.833196, z: 5.7711487}
-  m_Center: {x: -0.14597498, y: 5.259173, z: -0.4710284}
+  m_Size: {x: 21.292698, y: 1.4646317, z: 21.896423}
+  m_Center: {x: -0.5122602, y: -0.7150393, z: -0.98731637}
 --- !u!1 &3156989992653828749
 GameObject:
   m_ObjectHideFlags: 0
@@ -14564,9 +14564,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2463117268925423588}
+  - component: {fileID: 7304071278927828484}
   m_Layer: 0
   m_Name: PS_Orb
-  m_TagString: Untagged
+  m_TagString: Orb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14589,6 +14590,19 @@ Transform:
   m_Father: {fileID: 3156989990945088441}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7304071278927828484
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3893939863751585469}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.1303608, y: 2.833196, z: 5.7711487}
+  m_Center: {x: -0.14597498, y: 5.259173, z: -0.4710284}
 --- !u!1 &6707091169965721509
 GameObject:
   m_ObjectHideFlags: 0
