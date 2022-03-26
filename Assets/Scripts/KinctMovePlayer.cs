@@ -21,7 +21,7 @@ public class KinctMovePlayer : MonoBehaviour
     private int methodChoose = 1;
     //private Vector3 VectorInPlain  = new Vector3(0,0,2.92f);
     private Vector3 posPlayersum;
-    public CameraMovement cameraMovement;
+    public movimentVagon movimentVagon;
     //public float vecloctyPlayer;
     float range = 20f;
 
@@ -79,14 +79,14 @@ public class KinctMovePlayer : MonoBehaviour
         Body = GameObject.Find("Body_Person");
         //Body.gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
         vagon = GameObject.Find("vagon");
-        Body.gameObject.transform.SetParent(vagon.gameObject.transform);
+        //Body.gameObject.transform.SetParent(vagon.gameObject.transform);
         if (ini1)
         {
             Body.gameObject.transform.Rotate(0, 180, 0);
             Body.gameObject.transform.Translate(0, 0.6f, 0f);
             ini1 = false;
         }
-        vagon.gameObject.transform.position += new Vector3(cameraMovement.velocitycamera * Time.deltaTime, 0, 0);
+        //vagon.gameObject.transform.position += new Vector3(movimentVagon.velocitycamera * Time.deltaTime, 0, 0);
 
         cubeVisisble();
 
@@ -218,7 +218,7 @@ public class KinctMovePlayer : MonoBehaviour
 		if (GameObject.Find("Body_Person") != null)
 		{
 			Gizmos.color = Color.red;
-			Gizmos.DrawRay(initRay, HandToNeck*-1 * range);
+			Gizmos.DrawRay(initRay, HandToNeck * range);
 		}
 	}
 

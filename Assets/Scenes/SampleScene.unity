@@ -248,7 +248,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1564432168}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &89907458
 MonoBehaviour:
@@ -766,7 +766,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalDuration: 100
-  velocitycamera: 0
   cameraleft: {fileID: 89907452}
   sideright: {fileID: 418571135}
 --- !u!81 &209244626
@@ -832,7 +831,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1564432168}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &209244630
 MonoBehaviour:
@@ -1015,7 +1014,7 @@ Transform:
   m_LocalScale: {x: 3, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1564432168}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &418571137
 BoxCollider:
@@ -1758,7 +1757,7 @@ MonoBehaviour:
   CameraRight: {fileID: 209244624}
   Hada: {fileID: 919132148641861618}
   KinectParent: {fileID: 1441788784}
-  cameraMovement: {fileID: 209244625}
+  movimentVagon: {fileID: 0}
   seeHand: {fileID: 2137993540}
   seeNeck: {fileID: 2063892106}
   seeElbow: {fileID: 567680393}
@@ -1775,6 +1774,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1564432168}
+  - component: {fileID: 1564432169}
   m_Layer: 0
   m_Name: vagon
   m_TagString: Untagged
@@ -1793,14 +1793,26 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2070500358}
   - {fileID: 89907456}
   - {fileID: 209244628}
   - {fileID: 1674152766}
   - {fileID: 418571136}
   m_Father: {fileID: 1746967039}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1564432169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564432167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9455ad2f5ebb7244a4794b52484cca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocitycamera: 0
 --- !u!1001 &1612121172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1912,7 +1924,7 @@ Transform:
   m_LocalScale: {x: 3, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1564432168}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1674152767
 BoxCollider:
@@ -2052,6 +2064,7 @@ Transform:
   - {fileID: 1441788785}
   - {fileID: 640792828}
   - {fileID: 1173789412}
+  - {fileID: 2070500358}
   - {fileID: 1564432168}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -2377,8 +2390,8 @@ Transform:
   - {fileID: 2063892107}
   - {fileID: 567680394}
   - {fileID: 1680845487}
-  m_Father: {fileID: 1564432168}
-  m_RootOrder: 0
+  m_Father: {fileID: 1746967039}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2102925252 stripped
 Transform:
