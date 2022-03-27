@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 4247511070647084502}
   m_Layer: 7
   m_Name: FloorFrog
-  m_TagString: Floor
+  m_TagString: FloorFrog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

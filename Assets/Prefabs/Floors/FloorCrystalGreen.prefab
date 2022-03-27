@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 3181018772076024289}
   m_Layer: 7
   m_Name: FloorCrystalGreen
-  m_TagString: Floor
+  m_TagString: FloorCrystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

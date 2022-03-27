@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 393699459726882795}
   m_Layer: 7
   m_Name: FloorFlower
-  m_TagString: Floor
+  m_TagString: FloorFlower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

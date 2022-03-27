@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 3450778819287203262}
   m_Layer: 7
   m_Name: FloorChest
-  m_TagString: Floor
+  m_TagString: FloorChest
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
