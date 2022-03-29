@@ -22,8 +22,11 @@ public class Events : MonoBehaviour
 
     public Vector3 scale;
     public GameObject firefliesModule;
+    public GameObject butterfly;
     private ParticleSystem fireflies = null;
-   
+    private bool isFlower = false;
+    private GameObject flower;
+    //GameObject butterflyInstance;
     void Update()
     {
         if (fireflies!=null)
@@ -31,41 +34,39 @@ public class Events : MonoBehaviour
             fireflies.transform.position = Vector3.Lerp(fireflies.transform.position, this.transform.position, 0.05f);
             Object.Destroy(fireflies.gameObject, 5.0f);
         }
-
+        if(flower != null)
+        {
+            flower.transform.position = Vector3.Lerp(flower.transform.position, this.transform.position, 0.05f);
+        }
+       
     }
     public void OnTriggerEnter(Collider other)
     {
 
         //Chest event
-        if (other.gameObject.CompareTag("FloorChest"))
+        if (other.gameObject.CompareTag("Chest"))
         {
-            Transform trans = other.transform;
-            Transform child = trans.Find("Chest");
-            ParticleSystem fireflies = other.gameObject.GetComponentInChildren<ParticleSystem>();
+           ParticleSystem fireflies = other.transform.parent.GetComponentInChildren<ParticleSystem>();
 
-            Transform child2 = child.transform.Find("Base");
-            ParticleSystem light = child2.gameObject.GetComponentInChildren<ParticleSystem>();
-            if (child != null)
+            Transform child = other.transform.Find("Base");
+            ParticleSystem light = child.gameObject.GetComponentInChildren<ParticleSystem>();
+            if (other != null)
             {
-                Animator anim = child.GetComponent<Animator>();
+                Animator anim = other.GetComponent<Animator>();
                 if (anim != null)
                     anim.Play("Animated PBR Chest _Opening_UnCommon");
                 if (fireflies != null)
                     fireflies.Play();
                 if (light != null)
-                {
-                    StartCoroutine(DelayedAnimation(light, 0.9f));
-                }
-                    
+                    StartCoroutine(DelayedAnimation(light, 0.8f));
             }
         }
         //Fountain event
-        if (other.gameObject.CompareTag("FloorFountain"))
+        if (other.gameObject.CompareTag("fountain"))
         {
-            Transform trans = other.transform;
-            Transform child = trans.Find("Fountain");
-            ParticleSystem[] water = other.gameObject.GetComponentsInChildren<ParticleSystem>();
-            if (child != null)
+            
+            ParticleSystem[] water = other.transform.parent.GetComponentsInChildren<ParticleSystem>();
+            if (water != null)
             {
                 for (int i = 0; i < water.Length; i++)
                 {
@@ -84,13 +85,12 @@ public class Events : MonoBehaviour
         ParticleSystem[] Trail = TrailLight.gameObject.GetComponentsInChildren<ParticleSystem>();
         VisualEffect[] Effects = TrailLight.gameObject.GetComponentsInChildren<VisualEffect>();
 
-        if (other.gameObject.CompareTag("FloorCrystal"))
+        if (other.gameObject.CompareTag("WhiteCrystal"))
         {
-            Transform trans = other.transform;
-            Transform child = trans.Find("Cristal");
-
-            if (child != null)
+            if (other != null)
             {
+                Debug.Log("entra");
+
                 if (mesh != null)
                     mesh.gameObject.GetComponent<Renderer>().material = material;
                 if (wingLeft != null)
@@ -106,25 +106,20 @@ public class Events : MonoBehaviour
                         if (i == 0) {
                             Effects[i].Play();
                             Trail[i].Play();
-
                         }
                         else
                         {
                             Trail[i].Stop();
                             Effects[i].Stop();
-
                         }
                     }
                 }
                 
             }
         }
-        if (other.gameObject.CompareTag("FloorCrystalPink"))
+        if (other.gameObject.CompareTag("PinkCrystal"))
         {
-            Transform trans = other.transform;
-            Transform child = trans.Find("Cristal");
-
-            if (child != null)
+            if (other != null)
             {
                 if (mesh != null)
                     mesh.gameObject.GetComponent<Renderer>().material = materialPink;
@@ -142,12 +137,10 @@ public class Events : MonoBehaviour
                         {
                             Effects[i].Play();
                             Trail[i].Play();
-
                         }
                         else { 
                             Trail[i].Stop();
                             Effects[i].Stop();
-
                         }
                     }
                 }
@@ -155,12 +148,9 @@ public class Events : MonoBehaviour
 
             }
         }
-        if (other.gameObject.CompareTag("FloorCrystalGreen"))
+        if (other.gameObject.CompareTag("GreenCrystal"))
         {
-            Transform trans = other.transform;
-            Transform child = trans.Find("Cristal");
-
-            if (child != null)
+            if (other != null)
             {
                 if (mesh != null)
                     mesh.gameObject.GetComponent<Renderer>().material = materialGreen;
@@ -178,26 +168,21 @@ public class Events : MonoBehaviour
                         {
                             Effects[i].Play();
                             Trail[i].Play();
-
                         }
                         else
                         {
                             Trail[i].Stop();
                             Effects[i].Stop();
-
                         }
                     }
                 }
 
             }
         }
-        if (other.gameObject.CompareTag("FloorCrystalBlue"))
+        if (other.gameObject.CompareTag("BlueCrystal"))
         {
-            Transform trans = other.transform;
-            Transform child = trans.Find("Cristal");
-
-            if (child != null)
-            {
+           if (other != null)
+           {
                 if (mesh != null)
                     mesh.gameObject.GetComponent<Renderer>().material = materialBlue;
                 if (wingLeft != null)
@@ -214,13 +199,11 @@ public class Events : MonoBehaviour
                         {
                             Effects[i].Play();
                             Trail[i].Play();
-
                         }
                         else
                         {
                             Trail[i].Stop();
                             Effects[i].Stop();
-
                         }
                     }
                 }
@@ -228,16 +211,14 @@ public class Events : MonoBehaviour
         }
 
         //Mushroom event
-        if (other.gameObject.CompareTag("FloorMushroom"))
+        if (other.gameObject.CompareTag("Mushroom"))
         {
-            Transform trans = other.transform;
-            Transform child = trans.Find("Bolets");
-            Transform child1 = child.Find("mushroom_1");
-            Transform child2 = child.Find("mushroom_2");
+            Transform child1 = other.transform.transform.Find("mushroom_1");
+            Transform child2 = other.transform.Find("mushroom_2");
 
-            if (child2 != null)
+            if (child1 != null)
             {
-                child.gameObject.transform.localScale = new Vector3(scale.x *Time.deltaTime , scale.y *Time.deltaTime , scale.z *Time.deltaTime );
+                other.gameObject.transform.localScale = new Vector3(scale.x *Time.deltaTime , scale.y *Time.deltaTime , scale.z *Time.deltaTime );
                 //Animator anim = child.GetComponent<Animator>();
                 //if (anim != null)
                 //    anim.Play("Animated PBR Chest _Opening_UnCommon");
@@ -250,23 +231,48 @@ public class Events : MonoBehaviour
         }
 
         //Fountain effects event
-        if (other.gameObject.CompareTag("Fountain"))
+        if (other.gameObject.CompareTag("FountainEffect"))
         {
-            ParticleSystem[] water = other.gameObject.GetComponentsInChildren<ParticleSystem>();
-            for (int i = 0; i < water.Length; i++)
-            {
-                water[i].Play();
-            }
-            
+            ParticleSystem water = other.gameObject.GetComponentInChildren<ParticleSystem>();
+            water.Play();
         }
-        
+
+        //Butterfly event
+        if (other.gameObject.CompareTag("Orb"))
+        {
+            if (isFlower)
+            {
+                ParticleSystem[] orbs = other.gameObject.GetComponentsInChildren<ParticleSystem>();
+                for (int i = 0; i < orbs.Length; i++)
+                {
+                    orbs[i].transform.localScale = new Vector3(2, 2, 2);
+                }
+
+                GameObject butterflyInstance = other.transform.parent.Find("Butterfly").gameObject;
+                butterflyInstance.SetActive(true);
+                butterflyInstance.GetComponent<Animation>().Play();
+
+                Destroy(flower);
+                isFlower = false;
+            }
+        }
     }
     void OnTriggerExit(Collider other)
     {
         //Fireflies event
-        if (other.gameObject.CompareTag("FloorFireflies"))
+        if (other.gameObject.CompareTag("Fireflies"))
         {
-            fireflies = other.gameObject.GetComponentInChildren<ParticleSystem>();
+            fireflies = other.transform.parent.GetComponentInChildren<ParticleSystem>();
+        }
+        //Flower event
+        if (other.gameObject.CompareTag("Flower"))
+        {
+            if (!isFlower)
+            {
+                isFlower = true;
+                flower = other.gameObject;
+            }
+
         }
     }
 

@@ -5,21 +5,22 @@ TagManager:
   serializedVersion: 2
   tags:
   - Floor
-  - FloorFountain
-  - FloorChest
-  - FloorCrystal
-  - FloorMushroom
-  - FloorFireflies
-  - FloorBubbles
-  - Bubbles
-  - FloorCrystalPink
-  - FloorCrystalBlue
-  - FloorCrystalGreen
   - FloorLake
   - FirstDepth
-  - Fountain
-  - FloorCamping
   - PointRay
+  - Chest
+  - fountain
+  - Bubbles
+  - WhiteCrystal
+  - PinkCrystal
+  - BlueCrystal
+  - GreenCrystal
+  - Mushroom
+  - FountainEffect
+  - Flower
+  - Butterfly
+  - Fireflies
+  - Orb
   layers:
   - Default
   - TransparentFX
@@ -29,7 +30,7 @@ TagManager:
   - UI
   - Player
   - Floor
-  - 
+  - Interactive
   - 
   - 
   - 
