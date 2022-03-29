@@ -248,7 +248,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1564432168}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &89907458
 MonoBehaviour:
@@ -801,7 +801,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 70
+  field of view: 46
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -831,7 +831,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1564432168}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &209244630
 MonoBehaviour:
@@ -1014,7 +1014,7 @@ Transform:
   m_LocalScale: {x: 3, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1564432168}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &418571137
 BoxCollider:
@@ -1388,7 +1388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ec5611abddeee4b8ce80ee3c324d17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numElements: 100
+  numElements: 20
   depth: 2
   modules:
   - {fileID: 6728470966592981319, guid: 5bc2eefcee08a0540b825de58712002c, type: 3}
@@ -1724,7 +1724,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1441788785
 Transform:
   m_ObjectHideFlags: 0
@@ -1792,12 +1792,13 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2070500358}
   - {fileID: 89907456}
   - {fileID: 209244628}
   - {fileID: 1674152766}
   - {fileID: 418571136}
   m_Father: {fileID: 1746967039}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1564432169
 MonoBehaviour:
@@ -1923,7 +1924,7 @@ Transform:
   m_LocalScale: {x: 3, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1564432168}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1674152767
 BoxCollider:
@@ -2063,7 +2064,6 @@ Transform:
   - {fileID: 1441788785}
   - {fileID: 640792828}
   - {fileID: 1173789412}
-  - {fileID: 2070500358}
   - {fileID: 1564432168}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -2389,8 +2389,8 @@ Transform:
   - {fileID: 2063892107}
   - {fileID: 567680394}
   - {fileID: 1680845487}
-  m_Father: {fileID: 1746967039}
-  m_RootOrder: 3
+  m_Father: {fileID: 1564432168}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2102925252 stripped
 Transform:
