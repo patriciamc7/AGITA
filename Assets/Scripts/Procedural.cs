@@ -9,9 +9,6 @@ public class Procedural : MonoBehaviour
     public bool isLeft = false;
     private Quaternion rot = Quaternion.identity;
     private GameObject floor;
-    //private Camera LeftCamera;
-    //private Camera RightCamera;
-    //private float widthThresold = 3f;
     void Awake()
     {
         if (isRot)
@@ -22,13 +19,4 @@ public class Procedural : MonoBehaviour
         floor.transform.SetParent(this.transform);
 
     }
-    
-    //void Update()
-    //{
-    //    Vector2 screenPositionL = LeftCamera.WorldToScreenPoint(transform.position);
-    //    Vector2 screenPositionR = RightCamera.WorldToScreenPoint(transform.position);
-    //    if (screenPositionL.x < widthThresold && screenPositionR.x < widthThresold)
-    //        Destroy(floor);
-    //}
-
 }
