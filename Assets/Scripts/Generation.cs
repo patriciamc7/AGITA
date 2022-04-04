@@ -37,7 +37,7 @@ public class Generation : MonoBehaviour
             noRepetition();
     }
 
-    public void overwriteFloor(Transform depth, Transform side, Transform SecondDepth = null)
+    public void overwriteFloor(Transform depth, Transform side, Transform SecondDepth)
     {
         string tag = depth.GetChild(0).tag;
         Vector3 position = depth.transform.position;
@@ -52,23 +52,20 @@ public class Generation : MonoBehaviour
         }
 
         GameObject noRepetitionModule = Instantiate(FirstDepthtWithoutLake, position, Quaternion.identity);
-        
-        //Debug.Log(tag);
-        //Debug.Log(noRepetitionModule.transform.GetChildCount());
 
-        //&& noRepetitionModule.transform.GetChild(0).CompareTag(SecondDepth.gameObject.tag)
-        //   && !noRepetitionModule.transform.GetChild(0).CompareTag("Floor"))
-
-        //while (noRepetitionModule.transform.GetChild(0).CompareTag(tag))
-        //{
-        //    noRepetitionModule = Instantiate(FirstDepthtWithoutLake, position, Quaternion.identity);
-        //    Debug.Log(noRepetitionModule.tag);
-        //}
+        while (!noRepetitionModule.transform.GetChild(0).CompareTag("Floor")
+        && (noRepetitionModule.transform.GetChild(0).CompareTag(tag)
+        || noRepetitionModule.transform.GetChild(0).CompareTag(SecondDepth.GetChild(0).tag)))
+        {
+            Destroy(noRepetitionModule);
+            noRepetitionModule = Instantiate(FirstDepthtWithoutLake, position, Quaternion.identity);
+           
+        }
         noRepetitionModule.transform.rotation = rotation;
         noRepetitionModule.name = "NoRepetition";
         noRepetitionModule.transform.SetParent(side.transform);
     }
-    public int LakeGeneration(Transform depthTransform, Transform side, int i)
+    public int LakeGeneration(Transform side, int i)
     {
         int count0 = 0;
         int count1 = 1;
@@ -102,12 +99,11 @@ public class Generation : MonoBehaviour
             i += depth * 3;
             if (side.transform.GetChild(i).transform.GetChild(0).CompareTag("FloorLake"))
             {
-                overwriteFloor(depthTransform, side);
-                Debug.Log(i);
+                overwriteFloor(side.transform.GetChild(i), side, side.transform.GetChild(i+depth));
             }
         }
         else
-            overwriteFloor(depthTransform, side);
+            overwriteFloor(side.transform.GetChild(i), side, side.transform.GetChild(i + depth));
 
         
         return i;
@@ -125,7 +121,7 @@ public class Generation : MonoBehaviour
                 Transform childDepth = sideChild.transform.GetChild(i);
                 GameObject childModule = childDepth.transform.GetChild(0).gameObject;
                 if (childModule.CompareTag("FloorLake"))
-                    i = LakeGeneration(childDepth, sideChild, i);
+                    i = LakeGeneration(sideChild, i);
                 else if (i + depth < sideNumChild
                     && childDepth.CompareTag("FirstDepth")
                     && !childModule.CompareTag("Floor")

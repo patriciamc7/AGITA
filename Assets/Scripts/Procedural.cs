@@ -12,7 +12,7 @@ public class Procedural : MonoBehaviour
     //private Camera LeftCamera;
     //private Camera RightCamera;
     //private float widthThresold = 3f;
-    void Start()
+    void Awake()
     {
         if (isRot)
             rot = Quaternion.Euler(Vector3.up * (Random.Range(0, 4) * 90));
