@@ -1398,7 +1398,7 @@ MonoBehaviour:
   LakeModule: {fileID: 1753630153897805038, guid: 4e4af612012ed7a44a4ab62c42205d22, type: 3}
   FirstDepthtWithoutLake: {fileID: 6589001618013531843, guid: 6db2604bf1bfdf14187a2f72ca47a2a0, type: 3}
   Camera: {fileID: 209244624}
-  range: 0
+  range: 5
 --- !u!4 &996421865
 Transform:
   m_ObjectHideFlags: 0
