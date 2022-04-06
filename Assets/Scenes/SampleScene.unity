@@ -2853,6 +2853,18 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2175222234306257014, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 8052babacfd5b9940837155fdb2b142a, type: 3}
+    - target: {fileID: 2175222234306257014, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2175222234306257014, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9a9926661a40110488128b4d27d49643, type: 2}
     - target: {fileID: 2175222234306257015, guid: a1456847d1cd2d74f89d69e8ae3e5fe7, type: 3}
       propertyPath: material
       value: 
