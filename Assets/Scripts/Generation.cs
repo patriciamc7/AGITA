@@ -7,7 +7,8 @@ public class Generation : MonoBehaviour
     public GameObject[] modules;
     public GameObject LakeModule;
     public GameObject FirstDepthtWithoutLake;
-    private bool oneTime = false;
+    public GameObject Camera;
+    public float range;
 
     void Start()
     {
@@ -30,14 +31,15 @@ public class Generation : MonoBehaviour
 
             }
         }
+        NoRepetition();
+
     }
     void Update()
     {
-        if (!oneTime)
-            noRepetition();
+        DestroyOutFrame();
     }
 
-    public void overwriteFloor(Transform depth, Transform side, Transform SecondDepth = null)
+    public void OverwriteFloor(Transform depth, Transform side, Transform SecondDepth)
     {
         string tag = depth.GetChild(0).tag;
         Vector3 position = depth.transform.position;
@@ -52,23 +54,20 @@ public class Generation : MonoBehaviour
         }
 
         GameObject noRepetitionModule = Instantiate(FirstDepthtWithoutLake, position, Quaternion.identity);
-        
-        //Debug.Log(tag);
-        //Debug.Log(noRepetitionModule.transform.GetChildCount());
 
-        //&& noRepetitionModule.transform.GetChild(0).CompareTag(SecondDepth.gameObject.tag)
-        //   && !noRepetitionModule.transform.GetChild(0).CompareTag("Floor"))
-
-        //while (noRepetitionModule.transform.GetChild(0).CompareTag(tag))
-        //{
-        //    noRepetitionModule = Instantiate(FirstDepthtWithoutLake, position, Quaternion.identity);
-        //    Debug.Log(noRepetitionModule.tag);
-        //}
+        while (!noRepetitionModule.transform.GetChild(0).CompareTag("Floor")
+        && (noRepetitionModule.transform.GetChild(0).CompareTag(tag)
+        || noRepetitionModule.transform.GetChild(0).CompareTag(SecondDepth.GetChild(0).tag)))
+        {
+            Destroy(noRepetitionModule);
+            noRepetitionModule = Instantiate(FirstDepthtWithoutLake, position, Quaternion.identity);
+           
+        }
         noRepetitionModule.transform.rotation = rotation;
         noRepetitionModule.name = "NoRepetition";
         noRepetitionModule.transform.SetParent(side.transform);
     }
-    public int LakeGeneration(Transform depthTransform, Transform side, int i)
+    public int LakeGeneration(Transform side, int i)
     {
         int count0 = 0;
         int count1 = 1;
@@ -94,25 +93,28 @@ public class Generation : MonoBehaviour
                     GameObject Lake = Instantiate(LakeModule, position, rotation);
                     Lake.transform.SetParent(childDepths1.transform);
                 }
+                else
+                    Destroy(childDepths1);
+                
                 Destroy(childFloor0);
                 Destroy(childFloor1);
+                Destroy(childDepths0);
                 count0 += depth;
                 count1 += depth;
             }
             i += depth * 3;
             if (side.transform.GetChild(i).transform.GetChild(0).CompareTag("FloorLake"))
             {
-                overwriteFloor(depthTransform, side);
-                Debug.Log(i);
+                OverwriteFloor(side.transform.GetChild(i), side, side.transform.GetChild(i+depth));
             }
         }
         else
-            overwriteFloor(depthTransform, side);
+            OverwriteFloor(side.transform.GetChild(i), side, side.transform.GetChild(i + depth));
 
         
         return i;
     }
-    public void noRepetition()
+    public void NoRepetition()
     {
         int numChilds = this.transform.GetChildCount();
         for (int l = 0; l < numChilds; l++)
@@ -125,20 +127,35 @@ public class Generation : MonoBehaviour
                 Transform childDepth = sideChild.transform.GetChild(i);
                 GameObject childModule = childDepth.transform.GetChild(0).gameObject;
                 if (childModule.CompareTag("FloorLake"))
-                    i = LakeGeneration(childDepth, sideChild, i);
+                    i = LakeGeneration(sideChild, i);
                 else if (i + depth < sideNumChild
                     && childDepth.CompareTag("FirstDepth")
                     && !childModule.CompareTag("Floor")
                     && childModule.tag.Equals(sideChild.transform.GetChild(i + depth).GetChild(0).tag))
                 {
-                    overwriteFloor(sideChild.transform.GetChild(i + depth), sideChild, sideChild.transform.GetChild(i + 2 * depth));
+                    OverwriteFloor(sideChild.transform.GetChild(i + depth), sideChild, sideChild.transform.GetChild(i + 2 * depth));
 
                 }
             }
 
         }
-        oneTime = true;
     }
+    public void DestroyOutFrame()
+    {
+        int numChilds = this.transform.GetChildCount();
+        for (int l = 0; l < numChilds; l++)
+        {
+            Transform sideChild = this.transform.GetChild(l);
+            int sideNumChild = sideChild.transform.GetChildCount();
 
+            for (int i = 0; i < sideNumChild; i++)
+            {
+                GameObject childDepth = sideChild.transform.GetChild(i).gameObject;
+                if (Camera.transform.position.x - range > childDepth.transform.position.x)
+                    Destroy(childDepth);
+            }
+
+        }
+    }
 }
 

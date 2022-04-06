@@ -21,6 +21,15 @@ TagManager:
   - Butterfly
   - Fireflies
   - Orb
+  - FloorFountain
+  - FloorFireflies
+  - FloorChest
+  - FloorCrystal
+  - FloorMushroom
+  - FloorFrog
+  - FloorFlower
+  - FloorButterfly
+  - FloorCamping
   layers:
   - Default
   - TransparentFX

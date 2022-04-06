@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 2479039783016097072}
   m_Layer: 7
   m_Name: FloorCampFire
-  m_TagString: Floor
+  m_TagString: FloorCamping
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
