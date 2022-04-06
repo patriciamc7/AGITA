@@ -52,11 +52,15 @@ public class Events : MonoBehaviour
             ParticleSystem light = child.gameObject.GetComponentInChildren<ParticleSystem>();
             if (other != null)
             {
+                other.GetComponent<AudioSource>().Play();
                 Animator anim = other.GetComponent<Animator>();
                 if (anim != null)
                     anim.Play("Animated PBR Chest _Opening_UnCommon");
                 if (fireflies != null)
+                {
+                    fireflies.GetComponent<AudioSource>().Play();
                     fireflies.Play();
+                }
                 if (light != null)
                     StartCoroutine(DelayedAnimation(light, 0.8f));
             }
@@ -64,7 +68,6 @@ public class Events : MonoBehaviour
         //Fountain event
         if (other.gameObject.CompareTag("fountain"))
         {
-            
             ParticleSystem[] water = other.transform.parent.GetComponentsInChildren<ParticleSystem>();
             if (water != null)
             {
@@ -72,7 +75,7 @@ public class Events : MonoBehaviour
                 {
                     water[i].Play();
                 }
-
+                other.GetComponent<AudioSource>().Play();
             }
         }
 
@@ -89,8 +92,7 @@ public class Events : MonoBehaviour
         {
             if (other != null)
             {
-                Debug.Log("entra");
-
+                other.gameObject.GetComponent<AudioSource>().Play();
                 if (mesh != null)
                     mesh.gameObject.GetComponent<Renderer>().material = material;
                 if (wingLeft != null)
@@ -121,6 +123,7 @@ public class Events : MonoBehaviour
         {
             if (other != null)
             {
+                other.gameObject.GetComponent<AudioSource>().Play();
                 if (mesh != null)
                     mesh.gameObject.GetComponent<Renderer>().material = materialPink;
                 if (wingLeft != null)
@@ -152,6 +155,7 @@ public class Events : MonoBehaviour
         {
             if (other != null)
             {
+                other.gameObject.GetComponent<AudioSource>().Play();
                 if (mesh != null)
                     mesh.gameObject.GetComponent<Renderer>().material = materialGreen;
                 if (wingLeft != null)
@@ -183,6 +187,7 @@ public class Events : MonoBehaviour
         {
            if (other != null)
            {
+                other.gameObject.GetComponent<AudioSource>().Play();
                 if (mesh != null)
                     mesh.gameObject.GetComponent<Renderer>().material = materialBlue;
                 if (wingLeft != null)
@@ -235,6 +240,7 @@ public class Events : MonoBehaviour
         {
             ParticleSystem water = other.gameObject.GetComponentInChildren<ParticleSystem>();
             water.Play();
+            other.GetComponent<AudioSource>().Play();
         }
 
         //Butterfly event
@@ -242,6 +248,7 @@ public class Events : MonoBehaviour
         {
             if (isFlower)
             {
+                other.GetComponent<AudioSource>().Play();
                 ParticleSystem[] orbs = other.gameObject.GetComponentsInChildren<ParticleSystem>();
                 for (int i = 0; i < orbs.Length; i++)
                 {
