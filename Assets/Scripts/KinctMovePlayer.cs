@@ -8,6 +8,7 @@ public class KinctMovePlayer : MonoBehaviour
     //public float USER_DESP_X = ; 
     //public float USER_DESP_Y;
     //public GameObject coll;
+    public bool Bolexit = false;
     public GameObject Hada;
     public GameObject KinectParent;
     private GameObject Body;
@@ -105,10 +106,10 @@ public class KinctMovePlayer : MonoBehaviour
         //seeHand.gameObject.transform.position = new Vector3((-1.0f * rightHand.gameObject.transform.position.z) + vagon.gameObject.transform.position.x, rightHand.gameObject.transform.position.y + 1.0f, rightHand.gameObject.transform.position.x);
         //seeElbow.gameObject.transform.position = new Vector3((-1.0f * elbowRight.gameObject.transform.position.z) + vagon.gameObject.transform.position.x, elbowRight.gameObject.transform.position.y + 1.0f, elbowRight.gameObject.transform.position.x);
         //seeSholder.gameObject.transform.position = new Vector3((-1.0f * sholderRight.gameObject.transform.position.z) + vagon.gameObject.transform.position.x, sholderRight.gameObject.transform.position.y + 1.0f, sholderRight.gameObject.transform.position.x);
-        seeNeck.gameObject.transform.position = new Vector3((-1.0f * neck.gameObject.transform.position.z) + 1.5f + vagon.gameObject.transform.position.x, neck.gameObject.transform.position.y + 1.0f, neck.gameObject.transform.position.x * -1.0f);
-        seeHand.gameObject.transform.position = new Vector3((-1.0f * rightHand.gameObject.transform.position.z) + 1.5f + vagon.gameObject.transform.position.x, rightHand.gameObject.transform.position.y + 1.0f, rightHand.gameObject.transform.position.x * -1.0f);
-        seeElbow.gameObject.transform.position = new Vector3((-1.0f * elbowRight.gameObject.transform.position.z) + 1.5f + vagon.gameObject.transform.position.x, elbowRight.gameObject.transform.position.y + 1.0f, elbowRight.gameObject.transform.position.x * -1.0f);
-        seeSholder.gameObject.transform.position = new Vector3((-1.0f * sholderRight.gameObject.transform.position.z) + 1.5f + vagon.gameObject.transform.position.x, sholderRight.gameObject.transform.position.y + 1.0f, sholderRight.gameObject.transform.position.x * -1.0f);
+        seeNeck.gameObject.transform.position = new Vector3((-1.0f * neck.gameObject.transform.position.z) + 0.8f + vagon.gameObject.transform.position.x, neck.gameObject.transform.position.y + 1.0f, neck.gameObject.transform.position.x * -1.0f);
+        seeHand.gameObject.transform.position = new Vector3((-1.0f * rightHand.gameObject.transform.position.z) + 0.8f + vagon.gameObject.transform.position.x, rightHand.gameObject.transform.position.y + 1.0f, rightHand.gameObject.transform.position.x * -1.0f);
+        seeElbow.gameObject.transform.position = new Vector3((-1.0f * elbowRight.gameObject.transform.position.z) + 0.8f + vagon.gameObject.transform.position.x, elbowRight.gameObject.transform.position.y + 1.0f, elbowRight.gameObject.transform.position.x * -1.0f);
+        seeSholder.gameObject.transform.position = new Vector3((-1.0f * sholderRight.gameObject.transform.position.z) + 0.8f + vagon.gameObject.transform.position.x, sholderRight.gameObject.transform.position.y + 1.0f, sholderRight.gameObject.transform.position.x * -1.0f);
 
         // traslladem a on esta el coll tots respectivament
         //pvisible.gameObject.transform.Translate(seeNeck.gameObject.transform.position); 
@@ -208,7 +209,7 @@ public class KinctMovePlayer : MonoBehaviour
         cubePoint.gameObject.transform.position = aux; 
         //revotar saltaria poner centro del collider 
 
-        if (ScriptRebotar.Bolexit )
+        if (Bolexit )
         {
             pointtSideWall = seeSholder.gameObject.transform.position+ new Vector3(1, 0,0); 
         }
@@ -257,9 +258,9 @@ public class KinctMovePlayer : MonoBehaviour
         Vector3 dir = pointtSideWall - Hada.gameObject.transform.position;
 
         if (dir.x < 0)
-            Hada.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);     
+            Hada.gameObject.transform.rotation = Quaternion.Euler(0, 270, 0);     
         else
-            Hada.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+            Hada.gameObject.transform.rotation = Quaternion.Euler(0, 90, 0);
 
     }
 }

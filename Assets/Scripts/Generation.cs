@@ -150,9 +150,12 @@ public class Generation : MonoBehaviour
 
             for (int i = 0; i < sideNumChild; i++)
             {
-                GameObject childDepth = sideChild.transform.GetChild(i).gameObject;
-                if (Camera.transform.position.x - range > childDepth.transform.position.x)
-                    Destroy(childDepth);
+                //GameObject childDepth = sideChild.transform.GetChild(i).gameObject;
+                //if (Camera.transform.position.x - range > childDepth.transform.position.x || Camera.transform.position.x + range < childDepth.transform.position.x)
+                //    childDepth.SetActive(false);
+                //else
+                //    childDepth.SetActive(true);
+
             }
 
         }
