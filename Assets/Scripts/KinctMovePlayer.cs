@@ -42,7 +42,9 @@ public class KinctMovePlayer : MonoBehaviour
     private Vector3 pointtSideWall;
 
     public NotExitCollider ScriptRebotar;
-    public GameObject cubePoint; 
+    public GameObject cubePoint;
+
+    public float speedPlayer; 
     // Update is called once per frame
     void Update()
     {
@@ -239,7 +241,8 @@ public class KinctMovePlayer : MonoBehaviour
 
             Vector3 velocity_Hand = Delta_pos ;
             //Debug.Log(velocity_Hand); 
-            float modulo = Mathf.Sqrt(Mathf.Pow(velocity_Hand.x, 2) + Mathf.Pow(velocity_Hand.y, 2) + Mathf.Pow(velocity_Hand.z, 2)); 
+            float modulo = Mathf.Sqrt(Mathf.Pow(velocity_Hand.x, 2) + Mathf.Pow(velocity_Hand.y, 2) + Mathf.Pow(velocity_Hand.z, 2));
+            speedPlayer = modulo; 
             //Debug.Log(modulo);
             if (modulo > 0.1)
             {
