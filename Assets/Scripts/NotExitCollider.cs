@@ -5,7 +5,7 @@ using UnityEngine;
 public class NotExitCollider : MonoBehaviour
 {
 	//public GameObject player;
-	public bool Bolexit = false;
+	public KinctMovePlayer kinctMovePlayer; 
 	public string collName;
 
 	private void OnTriggerExit(Collider other)
@@ -13,7 +13,7 @@ public class NotExitCollider : MonoBehaviour
 		
 		if (other.gameObject.name == "Cube")
 		{
-			Bolexit = true;
+			kinctMovePlayer.Bolexit = true;
 			collName = name;
 		}
 
@@ -21,6 +21,6 @@ public class NotExitCollider : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		Bolexit = false;
+		kinctMovePlayer.Bolexit = false;
 	}
 }
