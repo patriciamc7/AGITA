@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.48, g: 0.128, b: 0, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.12
+  m_FogDensity: 0.15
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.9245283, g: 0.20301226, b: 0.06541473, a: 1}
@@ -244,7 +244,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 89907452}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -0.8}
+  m_LocalPosition: {x: 0, y: 0.5, z: -0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1564432168}
@@ -827,7 +827,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209244624}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 1, z: 0.8}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1564432168}
@@ -951,7 +951,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1101575162326234131, guid: 9532c005e79232e4c91da3c1f26a4285, type: 3}
       propertyPath: CollisionModule.enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1101575162326234131, guid: 9532c005e79232e4c91da3c1f26a4285, type: 3}
       propertyPath: ShapeModule.radiusThickness
@@ -962,8 +962,12 @@ PrefabInstance:
       value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 1101575162326234131, guid: 9532c005e79232e4c91da3c1f26a4285, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1101575162326234131, guid: 9532c005e79232e4c91da3c1f26a4285, type: 3}
       propertyPath: CollisionModule.m_Bounce.scalar
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1101575162326234131, guid: 9532c005e79232e4c91da3c1f26a4285, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
@@ -971,15 +975,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1101575162326234131, guid: 9532c005e79232e4c91da3c1f26a4285, type: 3}
       propertyPath: LightsModule.intensityCurve.scalar
-      value: 0.5
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1101575162326234131, guid: 9532c005e79232e4c91da3c1f26a4285, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 1101575162326234131, guid: 9532c005e79232e4c91da3c1f26a4285, type: 3}
       propertyPath: CollisionModule.m_Planes.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1101575162326234131, guid: 9532c005e79232e4c91da3c1f26a4285, type: 3}
-      propertyPath: CollisionModule.m_EnergyLossOnCollision.scalar
+      propertyPath: SubModule.subEmitters.Array.data[0].type
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1101575162326234131, guid: 9532c005e79232e4c91da3c1f26a4285, type: 3}
+      propertyPath: CollisionModule.m_EnergyLossOnCollision.scalar
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9532c005e79232e4c91da3c1f26a4285, type: 3}
@@ -1389,10 +1401,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numElements: 100
-  depth: 4
+  depth: 5
   modules:
   - {fileID: 6728470966592981319, guid: 5bc2eefcee08a0540b825de58712002c, type: 3}
   - {fileID: 2909660344536995698, guid: 2020c381a4550164d9b9539357d857e1, type: 3}
+  - {fileID: 7892122783963832776, guid: c3c0319427ec83b41847efe0cbba23fb, type: 3}
   - {fileID: 7892122783963832776, guid: c3c0319427ec83b41847efe0cbba23fb, type: 3}
   - {fileID: 7892122783963832776, guid: c3c0319427ec83b41847efe0cbba23fb, type: 3}
   LakeModule: {fileID: 1753630153897805038, guid: 4e4af612012ed7a44a4ab62c42205d22, type: 3}
@@ -1929,7 +1942,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1441788785
 Transform:
   m_ObjectHideFlags: 0
