@@ -17,6 +17,5 @@ public class Procedural : MonoBehaviour
             rot = Quaternion.Euler(Vector3.up * 180);
         floor = Instantiate(objects[Random.Range(0, objects.Length)], transform.position, rot);
         floor.transform.SetParent(this.transform);
-
     }
 }
