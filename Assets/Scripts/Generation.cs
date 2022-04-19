@@ -15,7 +15,7 @@ public class Generation : MonoBehaviour
         GameObject left = this.transform.GetChild(0).gameObject;
         GameObject right = this.transform.GetChild(1).gameObject;
 
-        for (int i = 0; i < numElements; i++)
+        for (int i = -20; i < numElements; i++)
         {
             for (int j = 0; j < depth; j++)
             {
@@ -150,13 +150,13 @@ public class Generation : MonoBehaviour
 
             for (int i = 0; i < sideNumChild; i++)
             {
-                //GameObject childDepth = sideChild.transform.GetChild(i).gameObject;
-                //if (Camera.transform.position.x - range > childDepth.transform.position.x || Camera.transform.position.x + range < childDepth.transform.position.x)
-                //    childDepth.SetActive(false);
-                //else
-                //    childDepth.SetActive(true);
+				GameObject childDepth = sideChild.transform.GetChild(i).gameObject;
+				if (Camera.transform.position.x - range > childDepth.transform.position.x || Camera.transform.position.x + range < childDepth.transform.position.x)
+					childDepth.SetActive(false);
+				else
+					childDepth.SetActive(true);
 
-            }
+			}
 
         }
     }
