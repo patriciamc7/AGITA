@@ -2749,6 +2749,30 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2288805964407154955, guid: 8a462249d8df9c948933a57ade53ffce, type: 3}
   m_PrefabInstance: {fileID: 166011780}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1818557060 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2238600476807333073, guid: 7c8103ce538d5764fad9bc8453b9ca53, type: 3}
+  m_PrefabInstance: {fileID: 2049298693}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1818557063
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818557060}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa0cb55e55f8d2348bd79f2bb8a2f004, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1960849946 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7992617754862687769, guid: de21e13c12a06ee498fe87073afefe84, type: 3}
@@ -2892,6 +2916,10 @@ PrefabInstance:
     - target: {fileID: 2238600476807333078, guid: 7c8103ce538d5764fad9bc8453b9ca53, type: 3}
       propertyPath: m_Intensity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2238600476807333078, guid: 7c8103ce538d5764fad9bc8453b9ca53, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2238600476807333079, guid: 7c8103ce538d5764fad9bc8453b9ca53, type: 3}
       propertyPath: m_RootOrder

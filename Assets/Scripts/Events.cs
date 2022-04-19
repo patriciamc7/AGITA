@@ -27,7 +27,6 @@ public class Events : MonoBehaviour
     private ParticleSystem fireflies = null;
     private bool isFlower = false;
     private GameObject flower;
-    //GameObject butterflyInstance;
     void Update()
     {
         if (fireflies!=null)

@@ -30,6 +30,7 @@ TagManager:
   - FloorFlower
   - FloorButterfly
   - FloorCamping
+  - FloorGrow
   layers:
   - Default
   - TransparentFX
