@@ -106,10 +106,10 @@ public class KinctMovePlayer : MonoBehaviour
         //seeHand.gameObject.transform.position = new Vector3((-1.0f * rightHand.gameObject.transform.position.z) + vagon.gameObject.transform.position.x, rightHand.gameObject.transform.position.y + 1.0f, rightHand.gameObject.transform.position.x);
         //seeElbow.gameObject.transform.position = new Vector3((-1.0f * elbowRight.gameObject.transform.position.z) + vagon.gameObject.transform.position.x, elbowRight.gameObject.transform.position.y + 1.0f, elbowRight.gameObject.transform.position.x);
         //seeSholder.gameObject.transform.position = new Vector3((-1.0f * sholderRight.gameObject.transform.position.z) + vagon.gameObject.transform.position.x, sholderRight.gameObject.transform.position.y + 1.0f, sholderRight.gameObject.transform.position.x);
-        seeNeck.gameObject.transform.position = new Vector3((-1.0f * neck.gameObject.transform.position.z) + 0.8f + vagon.gameObject.transform.position.x, neck.gameObject.transform.position.y + 1.0f, neck.gameObject.transform.position.x * -1.0f);
-        seeHand.gameObject.transform.position = new Vector3((-1.0f * rightHand.gameObject.transform.position.z) + 0.8f + vagon.gameObject.transform.position.x, rightHand.gameObject.transform.position.y + 1.0f, rightHand.gameObject.transform.position.x * -1.0f);
-        seeElbow.gameObject.transform.position = new Vector3((-1.0f * elbowRight.gameObject.transform.position.z) + 0.8f + vagon.gameObject.transform.position.x, elbowRight.gameObject.transform.position.y + 1.0f, elbowRight.gameObject.transform.position.x * -1.0f);
-        seeSholder.gameObject.transform.position = new Vector3((-1.0f * sholderRight.gameObject.transform.position.z) + 0.8f + vagon.gameObject.transform.position.x, sholderRight.gameObject.transform.position.y + 1.0f, sholderRight.gameObject.transform.position.x * -1.0f);
+        seeNeck.gameObject.transform.position = new Vector3((-1.0f * neck.gameObject.transform.position.z) + 0.8f + vagon.gameObject.transform.position.x, neck.gameObject.transform.position.y + 0.5f, neck.gameObject.transform.position.x * -1.0f);
+        seeHand.gameObject.transform.position = new Vector3((-1.0f * rightHand.gameObject.transform.position.z) + 0.8f + vagon.gameObject.transform.position.x, rightHand.gameObject.transform.position.y + 0.5f, rightHand.gameObject.transform.position.x * -1.0f);
+        seeElbow.gameObject.transform.position = new Vector3((-1.0f * elbowRight.gameObject.transform.position.z) + 0.8f + vagon.gameObject.transform.position.x, elbowRight.gameObject.transform.position.y + 0.5f, elbowRight.gameObject.transform.position.x * -1.0f);
+        seeSholder.gameObject.transform.position = new Vector3((-1.0f * sholderRight.gameObject.transform.position.z) + 0.8f + vagon.gameObject.transform.position.x, sholderRight.gameObject.transform.position.y + 0.5f, sholderRight.gameObject.transform.position.x * -1.0f);
 
         // traslladem a on esta el coll tots respectivament
         //pvisible.gameObject.transform.Translate(seeNeck.gameObject.transform.position); 
@@ -196,6 +196,7 @@ public class KinctMovePlayer : MonoBehaviour
             aux.z = 2 * seeNeck.gameObject.transform.position.z + 1 ;
 
             hada_Collider.center = new Vector3(0, 0, -7);
+
         }
         else //lado  right
         {
@@ -204,6 +205,7 @@ public class KinctMovePlayer : MonoBehaviour
             aux.z = 2 * seeNeck.gameObject.transform.position.z - 1 ;
 
             hada_Collider.center = new Vector3(0, 0, 7);
+
         }
         pointtSideWall = aux;
         cubePoint.gameObject.transform.position = aux; 
@@ -211,7 +213,7 @@ public class KinctMovePlayer : MonoBehaviour
 
         if (Bolexit )
         {
-            pointtSideWall = seeSholder.gameObject.transform.position+ new Vector3(1, 0,0); 
+            pointtSideWall = seeSholder.gameObject.transform.position + new Vector3(1, 0, aux.z); 
         }
         
         posPlayersum.x = Vector3.Lerp(posPlayersum, pointtSideWall, 0.1f).x;
