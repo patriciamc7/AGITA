@@ -23,10 +23,10 @@ public class Events : MonoBehaviour
     public Vector3 scale;
     public GameObject firefliesModule;
     public GameObject butterfly;
+
     private ParticleSystem fireflies = null;
     private bool isFlower = false;
     private GameObject flower;
-    //GameObject butterflyInstance;
     void Update()
     {
         if (fireflies!=null)
@@ -65,6 +65,7 @@ public class Events : MonoBehaviour
                     StartCoroutine(DelayedAnimation(light, 0.8f));
             }
         }
+
         //Fountain event
         if (other.gameObject.CompareTag("fountain"))
         {
@@ -80,11 +81,11 @@ public class Events : MonoBehaviour
         }
 
         //Crystal event
-        Transform mesh = this.gameObject.transform.Find("mesh");
-        Transform wingLeft = this.gameObject.transform.Find("Bip001").Find("Bip001 Pelvis").Find("Bip001 Spine").Find("Bip001 Spine1").Find("wing_left");
-        Transform wingRight = this.gameObject.transform.Find("Bip001").Find("Bip001 Pelvis").Find("Bip001 Spine").Find("Bip001 Spine1").Find("wing_right");
-        Transform TrailLight = this.gameObject.transform.Find("TrailLight");
-        Transform TrailDark = TrailLight.gameObject.transform.Find("TrailDark");
+        Transform mesh = this.transform.Find("mesh");
+        Transform wingLeft = mesh.Find("wing_left");
+        Transform wingRight = mesh.Find("wing_left1");
+        Transform TrailLight = this.transform.Find("TrailLight");
+        Transform TrailDark = TrailLight.transform.Find("TrailDark");
         ParticleSystem[] Trail = TrailLight.gameObject.GetComponentsInChildren<ParticleSystem>();
         VisualEffect[] Effects = TrailLight.gameObject.GetComponentsInChildren<VisualEffect>();
 
