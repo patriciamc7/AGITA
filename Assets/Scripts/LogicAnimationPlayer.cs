@@ -16,5 +16,6 @@ public class LogicAnimationPlayer : MonoBehaviour
     void Update()
     {
         animator.SetFloat("SpeedPlayer", kinctMovePlayer.speedPlayer); 
+        animator.SetFloat("Time", Time.time);
     }
 }
