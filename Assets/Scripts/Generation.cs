@@ -19,8 +19,8 @@ public class Generation : MonoBehaviour
         {
             for (int j = 0; j < depth; j++)
             {
-                Vector3 rightPosition = new Vector3(2*i, 0, -1-2*j);
-                Vector3 leftPosition = new Vector3(2*i, 0, 1+2*j);
+                Vector3 rightPosition = new Vector3(2*i, 0, -1.5f-2*j);
+                Vector3 leftPosition = new Vector3(2*i, 0, 1.5f+2*j);
 
                 modules[j].GetComponent<Procedural>().isLeft = false;
                 GameObject rightDepth = Instantiate(modules[j], rightPosition, Quaternion.identity);

@@ -10,15 +10,16 @@ public class Events : MonoBehaviour
     public Material materialGreen;
     public Material materialBlue;
 
-    public Material trailLight;
-    public Material trailLightPink;
-    public Material trailLightGreen;
-    public Material trailLightBlue;
+    //public Material trailLight;
+    //public Material trailLightPink;
+    //public Material trailLightGreen;
+    //public Material trailLightBlue;
 
-    public Material trailDark;
-    public Material trailDarkPink;
-    public Material trailDarkGreen;
-    public Material trailDarkBlue;
+    //public Material trailDark;
+    //public Material trailDarkPink;
+    //public Material trailDarkGreen;
+    //public Material trailDarkBlue;
+
 
     public Vector3 scale;
     public GameObject firefliesModule;
@@ -46,6 +47,7 @@ public class Events : MonoBehaviour
         //Chest event
         if (other.gameObject.CompareTag("Chest"))
         {
+            Debug.Log("entra");
            ParticleSystem fireflies = other.transform.parent.GetComponentInChildren<ParticleSystem>();
 
             Transform child = other.transform.Find("Base");
@@ -102,8 +104,6 @@ public class Events : MonoBehaviour
                     wingRight.gameObject.GetComponent<Renderer>().material = material;
                 if (TrailLight != null)
                 {
-                    TrailLight.GetComponent<Renderer>().material = trailLight;
-                    TrailDark.GetComponent<Renderer>().material = trailDark;
                     for (int i = 0; i < Trail.Length; i++)
                     {
                         if (i == 0) {
@@ -133,8 +133,6 @@ public class Events : MonoBehaviour
                     wingRight.gameObject.GetComponent<Renderer>().material = materialPink;
                 if (TrailLight != null)
                 {
-                    TrailLight.GetComponent<Renderer>().material = trailLightPink;
-                    TrailDark.GetComponent<Renderer>().material = trailDarkPink;
                     for (int i = 0; i < Trail.Length; i++)
                     {
                         if (i == 1)
@@ -165,8 +163,8 @@ public class Events : MonoBehaviour
                     wingRight.gameObject.GetComponent<Renderer>().material = materialGreen;
                 if (TrailLight != null)
                 {
-                    TrailLight.GetComponent<Renderer>().material = trailLightGreen;
-                    TrailDark.GetComponent<Renderer>().material = trailDarkGreen;
+                    //TrailLight.GetComponent<Renderer>().material = trailLightGreen;
+                    //TrailDark.GetComponent<Renderer>().material = trailDarkGreen;
                     for (int i = 0; i < Trail.Length; i++)
                     {
                         if (i == 2)
@@ -197,8 +195,8 @@ public class Events : MonoBehaviour
                     wingRight.gameObject.GetComponent<Renderer>().material = materialBlue;
                 if (TrailLight != null)
                 {
-                    TrailLight.GetComponent<Renderer>().material = trailLightBlue;
-                    TrailDark.GetComponent<Renderer>().material = trailDarkBlue;
+                    //TrailLight.GetComponent<Renderer>().material = trailLightBlue;
+                    //TrailDark.GetComponent<Renderer>().material = trailDarkBlue;
                     for (int i = 0; i < Trail.Length; i++)
                     {
                         if (i == 3)
