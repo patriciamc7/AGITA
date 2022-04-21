@@ -47,8 +47,7 @@ public class Events : MonoBehaviour
         //Chest event
         if (other.gameObject.CompareTag("Chest"))
         {
-            Debug.Log("entra");
-           ParticleSystem fireflies = other.transform.parent.GetComponentInChildren<ParticleSystem>();
+            ParticleSystem fireflies = other.transform.parent.GetComponentInChildren<ParticleSystem>();
 
             Transform child = other.transform.Find("Base");
             ParticleSystem light = child.gameObject.GetComponentInChildren<ParticleSystem>();

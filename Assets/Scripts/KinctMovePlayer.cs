@@ -30,7 +30,7 @@ public class KinctMovePlayer : MonoBehaviour
     public GameObject seeSholder;
     public GameObject pvisible; 
     private Vector3 initRay;
-
+    private float velocity = 0;
 
     private bool init_value = true;
     private Vector3 Pos_i;
@@ -223,8 +223,17 @@ public class KinctMovePlayer : MonoBehaviour
 
             Vector3 velocity_Hand = Delta_pos ;
             float modulo = Mathf.Sqrt(Mathf.Pow(velocity_Hand.x, 2) + Mathf.Pow(velocity_Hand.y, 2) + Mathf.Pow(velocity_Hand.z, 2));
-            speedPlayer = modulo;
-            Pos_i = pointtSideWall;
+            //speedPlayer = modulo;
+            velocity = modulo - velocity; 
+            Debug.Log(velocity +" "+speedPlayer);
+
+            if (Mathf.Abs(velocity) > 1)
+                if(velocity >= 0)
+                    speedPlayer = 0; // rapida
+                else
+                    speedPlayer = 1; // lenta
+
+			Pos_i = pointtSideWall;
 
         }
     }
