@@ -5,26 +5,17 @@ using UnityEngine;
 public class BubbleBurst : MonoBehaviour
 {
     public ParticleSystem burst;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    public bool destroy = false;
+    public bool destroyed = false;
     void Update()
     {
-        
+        if (destroyed)
+            Destroy(this.gameObject);
     }
-
-    public void OnColissionEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-        {
-            ParticleSystem ps = this.GetComponent<ParticleSystem>();
-            ParticleSystem.SubEmittersModule var = ps.subEmitters;
-            
-            //burst.Play();
-        }
+            destroy = true;
     }
+
 }

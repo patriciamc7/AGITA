@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float horizontalvertical = Input.GetAxisRaw("Vertical");
 
-        transform.Translate(-horizontalInput   * Time.deltaTime, 0,0);
+        transform.Translate(0, 0, -horizontalInput * Time.deltaTime);
         transform.Translate(0, horizontalvertical  * Time.deltaTime, 0);
     }
 }

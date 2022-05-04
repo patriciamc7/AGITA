@@ -10,17 +10,6 @@ public class Events : MonoBehaviour
     public Material materialGreen;
     public Material materialBlue;
 
-    //public Material trailLight;
-    //public Material trailLightPink;
-    //public Material trailLightGreen;
-    //public Material trailLightBlue;
-
-    //public Material trailDark;
-    //public Material trailDarkPink;
-    //public Material trailDarkGreen;
-    //public Material trailDarkBlue;
-
-
     public Vector3 scale;
     public GameObject firefliesModule;
     public GameObject butterfly;
@@ -162,8 +151,6 @@ public class Events : MonoBehaviour
                     wingRight.gameObject.GetComponent<Renderer>().material = materialGreen;
                 if (TrailLight != null)
                 {
-                    //TrailLight.GetComponent<Renderer>().material = trailLightGreen;
-                    //TrailDark.GetComponent<Renderer>().material = trailDarkGreen;
                     for (int i = 0; i < Trail.Length; i++)
                     {
                         if (i == 2)
@@ -194,8 +181,6 @@ public class Events : MonoBehaviour
                     wingRight.gameObject.GetComponent<Renderer>().material = materialBlue;
                 if (TrailLight != null)
                 {
-                    //TrailLight.GetComponent<Renderer>().material = trailLightBlue;
-                    //TrailDark.GetComponent<Renderer>().material = trailDarkBlue;
                     for (int i = 0; i < Trail.Length; i++)
                     {
                         if (i == 3)
@@ -216,21 +201,9 @@ public class Events : MonoBehaviour
         //Mushroom event
         if (other.gameObject.CompareTag("Mushroom"))
         {
-            Transform child1 = other.transform.transform.Find("mushroom_1");
-            Transform child2 = other.transform.Find("mushroom_2");
-
-            if (child1 != null)
-            {
-                other.gameObject.transform.localScale = new Vector3(scale.x *Time.deltaTime , scale.y *Time.deltaTime , scale.z *Time.deltaTime );
-                //Animator anim = child.GetComponent<Animator>();
-                //if (anim != null)
-                //    anim.Play("Animated PBR Chest _Opening_UnCommon");
-
-            }
-            else if(child2 != null)
-            {
-
-            }
+           Animator anim = other.GetComponent<Animator>();
+           if (anim != null)
+            anim.Play("Grow");
         }
 
         //Fountain effects event
@@ -255,11 +228,37 @@ public class Events : MonoBehaviour
 
                 GameObject butterflyInstance = other.transform.parent.Find("Butterfly").gameObject;
                 butterflyInstance.SetActive(true);
-                butterflyInstance.GetComponent<Animation>().Play();
-
+                Animator anim = butterflyInstance.GetComponent<Animator>();
+                if (anim != null)
+                    anim.Play("Fly");
                 Destroy(flower);
                 isFlower = false;
             }
+        }
+
+        //Flower grow
+        if (other.gameObject.CompareTag("Grow"))
+        {
+            Animator anim = other.GetComponent<Animator>();
+            if (anim != null)
+                anim.Play("Grow");
+
+        }
+
+        //Frog event
+        if (other.gameObject.CompareTag("Frog"))
+        {
+            Animator anim = other.GetComponent<Animator>();
+            if (anim != null)
+                anim.Play("Jump");
+        }
+
+        //Rabbit event
+        if (other.gameObject.CompareTag("Branch"))
+        {
+           Animator anim = other.GetComponent<Animator>();
+            if (anim != null)
+                anim.Play("Hide");
         }
     }
     void OnTriggerExit(Collider other)

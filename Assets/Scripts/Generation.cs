@@ -5,28 +5,32 @@ public class Generation : MonoBehaviour
     public int numElements;
     public int depth;
     public GameObject[] modules;
+    public GameObject TutorialModule;
     public GameObject LakeModule;
     public GameObject FirstDepthtWithoutLake;
     public GameObject Camera;
     public float range;
-
     void Start()
     {
         GameObject left = this.transform.GetChild(0).gameObject;
         GameObject right = this.transform.GetChild(1).gameObject;
 
-        for (int i = -20; i < numElements; i++)
+        for (int i = -2; i < numElements; i++)
         {
             for (int j = 0; j < depth; j++)
             {
                 Vector3 rightPosition = new Vector3(2*i, 0, -1.5f-2*j);
                 Vector3 leftPosition = new Vector3(2*i, 0, 1.5f+2*j);
-
+                GameObject module;
+                if (i < 6 && j == 0)
+                    module = TutorialModule;
+                else
+                    module = modules[j]; 
                 modules[j].GetComponent<Procedural>().isLeft = false;
-                GameObject rightDepth = Instantiate(modules[j], rightPosition, Quaternion.identity);
+                GameObject rightDepth = Instantiate(module, rightPosition, Quaternion.identity);
                 rightDepth.transform.SetParent(right.transform);
                 modules[j].GetComponent<Procedural>().isLeft = true;
-                GameObject leftObject = Instantiate(modules[j], leftPosition, Quaternion.identity);
+                GameObject leftObject = Instantiate(module, leftPosition, Quaternion.identity);
                 leftObject.transform.SetParent(left.transform);
 
             }
@@ -36,7 +40,7 @@ public class Generation : MonoBehaviour
     }
     void Update()
     {
-        DestroyOutFrame();
+        HideOutFrame();
     }
 
     public void OverwriteFloor(Transform depth, Transform side, Transform SecondDepth)
@@ -116,11 +120,11 @@ public class Generation : MonoBehaviour
     }
     public void NoRepetition()
     {
-        int numChilds = this.transform.GetChildCount();
+        int numChilds = this.transform.childCount;
         for (int l = 0; l < numChilds; l++)
         {
             Transform sideChild = this.transform.GetChild(l);
-            int sideNumChild = sideChild.transform.GetChildCount();
+            int sideNumChild = sideChild.transform.childCount;
 
             for (int i = 0; i < sideNumChild; i++)
             {
@@ -140,13 +144,13 @@ public class Generation : MonoBehaviour
 
         }
     }
-    public void DestroyOutFrame()
+    public void HideOutFrame()
     {
-        int numChilds = this.transform.GetChildCount();
+        int numChilds = this.transform.childCount;
         for (int l = 0; l < numChilds; l++)
         {
             Transform sideChild = this.transform.GetChild(l);
-            int sideNumChild = sideChild.transform.GetChildCount();
+            int sideNumChild = sideChild.transform.childCount;
 
             for (int i = 0; i < sideNumChild; i++)
             {
