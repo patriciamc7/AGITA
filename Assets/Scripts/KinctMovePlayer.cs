@@ -42,6 +42,7 @@ public class KinctMovePlayer : MonoBehaviour
     public GameObject cubePoint;
 
     public float speedPlayer;
+    private float oldvelocity = 0; 
     private bool OneTime = true;
 	// Update is called once per frame
 	void Update()
@@ -223,17 +224,20 @@ public class KinctMovePlayer : MonoBehaviour
 
             Vector3 velocity_Hand = Delta_pos ;
             float modulo = Mathf.Sqrt(Mathf.Pow(velocity_Hand.x, 2) + Mathf.Pow(velocity_Hand.y, 2) + Mathf.Pow(velocity_Hand.z, 2));
+                        
             //speedPlayer = modulo;
-            velocity = modulo - velocity; 
+            velocity = modulo - oldvelocity; 
             Debug.Log(velocity +" "+speedPlayer);
 
-            if (Mathf.Abs(velocity) > 1)
+            if (Mathf.Abs(velocity) < 1)
                 if(velocity >= 0)
                     speedPlayer = 0; // rapida
                 else
                     speedPlayer = 1; // lenta
 
 			Pos_i = pointtSideWall;
+
+            oldvelocity = modulo; 
 
         }
     }
