@@ -38,8 +38,8 @@ public class BubbleGeneration : MonoBehaviour
                 Bubbles[i].transform.position = new Vector3(positionx, positiony, this.transform.position.z);
                 if (Bubbles[i].GetComponentInChildren<BubbleBurst>().destroy)
                 {
-                    Bubbles[i].GetComponent<ParticleSystem>().Play();
-                    Bubbles[i].GetComponent<BubbleBurst>().destroyed = true;
+                    //Bubbles[i].GetComponent<ParticleSystem>().Play();
+                    Bubbles[i].GetComponentInChildren<BubbleBurst>().destroyed = true;
                     Bubbles.Remove(Bubbles[i]);
                 }
             }
