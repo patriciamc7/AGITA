@@ -10,13 +10,42 @@ public class Events : MonoBehaviour
     public Material materialGreen;
     public Material materialBlue;
 
-    public Vector3 scale;
-    public GameObject firefliesModule;
-    public GameObject butterfly;
+    public Material TrailWhiteLight;
+    public Material TrailBlueLight;
+    public Material TrailGreenLight;
+    public Material TrailPinkLight;
+
+    public Material TrailWhiteDark;
+    public Material TrailBlueDark;
+    public Material TrailGreenDark;
+    public Material TrailPinkDark;
 
     private ParticleSystem fireflies = null;
     private bool isFlower = false;
     private GameObject flower;
+
+    private Transform mesh;
+    private Transform wingLeft;
+    private Transform wingRight;
+    private Transform Trail;
+    private Transform TrailDark;
+    private Transform TrailLight;
+    private ParticleSystem[] TrailParticle;
+    private VisualEffect[] Effects;
+
+    private void Start()
+    {
+        mesh = this.transform.Find("mesh");
+        wingLeft = mesh.Find("wing_left");
+        wingRight = mesh.Find("wing_left1");
+        Trail = this.transform.Find("Trail");
+        TrailDark = Trail.transform.Find("TrailDark");
+        TrailLight = Trail.transform.Find("TrailLight");
+        TrailParticle = Trail.gameObject.GetComponentsInChildren<ParticleSystem>();
+        Effects = Trail.gameObject.GetComponentsInChildren<VisualEffect>();
+
+
+    }
     void Update()
     {
         if (fireflies!=null)
@@ -71,14 +100,7 @@ public class Events : MonoBehaviour
         }
 
         //Crystal event
-        Transform mesh = this.transform.Find("mesh");
-        Transform wingLeft = mesh.Find("wing_left");
-        Transform wingRight = mesh.Find("wing_left1");
-        Transform TrailLight = this.transform.Find("TrailLight");
-        Transform TrailDark = TrailLight.transform.Find("TrailDark");
-        ParticleSystem[] Trail = TrailLight.gameObject.GetComponentsInChildren<ParticleSystem>();
-        VisualEffect[] Effects = TrailLight.gameObject.GetComponentsInChildren<VisualEffect>();
-
+       
         if (other.gameObject.CompareTag("WhiteCrystal"))
         {
             if (other != null)
@@ -90,17 +112,23 @@ public class Events : MonoBehaviour
                     wingLeft.gameObject.GetComponent<Renderer>().material = material;
                 if (wingRight != null)
                     wingRight.gameObject.GetComponent<Renderer>().material = material;
+                if(TrailDark != null)
+                    TrailDark.gameObject.GetComponent<Renderer>().material = TrailWhiteDark;
                 if (TrailLight != null)
+                    TrailLight.gameObject.GetComponent<Renderer>().material = TrailWhiteLight;
+                if (Trail != null)
                 {
-                    for (int i = 0; i < Trail.Length; i++)
+                    for (int i = 0; i < TrailParticle.Length; i++)
                     {
-                        if (i == 0) {
+                        if (i == 0)
+                        {
+                            TrailParticle[i].Play();
                             Effects[i].Play();
-                            Trail[i].Play();
                         }
+
                         else
                         {
-                            Trail[i].Stop();
+                            TrailParticle[i].Stop();
                             Effects[i].Stop();
                         }
                     }
@@ -119,17 +147,22 @@ public class Events : MonoBehaviour
                     wingLeft.gameObject.GetComponent<Renderer>().material = materialPink;
                 if (wingRight != null)
                     wingRight.gameObject.GetComponent<Renderer>().material = materialPink;
+                if (TrailDark != null)
+                    TrailDark.gameObject.GetComponent<Renderer>().material = TrailPinkDark;
                 if (TrailLight != null)
+                    TrailLight.gameObject.GetComponent<Renderer>().material = TrailPinkLight;
+                if (Trail != null)
                 {
-                    for (int i = 0; i < Trail.Length; i++)
+                    for (int i = 0; i < TrailParticle.Length; i++)
                     {
                         if (i == 1)
                         {
+                            TrailParticle[i].Play();
                             Effects[i].Play();
-                            Trail[i].Play();
                         }
-                        else { 
-                            Trail[i].Stop();
+                        else
+                        {
+                            TrailParticle[i].Stop();
                             Effects[i].Stop();
                         }
                     }
@@ -149,18 +182,22 @@ public class Events : MonoBehaviour
                     wingLeft.gameObject.GetComponent<Renderer>().material = materialGreen;
                 if (wingRight != null)
                     wingRight.gameObject.GetComponent<Renderer>().material = materialGreen;
+                if (TrailDark != null)
+                    TrailDark.gameObject.GetComponent<Renderer>().material = TrailGreenDark;
                 if (TrailLight != null)
+                    TrailLight.gameObject.GetComponent<Renderer>().material = TrailGreenLight;
+                if (Trail != null)
                 {
-                    for (int i = 0; i < Trail.Length; i++)
+                    for (int i = 0; i < TrailParticle.Length; i++)
                     {
                         if (i == 2)
                         {
+                            TrailParticle[i].Play();
                             Effects[i].Play();
-                            Trail[i].Play();
                         }
                         else
                         {
-                            Trail[i].Stop();
+                            TrailParticle[i].Stop();
                             Effects[i].Stop();
                         }
                     }
@@ -179,18 +216,22 @@ public class Events : MonoBehaviour
                     wingLeft.gameObject.GetComponent<Renderer>().material = materialBlue;
                 if (wingRight != null)
                     wingRight.gameObject.GetComponent<Renderer>().material = materialBlue;
+                if (TrailDark != null)
+                    TrailDark.gameObject.GetComponent<Renderer>().material = TrailBlueDark;
                 if (TrailLight != null)
+                    TrailLight.gameObject.GetComponent<Renderer>().material = TrailBlueLight;
+                if (Trail != null)
                 {
-                    for (int i = 0; i < Trail.Length; i++)
+                    for (int i = 0; i < TrailParticle.Length; i++)
                     {
                         if (i == 3)
                         {
+                            TrailParticle[i].Play();
                             Effects[i].Play();
-                            Trail[i].Play();
                         }
                         else
                         {
-                            Trail[i].Stop();
+                            TrailParticle[i].Stop();
                             Effects[i].Stop();
                         }
                     }
