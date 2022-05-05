@@ -49,7 +49,8 @@ public class KinctMovePlayer : MonoBehaviour
     private float posXold = 0;
 
     private float timeMortal;
-    public bool mortalBool = false; 
+    public bool mortalBool = false;
+    public Vector3 desplacamentKinect;  
     // Update is called once per frame
     void Update()
     {
@@ -98,10 +99,10 @@ public class KinctMovePlayer : MonoBehaviour
 
         //______ cambiar simetria del que detecta la kinect a els nodes del esquelet pasa x y z
         
-        seeNeck.gameObject.transform.position = new Vector3((-1.0f * neck.gameObject.transform.position.z) + 0.5f + vagon.gameObject.transform.position.x, neck.gameObject.transform.position.y + 0.5f, neck.gameObject.transform.position.x * -1.0f);
-        seeHand.gameObject.transform.position = new Vector3((-1.0f * rightHand.gameObject.transform.position.z) + 0.5f + vagon.gameObject.transform.position.x, rightHand.gameObject.transform.position.y + 0.5f, rightHand.gameObject.transform.position.x * -1.0f);
-        seeElbow.gameObject.transform.position = new Vector3((-1.0f * elbowRight.gameObject.transform.position.z) + 0.5f + vagon.gameObject.transform.position.x, elbowRight.gameObject.transform.position.y + 0.5f, elbowRight.gameObject.transform.position.x * -1.0f);
-        seeSholder.gameObject.transform.position = new Vector3((-1.0f * sholderRight.gameObject.transform.position.z) + 0.5f + vagon.gameObject.transform.position.x, sholderRight.gameObject.transform.position.y + 0.5f, sholderRight.gameObject.transform.position.x * -1.0f);
+        seeNeck.gameObject.transform.position = new Vector3((-1.0f * neck.gameObject.transform.position.z) + desplacamentKinect.x + vagon.gameObject.transform.position.x, neck.gameObject.transform.position.y + desplacamentKinect.y, neck.gameObject.transform.position.x * -1.0f + desplacamentKinect.z);
+        seeHand.gameObject.transform.position = new Vector3((-1.0f * rightHand.gameObject.transform.position.z) + desplacamentKinect.x + vagon.gameObject.transform.position.x, rightHand.gameObject.transform.position.y + desplacamentKinect.y, rightHand.gameObject.transform.position.x * -1.0f + desplacamentKinect.z);
+        seeElbow.gameObject.transform.position = new Vector3((-1.0f * elbowRight.gameObject.transform.position.z) + desplacamentKinect.x + vagon.gameObject.transform.position.x, elbowRight.gameObject.transform.position.y + desplacamentKinect.y, elbowRight.gameObject.transform.position.x * -1.0f + desplacamentKinect.z);
+        seeSholder.gameObject.transform.position = new Vector3((-1.0f * sholderRight.gameObject.transform.position.z) + desplacamentKinect.x + vagon.gameObject.transform.position.x, sholderRight.gameObject.transform.position.y + desplacamentKinect.y, sholderRight.gameObject.transform.position.x * -1.0f + desplacamentKinect.z);
 
         // traslladem a on esta el coll tots respectivament
         //pvisible.gameObject.transform.Translate(seeNeck.gameObject.transform.position); 
@@ -192,9 +193,9 @@ public class KinctMovePlayer : MonoBehaviour
         cubePoint.gameObject.transform.position = aux; 
         //revotar saltaria poner centro del collider 
 
-        if (Bolexit )
+        if (!Bolexit )
         {
-            pointtSideWall = seeSholder.gameObject.transform.position + new Vector3(1, 0, aux.z); 
+            pointtSideWall = new Vector3(seeSholder.gameObject.transform.position.x, seeSholder.gameObject.transform.position.y, aux.z); 
         }
         
         posPlayersum.x = Vector3.Lerp(posPlayersum, pointtSideWall, 0.1f).x;

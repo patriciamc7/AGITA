@@ -13,14 +13,14 @@ public class NotExitCollider : MonoBehaviour
 		
 		if (other.gameObject.name == "Cube")
 		{
-			kinctMovePlayer.Bolexit = true;
+			kinctMovePlayer.Bolexit = false;
 			collName = name;
 		}
 
 	}
 
-	private void OnTriggerEnter(Collider other)
+	private void OnTriggerStay(Collider other)
 	{
-		kinctMovePlayer.Bolexit = false;
+		kinctMovePlayer.Bolexit = true;
 	}
 }
