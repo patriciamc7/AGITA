@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2238600476807333078, guid: 7c8103ce538d5764fad9bc8453b9ca53, type: 3}
-  m_IndirectSpecularColor: {r: 0.27497876, g: 0.064811975, b: 0.049211204, a: 1}
+  m_IndirectSpecularColor: {r: 0.030504545, g: 0.007190128, b: 0.0054592704, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3020,6 +3020,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d47fb0e1aa8efd74dbc66b3254c73cde, type: 3}
   m_PrefabInstance: {fileID: 924554153}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &880992537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 880992538}
+  - component: {fileID: 880992539}
+  m_Layer: 0
+  m_Name: Daylight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &880992538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880992537}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.0044775, y: 0.6021619, z: -0.6559149}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &880992539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880992537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a04c1a21ff9d65140bc67d9980e26706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skybox: {fileID: 2100000, guid: 63053dd247147a8489e6d7780a3e185a, type: 2}
+  sun: {fileID: 1818557061}
+  night: {r: 0.0531, g: 0.09, b: 0.057405006, a: 0}
 --- !u!1001 &924554153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3445,7 +3491,7 @@ MonoBehaviour:
   LakeModule: {fileID: 1753630153897805038, guid: 4e4af612012ed7a44a4ab62c42205d22, type: 3}
   FirstDepthtWithoutLake: {fileID: 6589001618013531843, guid: 6db2604bf1bfdf14187a2f72ca47a2a0, type: 3}
   Camera: {fileID: 209244624}
-  range: 8
+  range: 10
 --- !u!4 &996421865
 Transform:
   m_ObjectHideFlags: 0
@@ -7256,6 +7302,11 @@ MeshFilter:
 --- !u!1 &1818557060 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2238600476807333073, guid: 7c8103ce538d5764fad9bc8453b9ca53, type: 3}
+  m_PrefabInstance: {fileID: 2049298693}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &1818557061 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 2238600476807333078, guid: 7c8103ce538d5764fad9bc8453b9ca53, type: 3}
   m_PrefabInstance: {fileID: 2049298693}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &1818557063
