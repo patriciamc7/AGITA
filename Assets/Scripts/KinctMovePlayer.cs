@@ -44,8 +44,14 @@ public class KinctMovePlayer : MonoBehaviour
     public float speedPlayer;
     private float oldvelocity = 0; 
     private bool OneTime = true;
-	// Update is called once per frame
-	void Update()
+    private float timeAnimation = 0;
+    private float posYold = 0; 
+    private float posXold = 0;
+
+    private float timeMortal;
+    public bool mortalBool = false; 
+    // Update is called once per frame
+    void Update()
     {
         //If Body detected assign Kineckt gameobject
         if (GameObject.Find("Body_Person") != null)
@@ -53,6 +59,7 @@ public class KinctMovePlayer : MonoBehaviour
             esqueleto(); 
 
             moveCharater();
+            SalMortal(); 
 
             knowVelocity();
         }
@@ -201,6 +208,29 @@ public class KinctMovePlayer : MonoBehaviour
         }
 
     }
+    private void SalMortal() 
+    {
+        
+        float difY = (Hada.gameObject.transform.position.y - posYold)*1000; 
+        float difX = (Hada.gameObject.transform.position.x - posXold)*1000;
+        timeMortal += 1;
+        //Debug.Log("Y "+ difY +"X "+difX); 
+        if (difY > 10 && difX >30 && timeMortal>2)
+        {
+            Debug.Log(mortalBool);
+            mortalBool = true; 
+        }
+        if (mortalBool && timeMortal > 3)
+        {
+            timeMortal = 0;
+            mortalBool = false;
+
+        }
+
+        posYold = Hada.gameObject.transform.position.y;
+        posXold = Hada.gameObject.transform.position.x;
+
+    }
 	//Draw ray 
 	private void OnDrawGizmos()
 	{
@@ -227,15 +257,18 @@ public class KinctMovePlayer : MonoBehaviour
                         
             //speedPlayer = modulo;
             velocity = modulo - oldvelocity; 
-            Debug.Log(velocity +" "+speedPlayer);
-
-            if (Mathf.Abs(velocity) < 1)
-                if(velocity >= 0)
-                    speedPlayer = 0; // rapida
-                else
-                    speedPlayer = 1; // lenta
-
-			Pos_i = pointtSideWall;
+            //Debug.Log(velocity +" "+speedPlayer);
+            timeAnimation += 1 * Time.deltaTime ;
+            if (timeAnimation > 3.0f) { 
+                if (Mathf.Abs(velocity) < 1)
+                    if(velocity >= 0.05) { 
+                        speedPlayer = 0; // rápida animacion
+                        timeAnimation = 0;
+                    }
+                    else
+                         speedPlayer = 1; // lenta animacion
+            }
+            Pos_i = pointtSideWall;
 
             oldvelocity = modulo; 
 
