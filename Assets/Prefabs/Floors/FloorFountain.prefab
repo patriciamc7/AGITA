@@ -22480,6 +22480,10 @@ PrefabInstance:
       propertyPath: m_Convex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6461342, guid: 3a6338093d8dd4044b2ecb013b97d071, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a6338093d8dd4044b2ecb013b97d071, type: 3}
 --- !u!4 &5005872735772327195 stripped
@@ -22499,7 +22503,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5005872735772037589}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9ff64271883f0d24ca5f3f71c14a2183, type: 3}
@@ -22513,7 +22517,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 3.24
   MinDistance: 1
-  MaxDistance: 10
+  MaxDistance: 1.01
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0

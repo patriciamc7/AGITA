@@ -31,6 +31,10 @@ TagManager:
   - FloorButterfly
   - FloorCamping
   - FloorGrow
+  - Grow
+  - Frog
+  - Branch
+  - FloorRabbit
   layers:
   - Default
   - TransparentFX
