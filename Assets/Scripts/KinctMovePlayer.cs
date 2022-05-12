@@ -5,7 +5,7 @@ using UnityEngine;
 public class KinctMovePlayer : MonoBehaviour
 {
     public GameObject CameraRight;
-
+    public Player playerStript; 
     public bool Bolexit = false;
     public GameObject Hada;
     public GameObject KinectParent;
@@ -214,7 +214,7 @@ public class KinctMovePlayer : MonoBehaviour
         //Debug.Log(FindPoint(coodRectangle, cubePoint.gameObject.transform.position));
 
 
-        if (!FindPoint(coodRectangle, cubePoint.gameObject.transform.position))
+        if (!FindPoint(coodRectangle, cubePoint.gameObject.transform.position) || playerStript.collitionObjectsPlayer)
         {
             pointtSideWall = new Vector3(seeSholder.gameObject.transform.position.x, seeSholder.gameObject.transform.position.y, aux.z); 
         }
