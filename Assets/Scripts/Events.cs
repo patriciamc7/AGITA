@@ -55,9 +55,9 @@ public class Events : MonoBehaviour
         }
         if(flower != null)
         {
-            flower.transform.position = Vector3.Lerp(flower.transform.position, this.transform.position, 0.05f);
+            flower.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y+0.2f, this.gameObject.transform.position.z);
         }
-       
+
     }
     public void OnTriggerEnter(Collider other)
     {
