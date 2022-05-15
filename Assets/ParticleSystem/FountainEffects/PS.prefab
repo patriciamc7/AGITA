@@ -90,6 +90,10 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8144269508705234238, guid: 6682e9541e66b2843bca9229534a751d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bbae00a3b791c224ba8a7e6cd4289cde, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6682e9541e66b2843bca9229534a751d, type: 3}
 --- !u!4 &6177646810358551287 stripped

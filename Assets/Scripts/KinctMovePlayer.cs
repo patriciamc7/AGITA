@@ -5,7 +5,7 @@ using UnityEngine;
 public class KinctMovePlayer : MonoBehaviour
 {
     public GameObject CameraRight;
-
+    public Player playerStript; 
     public bool Bolexit = false;
     public GameObject Hada;
     public GameObject KinectParent;
@@ -38,14 +38,28 @@ public class KinctMovePlayer : MonoBehaviour
     private GameObject vagon; 
     private Vector3 pointtSideWall;
 
-    public NotExitCollider ScriptRebotar;
     public GameObject cubePoint;
 
     public float speedPlayer;
     private float oldvelocity = 0; 
     private bool OneTime = true;
-	// Update is called once per frame
-	void Update()
+    private float timeAnimation = 0;
+    private float posYold = 0; 
+    private float posXold = 0;
+
+    private float timeMortal;
+    public bool mortalBool = false;
+    public Vector3 desplacamentKinect;
+
+    private Vector4 rectangleLeft;  //x1, y1, x2, y2
+    private Vector4 rectangleRight;  //x1, y1, x2, y2
+
+    public Vector4 rectangleLeftInit; // = new Vector4(-2, 2, -0.49f, 1.51f);  //x1, y1, x2, y2
+    public Vector4 rectangleRightInit; // = new Vector4(-1.1f, 1.1f, -0.33f, 1.07f);  //x1, y1, x2, y2
+
+    private Vector4 coodRectangle; 
+    // Update is called once per frame
+    void Update()
     {
         //If Body detected assign Kineckt gameobject
         if (GameObject.Find("Body_Person") != null)
@@ -53,6 +67,7 @@ public class KinctMovePlayer : MonoBehaviour
             esqueleto(); 
 
             moveCharater();
+            SalMortal(); 
 
             knowVelocity();
         }
@@ -91,10 +106,20 @@ public class KinctMovePlayer : MonoBehaviour
 
         //______ cambiar simetria del que detecta la kinect a els nodes del esquelet pasa x y z
         
-        seeNeck.gameObject.transform.position = new Vector3((-1.0f * neck.gameObject.transform.position.z) + 0.5f + vagon.gameObject.transform.position.x, neck.gameObject.transform.position.y + 0.5f, neck.gameObject.transform.position.x * -1.0f);
-        seeHand.gameObject.transform.position = new Vector3((-1.0f * rightHand.gameObject.transform.position.z) + 0.5f + vagon.gameObject.transform.position.x, rightHand.gameObject.transform.position.y + 0.5f, rightHand.gameObject.transform.position.x * -1.0f);
-        seeElbow.gameObject.transform.position = new Vector3((-1.0f * elbowRight.gameObject.transform.position.z) + 0.5f + vagon.gameObject.transform.position.x, elbowRight.gameObject.transform.position.y + 0.5f, elbowRight.gameObject.transform.position.x * -1.0f);
-        seeSholder.gameObject.transform.position = new Vector3((-1.0f * sholderRight.gameObject.transform.position.z) + 0.5f + vagon.gameObject.transform.position.x, sholderRight.gameObject.transform.position.y + 0.5f, sholderRight.gameObject.transform.position.x * -1.0f);
+        seeNeck.gameObject.transform.position = new Vector3((-1.0f * neck.gameObject.transform.position.z) + desplacamentKinect.x + vagon.gameObject.transform.position.x, neck.gameObject.transform.position.y + desplacamentKinect.y, neck.gameObject.transform.position.x * -1.0f + desplacamentKinect.z);
+        seeHand.gameObject.transform.position = new Vector3((-1.0f * rightHand.gameObject.transform.position.z) + desplacamentKinect.x + vagon.gameObject.transform.position.x, rightHand.gameObject.transform.position.y + desplacamentKinect.y, rightHand.gameObject.transform.position.x * -1.0f + desplacamentKinect.z);
+        seeElbow.gameObject.transform.position = new Vector3((-1.0f * elbowRight.gameObject.transform.position.z) + desplacamentKinect.x + vagon.gameObject.transform.position.x, elbowRight.gameObject.transform.position.y + desplacamentKinect.y, elbowRight.gameObject.transform.position.x * -1.0f + desplacamentKinect.z);
+        seeSholder.gameObject.transform.position = new Vector3((-1.0f * sholderRight.gameObject.transform.position.z) + desplacamentKinect.x + vagon.gameObject.transform.position.x, sholderRight.gameObject.transform.position.y + desplacamentKinect.y, sholderRight.gameObject.transform.position.x * -1.0f + desplacamentKinect.z);
+
+        //move x collider (rectangle) left
+        rectangleLeft = rectangleLeftInit; 
+        rectangleLeft.x = rectangleLeftInit.x + vagon.gameObject.transform.position.x; 
+        rectangleLeft.z = rectangleLeftInit.z + vagon.gameObject.transform.position.x;
+
+        //move x collider (rectangle) right
+        rectangleRight = rectangleRightInit; 
+        rectangleRight.x = rectangleRightInit.x + vagon.gameObject.transform.position.x;
+        rectangleRight.z = rectangleRightInit.z + vagon.gameObject.transform.position.x;
 
         // traslladem a on esta el coll tots respectivament
         //pvisible.gameObject.transform.Translate(seeNeck.gameObject.transform.position); 
@@ -168,7 +193,7 @@ public class KinctMovePlayer : MonoBehaviour
             aux.x = seeNeck.gameObject.transform.position.x + VectorInPlain.x * (seeNeck.gameObject.transform.position.z + 1) / VectorInPlain.z;
             aux.z = 2 * seeNeck.gameObject.transform.position.z + 1 ;
 
-            
+            coodRectangle = rectangleLeft; 
             changeDirection(true);
            
         }
@@ -177,17 +202,21 @@ public class KinctMovePlayer : MonoBehaviour
             aux.x = seeNeck.gameObject.transform.position.x + VectorInPlain.x * (seeNeck.gameObject.transform.position.z - 1) / VectorInPlain.z;
             aux.y = seeNeck.gameObject.transform.position.y + VectorInPlain.y * (seeNeck.gameObject.transform.position.z - 1) / VectorInPlain.z;
             aux.z = 2 * seeNeck.gameObject.transform.position.z - 1 ;
+            coodRectangle = rectangleRight;
 
             changeDirection();
             
         }
         pointtSideWall = aux;
-        cubePoint.gameObject.transform.position = aux; 
+        cubePoint.gameObject.transform.position = aux;
         //revotar saltaria poner centro del collider 
+        //Debug.Log(rectangleRight.y +" " + rectangleRight.w + "POINT"+ aux); 
+        //Debug.Log(FindPoint(coodRectangle, cubePoint.gameObject.transform.position));
 
-        if (Bolexit )
+
+        if (!FindPoint(coodRectangle, cubePoint.gameObject.transform.position) || playerStript.collitionObjectsPlayer)
         {
-            pointtSideWall = seeSholder.gameObject.transform.position + new Vector3(1, 0, aux.z); 
+            pointtSideWall = new Vector3(seeSholder.gameObject.transform.position.x, seeSholder.gameObject.transform.position.y, aux.z); 
         }
         
         posPlayersum.x = Vector3.Lerp(posPlayersum, pointtSideWall, 0.1f).x;
@@ -199,6 +228,29 @@ public class KinctMovePlayer : MonoBehaviour
             Hada.gameObject.transform.position = new Vector3 (seeSholder.transform.position.x, seeSholder.transform.position.y , -1);
             OneTime = false;
         }
+
+    }
+    private void SalMortal() 
+    {
+        
+        float difY = (Hada.gameObject.transform.position.y - posYold)*1000; 
+        float difX = (Hada.gameObject.transform.position.x - posXold)*1000;
+        timeMortal += 1;
+        //Debug.Log("Y "+ difY +"X "+difX); 
+        if (difY > 10 && difX >30 && timeMortal>2)
+        {
+            Debug.Log(mortalBool);
+            mortalBool = true; 
+        }
+        if (mortalBool && timeMortal > 3)
+        {
+            timeMortal = 0;
+            mortalBool = false;
+
+        }
+
+        posYold = Hada.gameObject.transform.position.y;
+        posXold = Hada.gameObject.transform.position.x;
 
     }
 	//Draw ray 
@@ -227,15 +279,18 @@ public class KinctMovePlayer : MonoBehaviour
                         
             //speedPlayer = modulo;
             velocity = modulo - oldvelocity; 
-            Debug.Log(velocity +" "+speedPlayer);
-
-            if (Mathf.Abs(velocity) < 1)
-                if(velocity >= 0)
-                    speedPlayer = 0; // rapida
-                else
-                    speedPlayer = 1; // lenta
-
-			Pos_i = pointtSideWall;
+            //Debug.Log(velocity +" "+speedPlayer);
+            timeAnimation += 1 * Time.deltaTime ;
+            if (timeAnimation > 3.0f) { 
+                if (Mathf.Abs(velocity) < 1)
+                    if(velocity >= 0.05) { 
+                        speedPlayer = 0; // rápida animacion
+                        timeAnimation = 0;
+                    }
+                    else
+                         speedPlayer = 1; // lenta animacion
+            }
+            Pos_i = pointtSideWall;
 
             oldvelocity = modulo; 
 
@@ -266,4 +321,12 @@ public class KinctMovePlayer : MonoBehaviour
         }
 
 	}
+
+    static bool FindPoint( Vector4 coodRectangle, Vector3 point)
+    {
+        if (point.x > coodRectangle.x && point.x < coodRectangle.z && point.y < coodRectangle.y && point.y > coodRectangle.w) 
+            return true;
+
+        return false;
+    }
 }

@@ -94,6 +94,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5880570403397548781, guid: 5956dfc1d3ef0bc4e8b9b42bf80817ab, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bbae00a3b791c224ba8a7e6cd4289cde, type: 2}
     - target: {fileID: 8612037441117647688, guid: 5956dfc1d3ef0bc4e8b9b42bf80817ab, type: 3}
       propertyPath: m_Name
       value: Particle System (1)
