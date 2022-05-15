@@ -44,7 +44,6 @@ public class Events : MonoBehaviour
         TrailParticle = Trail.gameObject.GetComponentsInChildren<ParticleSystem>();
         Effects = Trail.gameObject.GetComponentsInChildren<VisualEffect>();
 
-
     }
     void Update()
     {
@@ -53,11 +52,6 @@ public class Events : MonoBehaviour
             fireflies.transform.position = Vector3.Lerp(fireflies.transform.position, this.transform.position, 0.05f);
             Object.Destroy(fireflies.gameObject, 5.0f);
         }
-        if(flower != null)
-        {
-            flower.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y+0.2f, this.gameObject.transform.position.z);
-        }
-
     }
     public void OnTriggerEnter(Collider other)
     {
@@ -316,8 +310,10 @@ public class Events : MonoBehaviour
             {
                 isFlower = true;
                 flower = other.gameObject;
-            }
+                flower.transform.SetParent(this.transform);
+                flower.transform.position = new Vector3 (this.transform.position.x, this.transform.position.y + 0.2f , this.transform.position.z);
 
+            }
         }
     }
 
