@@ -33,6 +33,8 @@ public class Events : MonoBehaviour
     private ParticleSystem[] TrailParticle;
     private VisualEffect[] Effects;
 
+    private bool oneTime = false;
+
     private void Start()
     {
         mesh = this.transform.Find("mesh");
@@ -60,7 +62,6 @@ public class Events : MonoBehaviour
         if (other.gameObject.CompareTag("Chest"))
         {
             ParticleSystem fireflies = other.transform.parent.GetComponentInChildren<ParticleSystem>();
-
             Transform child = other.transform.Find("Base");
             ParticleSystem light = child.gameObject.GetComponentInChildren<ParticleSystem>();
             if (other != null)
@@ -76,6 +77,7 @@ public class Events : MonoBehaviour
                 }
                 if (light != null)
                     StartCoroutine(DelayedAnimation(light, 0.8f));
+                
             }
         }
 

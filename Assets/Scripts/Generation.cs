@@ -9,7 +9,12 @@ public class Generation : MonoBehaviour
     public GameObject LakeModule;
     public GameObject FirstDepthtWithoutLake;
     public GameObject Camera;
+    public GameObject EndCave;
     public float range;
+
+    private Vector3 rightPosition;
+    private Vector3 leftPosition;
+
     void Start()
     {
         GameObject left = this.transform.GetChild(0).gameObject;
@@ -19,10 +24,10 @@ public class Generation : MonoBehaviour
         {
             for (int j = 0; j < depth; j++)
             {
-                Vector3 rightPosition = new Vector3(2*i, 0, -1.5f-2*j);
-                Vector3 leftPosition = new Vector3(2*i, 0, 1.5f+2*j);
+                rightPosition = new Vector3(2*i, 0, -1.5f-2*j);
+                leftPosition = new Vector3(2*i, 0, 1.5f+2*j);
                 GameObject module;
-                if (i < 6 && j == 0)
+                if (i < 6 && j == 0 || j==0 && i>numElements-6)
                     module = TutorialModule;
                 else
                     module = modules[j]; 
@@ -35,12 +40,15 @@ public class Generation : MonoBehaviour
 
             }
         }
+        //Check for no repetition modules
         NoRepetition();
 
+        //End of the map
+        GameObject End = Instantiate(EndCave, new Vector3((numElements-2)*2,0,0), Quaternion.Euler(Vector3.up * 180));
     }
     void Update()
     {
-       HideOutFrame();
+       //HideOutFrame();
     }
 
     public void OverwriteFloor(Transform depth, Transform side, Transform SecondDepth)
