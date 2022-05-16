@@ -48,7 +48,7 @@ public class Generation : MonoBehaviour
     }
     void Update()
     {
-       //HideOutFrame();
+       HideOutFrame();
     }
 
     public void OverwriteFloor(Transform depth, Transform side, Transform SecondDepth)
