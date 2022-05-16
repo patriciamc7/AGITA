@@ -364,6 +364,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3739173150524023273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4752071834796542710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c951665edc41adb418205150f6649340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oneTime: 1
 --- !u!1001 &5004215996370175615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -555,6 +568,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &22707339814295967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4638452600036504421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c951665edc41adb418205150f6649340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oneTime: 1
 --- !u!1001 &5782103963384590963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -864,3 +890,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2834525646440373705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9144880871446266775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c951665edc41adb418205150f6649340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oneTime: 1

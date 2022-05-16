@@ -33,7 +33,6 @@ public class Events : MonoBehaviour
     private ParticleSystem[] TrailParticle;
     private VisualEffect[] Effects;
 
-    private bool oneTime = false;
 
     private void Start()
     {
@@ -57,7 +56,10 @@ public class Events : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
-
+        //if (other.gameObject.GetComponent<OneTimeEvent>())
+            Debug.Log("HOLA");
+        //    if()
+        //        return;
         //Chest event
         if (other.gameObject.CompareTag("Chest"))
         {
@@ -77,7 +79,7 @@ public class Events : MonoBehaviour
                 }
                 if (light != null)
                     StartCoroutine(DelayedAnimation(light, 0.8f));
-                
+                //other.gameObject.GetComponent<OneTimeEvent>().oneTime
             }
         }
 
@@ -92,6 +94,7 @@ public class Events : MonoBehaviour
                     water[i].Play();
                 }
                 other.GetComponent<AudioSource>().Play();
+                //other.gameObject.GetComponent<OneTimeEvent>().oneTime
             }
         }
 
@@ -129,7 +132,7 @@ public class Events : MonoBehaviour
                         }
                     }
                 }
-                
+                //other.gameObject.GetComponent<OneTimeEvent>().oneTime
             }
         }
         if (other.gameObject.CompareTag("PinkCrystal"))
@@ -163,8 +166,7 @@ public class Events : MonoBehaviour
                         }
                     }
                 }
-
-
+                //other.gameObject.GetComponent<OneTimeEvent>().oneTime
             }
         }
         if (other.gameObject.CompareTag("GreenCrystal"))
@@ -198,7 +200,7 @@ public class Events : MonoBehaviour
                         }
                     }
                 }
-
+                //other.gameObject.GetComponent<OneTimeEvent>().oneTime
             }
         }
         if (other.gameObject.CompareTag("BlueCrystal"))
@@ -232,7 +234,8 @@ public class Events : MonoBehaviour
                         }
                     }
                 }
-            }
+                //other.gameObject.GetComponent<OneTimeEvent>().oneTime
+           }
         }
 
         //Mushroom event
@@ -241,6 +244,7 @@ public class Events : MonoBehaviour
            Animator anim = other.GetComponent<Animator>();
            if (anim != null)
             anim.Play("Grow");
+            //other.gameObject.GetComponent<OneTimeEvent>().oneTime
         }
 
         //Fountain effects event
@@ -249,6 +253,7 @@ public class Events : MonoBehaviour
             ParticleSystem water = other.gameObject.GetComponentInChildren<ParticleSystem>();
             water.Play();
             other.GetComponent<AudioSource>().Play();
+            //other.gameObject.GetComponent<OneTimeEvent>().oneTime
         }
 
         //Butterfly event
@@ -270,6 +275,7 @@ public class Events : MonoBehaviour
                     anim.Play("Fly");
                 Destroy(flower);
                 isFlower = false;
+                //other.gameObject.GetComponent<OneTimeEvent>().oneTime
             }
         }
 
@@ -279,6 +285,7 @@ public class Events : MonoBehaviour
             Animator anim = other.GetComponent<Animator>();
             if (anim != null)
                 anim.Play("Grow");
+            //other.gameObject.GetComponent<OneTimeEvent>().oneTime
 
         }
 
@@ -288,6 +295,8 @@ public class Events : MonoBehaviour
             Animator anim = other.GetComponent<Animator>();
             if (anim != null)
                 anim.Play("Jump");
+            //other.gameObject.GetComponent<OneTimeEvent>().oneTime
+
         }
 
         //Rabbit event
@@ -302,9 +311,8 @@ public class Events : MonoBehaviour
     {
         //Fireflies event
         if (other.gameObject.CompareTag("Fireflies"))
-        {
             fireflies = other.transform.parent.GetComponentInChildren<ParticleSystem>();
-        }
+        
         //Flower event
         if (other.gameObject.CompareTag("Flower"))
         {
@@ -314,7 +322,6 @@ public class Events : MonoBehaviour
                 flower = other.gameObject;
                 flower.transform.SetParent(this.transform);
                 flower.transform.position = new Vector3 (this.transform.position.x, this.transform.position.y + 0.2f , this.transform.position.z);
-
             }
         }
     }
