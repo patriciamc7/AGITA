@@ -14567,6 +14567,7 @@ GameObject:
   - component: {fileID: 2463117268925423588}
   - component: {fileID: 7304071278927828484}
   - component: {fileID: 915451401183800870}
+  - component: {fileID: 928283899759495658}
   m_Layer: 0
   m_Name: PS_Orb
   m_TagString: Orb
@@ -14701,6 +14702,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &928283899759495658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3893939863751585469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c951665edc41adb418205150f6649340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oneTime: 1
 --- !u!1 &6707091169965721509
 GameObject:
   m_ObjectHideFlags: 0
@@ -20945,7 +20959,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 69fc9977c0937a14ca18005e85ce486a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 69fc9977c0937a14ca18005e85ce486a, type: 3}
       propertyPath: m_TagString

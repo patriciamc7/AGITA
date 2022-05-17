@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BubbleBurst : MonoBehaviour
 {
-    public ParticleSystem burst;
     public bool destroy = false;
     public bool destroyed = false;
     void Update()
