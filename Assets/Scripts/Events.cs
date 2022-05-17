@@ -57,7 +57,7 @@ public class Events : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         //if (other.gameObject.GetComponent<OneTimeEvent>())
-            Debug.Log("HOLA");
+            //Debug.Log("HOLA");
         //    if()
         //        return;
         //Chest event
