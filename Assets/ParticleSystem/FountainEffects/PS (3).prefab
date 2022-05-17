@@ -42,6 +42,18 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3508707560171741765, guid: 4b0557888f760b246a4a6fd3dcaca01c, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3508707560171741765, guid: 4b0557888f760b246a4a6fd3dcaca01c, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3508707560171741765, guid: 4b0557888f760b246a4a6fd3dcaca01c, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 7.82
+      objectReference: {fileID: 0}
     - target: {fileID: 4743024795302398296, guid: 4b0557888f760b246a4a6fd3dcaca01c, type: 3}
       propertyPath: m_Name
       value: Particle System (3)

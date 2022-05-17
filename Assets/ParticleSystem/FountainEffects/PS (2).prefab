@@ -50,6 +50,18 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7246221594191978922, guid: 789b61e517bf7ab43a5ba346cbc7731c, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246221594191978922, guid: 789b61e517bf7ab43a5ba346cbc7731c, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246221594191978922, guid: 789b61e517bf7ab43a5ba346cbc7731c, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 7.55
+      objectReference: {fileID: 0}
     - target: {fileID: 7843050172500334814, guid: 789b61e517bf7ab43a5ba346cbc7731c, type: 3}
       propertyPath: m_RootOrder
       value: 0
