@@ -13,7 +13,7 @@ public class Daylight : MonoBehaviour
     }
     void Update()
     {
-        if (Time.time > 90f)
+        if (Time.time > 200f)
         {
             RenderSettings.skybox.SetFloat("_Exposure", Mathf.Lerp(RenderSettings.skybox.GetFloat("_Exposure"), 0, 0.001f));
             sun.intensity = Mathf.Lerp(sun.intensity, 0, 0.001f);
