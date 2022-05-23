@@ -1308,14 +1308,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dd591f0f39bbcc41bd98da0db6096bf, type: 3}
---- !u!4 &5178765711137135407 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6dd591f0f39bbcc41bd98da0db6096bf, type: 3}
-  m_PrefabInstance: {fileID: 4635350277400050884}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5518452524521947541 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6dd591f0f39bbcc41bd98da0db6096bf, type: 3}
+  m_PrefabInstance: {fileID: 4635350277400050884}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5178765711137135407 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6dd591f0f39bbcc41bd98da0db6096bf, type: 3}
   m_PrefabInstance: {fileID: 4635350277400050884}
   m_PrefabAsset: {fileID: 0}
 --- !u!65 &7259734993758683936
@@ -2260,14 +2260,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 634b3532fb1f2ec4c849166bc0fa911b, type: 3}
---- !u!4 &7733889760392816524 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 634b3532fb1f2ec4c849166bc0fa911b, type: 3}
-  m_PrefabInstance: {fileID: 7844974505805201511}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6926425649851596086 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 634b3532fb1f2ec4c849166bc0fa911b, type: 3}
+  m_PrefabInstance: {fileID: 7844974505805201511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7733889760392816524 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 634b3532fb1f2ec4c849166bc0fa911b, type: 3}
   m_PrefabInstance: {fileID: 7844974505805201511}
   m_PrefabAsset: {fileID: 0}
 --- !u!65 &2826795326708205203
@@ -2302,6 +2302,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3101093235271988164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6926425649851596086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83540cd712b4a1243ab330618c7e49cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OneTime: 0
 --- !u!1001 &8318249124342193643
 PrefabInstance:
   m_ObjectHideFlags: 0

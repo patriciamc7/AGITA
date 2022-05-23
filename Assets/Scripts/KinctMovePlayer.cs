@@ -57,7 +57,8 @@ public class KinctMovePlayer : MonoBehaviour
     public Vector4 rectangleLeftInit; // = new Vector4(-2, 2, -0.49f, 1.51f);  //x1, y1, x2, y2
     public Vector4 rectangleRightInit; // = new Vector4(-1.1f, 1.1f, -0.33f, 1.07f);  //x1, y1, x2, y2
 
-    private Vector4 coodRectangle; 
+    private Vector4 coodRectangle;
+    public Vector2 distanceMortalJump; 
     // Update is called once per frame
     void Update()
     {
@@ -235,19 +236,20 @@ public class KinctMovePlayer : MonoBehaviour
         
         float difY = (Hada.gameObject.transform.position.y - posYold)*1000; 
         float difX = (Hada.gameObject.transform.position.x - posXold)*1000;
-        timeMortal += 1;
+        timeMortal += 1* Time.deltaTime;
         //Debug.Log("Y "+ difY +"X "+difX); 
-        if (difY > 10 && difX >30 && timeMortal>2)
+        if (difY > distanceMortalJump.y && difX > distanceMortalJump.x && timeMortal>0)
         {
-            Debug.Log(mortalBool);
             mortalBool = true; 
         }
-        if (mortalBool && timeMortal > 3)
+        if (mortalBool && timeMortal > 9)
         {
             timeMortal = 0;
             mortalBool = false;
 
         }
+            Debug.Log(mortalBool);
+        Debug.Log(timeMortal); 
 
         posYold = Hada.gameObject.transform.position.y;
         posXold = Hada.gameObject.transform.position.x;

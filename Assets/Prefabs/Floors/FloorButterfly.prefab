@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4605716576160081516}
   - component: {fileID: 6224586811651572681}
   - component: {fileID: 4595711778340158225}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4815,7 +4815,7 @@ GameObject:
   - component: {fileID: 6433416431843949497}
   - component: {fileID: 5057477626328149363}
   - component: {fileID: 1848378096294217579}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: electric
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9763,7 +9763,7 @@ GameObject:
   - component: {fileID: 1587041629112066672}
   - component: {fileID: 5249882469598778257}
   - component: {fileID: 2608085114822904195}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14567,8 +14567,8 @@ GameObject:
   - component: {fileID: 2463117268925423588}
   - component: {fileID: 7304071278927828484}
   - component: {fileID: 915451401183800870}
-  - component: {fileID: 928283899759495658}
-  m_Layer: 0
+  - component: {fileID: 7027176059327738666}
+  m_Layer: 8
   m_Name: PS_Orb
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -14702,7 +14702,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &928283899759495658
+--- !u!114 &7027176059327738666
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14711,10 +14711,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3893939863751585469}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c951665edc41adb418205150f6649340, type: 3}
+  m_Script: {fileID: 11500000, guid: 83540cd712b4a1243ab330618c7e49cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oneTime: 1
+  OneTime: 0
 --- !u!1 &6707091169965721509
 GameObject:
   m_ObjectHideFlags: 0
@@ -14726,7 +14726,7 @@ GameObject:
   - component: {fileID: 459261751328929253}
   - component: {fileID: 6158342726231489392}
   - component: {fileID: 3532674499477672485}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

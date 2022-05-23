@@ -32,7 +32,7 @@ public class Events : MonoBehaviour
     private Transform TrailLight;
     private ParticleSystem[] TrailParticle;
     private VisualEffect[] Effects;
-
+    private bool animationBol = false;
 
     private void Start()
     {
@@ -56,10 +56,13 @@ public class Events : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
-        //if (other.gameObject.GetComponent<OneTimeEvent>())
-            //Debug.Log("HOLA");
-        //    if()
-        //        return;
+        if (!other.gameObject.layer.Equals(8))
+            return;
+        if (other.gameObject.GetComponent<OneTimeEvent>())
+        {
+            if (other.gameObject.GetComponent<OneTimeEvent>().OneTime)
+                return;
+        }
         //Chest event
         if (other.gameObject.CompareTag("Chest"))
         {
@@ -79,7 +82,7 @@ public class Events : MonoBehaviour
                 }
                 if (light != null)
                     StartCoroutine(DelayedAnimation(light, 0.8f));
-                //other.gameObject.GetComponent<OneTimeEvent>().oneTime
+                other.gameObject.GetComponent<OneTimeEvent>().OneTime = true;
             }
         }
 
@@ -94,7 +97,7 @@ public class Events : MonoBehaviour
                     water[i].Play();
                 }
                 other.GetComponent<AudioSource>().Play();
-                //other.gameObject.GetComponent<OneTimeEvent>().oneTime
+                other.gameObject.GetComponent<OneTimeEvent>().OneTime = true;
             }
         }
 
@@ -132,7 +135,7 @@ public class Events : MonoBehaviour
                         }
                     }
                 }
-                //other.gameObject.GetComponent<OneTimeEvent>().oneTime
+                other.gameObject.GetComponent<OneTimeEvent>().OneTime = true;
             }
         }
         if (other.gameObject.CompareTag("PinkCrystal"))
@@ -166,7 +169,7 @@ public class Events : MonoBehaviour
                         }
                     }
                 }
-                //other.gameObject.GetComponent<OneTimeEvent>().oneTime
+                other.gameObject.GetComponent<OneTimeEvent>().OneTime = true;
             }
         }
         if (other.gameObject.CompareTag("GreenCrystal"))
@@ -200,7 +203,7 @@ public class Events : MonoBehaviour
                         }
                     }
                 }
-                //other.gameObject.GetComponent<OneTimeEvent>().oneTime
+                other.gameObject.GetComponent<OneTimeEvent>().OneTime = true;
             }
         }
         if (other.gameObject.CompareTag("BlueCrystal"))
@@ -234,8 +237,8 @@ public class Events : MonoBehaviour
                         }
                     }
                 }
-                //other.gameObject.GetComponent<OneTimeEvent>().oneTime
-           }
+                other.gameObject.GetComponent<OneTimeEvent>().OneTime = true;
+            }
         }
 
         //Mushroom event
@@ -244,7 +247,7 @@ public class Events : MonoBehaviour
            Animator anim = other.GetComponent<Animator>();
            if (anim != null)
             anim.Play("Grow");
-            //other.gameObject.GetComponent<OneTimeEvent>().oneTime
+            other.gameObject.GetComponent<OneTimeEvent>().OneTime = true;
         }
 
         //Fountain effects event
@@ -253,7 +256,7 @@ public class Events : MonoBehaviour
             ParticleSystem water = other.gameObject.GetComponentInChildren<ParticleSystem>();
             water.Play();
             other.GetComponent<AudioSource>().Play();
-            //other.gameObject.GetComponent<OneTimeEvent>().oneTime
+            other.gameObject.GetComponent<OneTimeEvent>().OneTime = true;
         }
 
         //Butterfly event
@@ -275,7 +278,7 @@ public class Events : MonoBehaviour
                     anim.Play("Fly");
                 Destroy(flower);
                 isFlower = false;
-                //other.gameObject.GetComponent<OneTimeEvent>().oneTime
+                other.gameObject.GetComponent<OneTimeEvent>().OneTime = true;
             }
         }
 
@@ -285,7 +288,7 @@ public class Events : MonoBehaviour
             Animator anim = other.GetComponent<Animator>();
             if (anim != null)
                 anim.Play("Grow");
-            //other.gameObject.GetComponent<OneTimeEvent>().oneTime
+            other.gameObject.GetComponent<OneTimeEvent>().OneTime = true;
 
         }
 
@@ -295,7 +298,7 @@ public class Events : MonoBehaviour
             Animator anim = other.GetComponent<Animator>();
             if (anim != null)
                 anim.Play("Jump");
-            //other.gameObject.GetComponent<OneTimeEvent>().oneTime
+            other.gameObject.GetComponent<OneTimeEvent>().OneTime = true;
 
         }
 

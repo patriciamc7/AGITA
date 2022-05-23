@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2238600476807333078, guid: 7c8103ce538d5764fad9bc8453b9ca53, type: 3}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.000013648534, g: 0.0000031940172, b: 0.000002420622, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2260,6 +2260,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 39543644}
     m_Modifications:
+    - target: {fileID: 6527596730356039592, guid: 4418ca9091c30e540af965c3bb315b0c, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 29.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527596730356039592, guid: 4418ca9091c30e540af965c3bb315b0c, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.31999993
+      objectReference: {fileID: 0}
     - target: {fileID: 8965795219792919556, guid: 4418ca9091c30e540af965c3bb315b0c, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -5206,6 +5214,7 @@ MonoBehaviour:
   desplacamentKinect: {x: 1.5, y: 0.5, z: 0}
   rectangleLeftInit: {x: -2, y: 1.51, z: 2, w: -0.5}
   rectangleRightInit: {x: -1.1, y: 1.4, z: 1.1, w: -0.33}
+  distanceMortalJump: {x: 10, y: 10}
 --- !u!1001 &1502802827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6816,11 +6825,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6527596730356039592, guid: 4418ca9091c30e540af965c3bb315b0c, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 29.73
+      value: 30.27
       objectReference: {fileID: 0}
     - target: {fileID: 6527596730356039592, guid: 4418ca9091c30e540af965c3bb315b0c, type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: -0.81999993
+      value: 0.31999993
       objectReference: {fileID: 0}
     - target: {fileID: 8965795219792919556, guid: 4418ca9091c30e540af965c3bb315b0c, type: 3}
       propertyPath: m_RootOrder
