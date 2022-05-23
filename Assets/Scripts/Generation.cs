@@ -5,6 +5,7 @@ public class Generation : MonoBehaviour
     public int numElements;
     public int depth;
     public GameObject[] modules;
+    public GameObject test;
     public GameObject TutorialModule;
     public GameObject LakeModule;
     public GameObject FirstDepthtWithoutLake;
@@ -22,8 +23,10 @@ public class Generation : MonoBehaviour
 
         for (int i = -2; i < numElements; i++)
         {
-            for (int j = 0; j < depth; j++)
+            for (int j = 1; j < depth; j++)
             {
+                if (j == 0)
+                    j++;
                 rightPosition = new Vector3(2*i, 0, -1.5f-2*j);
                 leftPosition = new Vector3(2*i, 0, 1.5f+2*j);
                 GameObject module;
@@ -44,7 +47,7 @@ public class Generation : MonoBehaviour
         NoRepetition();
 
         //End of the map
-        GameObject End = Instantiate(EndCave, new Vector3((numElements-2)*2,0,0), Quaternion.Euler(Vector3.up * 180));
+        //GameObject End = Instantiate(EndCave, new Vector3((numElements-2)*2,0,0), Quaternion.Euler(Vector3.up * 180));
     }
     void Update()
     {
@@ -170,6 +173,16 @@ public class Generation : MonoBehaviour
 
 			}
 
+        }
+        int numChildstest = test.transform.childCount;
+        for (int i = 0; i < numChildstest; i++)
+        {
+            
+            GameObject childDepth = test.transform.GetChild(i).gameObject;
+            if (Camera.transform.position.x - range > childDepth.transform.position.x || Camera.transform.position.x + range < childDepth.transform.position.x)
+                childDepth.SetActive(false);
+            else
+                childDepth.SetActive(true);
         }
     }
 }
