@@ -28,7 +28,7 @@ public class Generation : MonoBehaviour
                 rightPosition = new Vector3(2*i, 0, -1.5f-2*j);
                 leftPosition = new Vector3(2*i, 0, 1.5f+2*j);
                 GameObject module;
-                if (i < 8 && j == 0 || j==0 && i>numElements-8)
+                if (i < 6 && j == 0 || j==0 && i>numElements-6)
                     module = TutorialModule;
                 else
                     module = modules[j]; 
@@ -44,7 +44,7 @@ public class Generation : MonoBehaviour
         //Check for no repetition modules
         NoRepetition();
 
-        //End of the map
+       //End of the map
        GameObject End = Instantiate(EndCave, new Vector3((numElements-2)*2,0,0), Quaternion.Euler(Vector3.up * 180));
     }
     void Update()

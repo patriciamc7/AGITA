@@ -2027,53 +2027,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5317689653690281149, guid: b26462ae9e091fd47bf7dbf5fcd0ec4b, type: 3}
   m_PrefabInstance: {fileID: 300921907}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &318907500
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 318907502}
-  - component: {fileID: 318907501}
-  m_Layer: 0
-  m_Name: Fade
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &318907501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 318907500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 626fce1ea51e8cb40803142e378fdc0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Texture: {fileID: 2800000, guid: 5b60b5c7bd2fdc743a8b27e77fb902d4, type: 3}
-  FadeColor: {r: 0, g: 0, b: 0, a: 1}
-  pause: 1
-  FadeTime: 1
---- !u!4 &318907502
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 318907500}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.4571804, y: 0.22725515, z: -1.3849864}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &320166809
 GameObject:
   m_ObjectHideFlags: 0
@@ -4009,7 +3962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ec5611abddeee4b8ce80ee3c324d17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numElements: 100
+  numElements: 15
   depth: 5
   modules:
   - {fileID: 6728470966592981319, guid: 5bc2eefcee08a0540b825de58712002c, type: 3}
@@ -4087,6 +4040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc826040beb0c164e8b2b334f9569709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FadeOut: {fileID: 8111733410613182419, guid: d08f9d80e002ff14587fc9305b531972, type: 3}
   material: {fileID: 2100000, guid: 0e3c23dc149606341b4ab2e5bc209293, type: 2}
   materialPink: {fileID: 2100000, guid: 866c597bf48e3ea429d1c0d7fc3a0a19, type: 2}
   materialGreen: {fileID: 2100000, guid: 970098e54c305d048a6c353de90b35e3, type: 2}
@@ -4159,6 +4113,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ddbee248464ad4044a3383ef8be08f5e, type: 3}
   m_PrefabInstance: {fileID: 1552156560}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1083564230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083564222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 626fce1ea51e8cb40803142e378fdc0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Texture: {fileID: 2800000, guid: 5b60b5c7bd2fdc743a8b27e77fb902d4, type: 3}
+  FadeColor: {r: 0, g: 0, b: 0, a: 1}
+  FadeTime: 0.02
 --- !u!1001 &1092888971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8297,6 +8266,10 @@ PrefabInstance:
     - target: {fileID: 4941000462290182489, guid: a4228eabd88cee846bf30b48f6ae21bb, type: 3}
       propertyPath: m_Intensity
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5940067793004021240, guid: a4228eabd88cee846bf30b48f6ae21bb, type: 3}
+      propertyPath: isExtiCave
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6830691767419196056, guid: a4228eabd88cee846bf30b48f6ae21bb, type: 3}
       propertyPath: m_Range

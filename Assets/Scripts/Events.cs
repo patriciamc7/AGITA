@@ -5,6 +5,7 @@ using UnityEngine.VFX;
 
 public class Events : MonoBehaviour
 {
+    public GameObject FadeOut;
     public Material material;
     public Material materialPink;
     public Material materialGreen;
@@ -33,7 +34,6 @@ public class Events : MonoBehaviour
     private ParticleSystem[] TrailParticle;
     private VisualEffect[] Effects;
     private bool animationBol = false;
-
     private void Start()
     {
         mesh = this.transform.Find("mesh");
@@ -56,13 +56,24 @@ public class Events : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject.layer.Equals(8))
+        if (!other.gameObject.layer.Equals(8) && !other.gameObject.layer.Equals(3))
             return;
         if (other.gameObject.GetComponent<OneTimeEvent>())
         {
             if (other.gameObject.GetComponent<OneTimeEvent>().OneTime)
                 return;
         }
+
+        //Camera Fade
+        if (other.gameObject.layer.Equals(3))
+        {
+            if (other.GetComponent<IsExtiCave>().isExtiCave)
+            {
+                Instantiate(FadeOut, other.gameObject.transform.position, Quaternion.identity);
+                other.GetComponent<OneTimeEvent>().OneTime = true;
+            }
+        }
+
         //Chest event
         if (other.gameObject.CompareTag("Chest"))
         {
@@ -311,6 +322,8 @@ public class Events : MonoBehaviour
                 anim.Play("Hide");
             other.GetComponent<AudioSource>().Play();
         }
+
+        
     }
     void OnTriggerExit(Collider other)
     {
