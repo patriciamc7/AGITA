@@ -6,18 +6,20 @@ public class BubbleGeneration : MonoBehaviour
 {
     public GameObject Bubble;
     public int MAX_BUBBLES;
+    public List<AudioClip> BubblesSound;
 
     private List<GameObject> Bubbles;
     private int BubbleCount = 0;
     private List<float> velocity;
     private List<float> height;
-
+    private List<AudioClip> sound;
     //Start is called before the first frame update
     void Start()
     {
         Bubbles = new List<GameObject>();
         velocity = new List<float>();
         height = new List<float>();
+        sound = new List<AudioClip>();
     }
 
     //Update is called once per frame
@@ -31,6 +33,7 @@ public class BubbleGeneration : MonoBehaviour
             Bubbles[BubbleCount].transform.SetParent(this.gameObject.transform);
             velocity.Add(AddNoise(0.006f, 0.01f));
             height.Add(AddNoise(0, 3));
+            sound.Add(BubblesSound[Random.Range(0, BubblesSound.Count)]);
             BubbleCount++;
         }
 
@@ -53,6 +56,8 @@ public class BubbleGeneration : MonoBehaviour
 
                 if (bubble.GetComponentInChildren<BubbleBurst>().destroy)
                 {
+                    bubble.GetComponent<AudioSource>().clip = sound[i];
+                    bubble.GetComponent<AudioSource>().Play();
                     bubble.GetComponentInChildren<ParticleSystem>().Play();
                     bubble.GetComponentInChildren<BubbleBurst>().destroyed = true;
                     Bubbles.Remove(bubble);

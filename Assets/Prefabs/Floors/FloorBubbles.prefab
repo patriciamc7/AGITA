@@ -45,9 +45,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bubble: {fileID: 1986572795554517956, guid: 42f7644a5a79c514ab31f740c248f1a0, type: 3}
   MAX_BUBBLES: 5
-  Bubbles: []
-  min: 0.2
-  max: 1.2
+  BubblesSound:
+  - {fileID: 8300000, guid: c58b65b692ed1824a84cbb7cb799175a, type: 3}
+  - {fileID: 8300000, guid: 6c22c3c812afce845a58b2bab4eb241f, type: 3}
+  - {fileID: 8300000, guid: 5e855d68f46304040ad49dd520206824, type: 3}
+  - {fileID: 8300000, guid: 76fb52ca6db5e6d4f9d83e3fbc3cea05, type: 3}
+  - {fileID: 8300000, guid: 7f6a7cfe8ea478149a650bca10b6627b, type: 3}
+  - {fileID: 8300000, guid: 7ec1e00298773b74e95601cb1b4b1c2c, type: 3}
 --- !u!1 &2881421970978512187
 GameObject:
   m_ObjectHideFlags: 0

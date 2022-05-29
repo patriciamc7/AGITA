@@ -23,14 +23,12 @@ public class Generation : MonoBehaviour
 
         for (int i = -2; i < numElements; i++)
         {
-            for (int j = 1; j < depth; j++)
+            for (int j = 0; j < depth; j++)
             {
-                if (j == 0)
-                    j++;
                 rightPosition = new Vector3(2*i, 0, -1.5f-2*j);
                 leftPosition = new Vector3(2*i, 0, 1.5f+2*j);
                 GameObject module;
-                if (i < 6 && j == 0 || j==0 && i>numElements-6)
+                if (i < 8 && j == 0 || j==0 && i>numElements-8)
                     module = TutorialModule;
                 else
                     module = modules[j]; 
@@ -47,7 +45,7 @@ public class Generation : MonoBehaviour
         NoRepetition();
 
         //End of the map
-        //GameObject End = Instantiate(EndCave, new Vector3((numElements-2)*2,0,0), Quaternion.Euler(Vector3.up * 180));
+       GameObject End = Instantiate(EndCave, new Vector3((numElements-2)*2,0,0), Quaternion.Euler(Vector3.up * 180));
     }
     void Update()
     {

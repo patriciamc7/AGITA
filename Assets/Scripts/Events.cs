@@ -247,7 +247,8 @@ public class Events : MonoBehaviour
            Animator anim = other.GetComponent<Animator>();
            if (anim != null)
             anim.Play("Grow");
-            other.gameObject.GetComponent<OneTimeEvent>().OneTime = true;
+           other.gameObject.GetComponent<AudioSource>().Play(); 
+           other.gameObject.GetComponent<OneTimeEvent>().OneTime = true;
         }
 
         //Fountain effects event
@@ -289,7 +290,7 @@ public class Events : MonoBehaviour
             if (anim != null)
                 anim.Play("Grow");
             other.gameObject.GetComponent<OneTimeEvent>().OneTime = true;
-
+            other.gameObject.GetComponent<AudioSource>().Play();
         }
 
         //Frog event
@@ -299,7 +300,7 @@ public class Events : MonoBehaviour
             if (anim != null)
                 anim.Play("Jump");
             other.gameObject.GetComponent<OneTimeEvent>().OneTime = true;
-
+            other.GetComponent<AudioSource>().Play();
         }
 
         //Rabbit event
@@ -308,13 +309,18 @@ public class Events : MonoBehaviour
            Animator anim = other.GetComponent<Animator>();
             if (anim != null)
                 anim.Play("Hide");
+            other.GetComponent<AudioSource>().Play();
         }
     }
     void OnTriggerExit(Collider other)
     {
         //Fireflies event
         if (other.gameObject.CompareTag("Fireflies"))
+        {
             fireflies = other.transform.parent.GetComponentInChildren<ParticleSystem>();
+            other.gameObject.GetComponent<AudioSource>().Play();
+        }
+        
         
         //Flower event
         if (other.gameObject.CompareTag("Flower"))
@@ -322,6 +328,7 @@ public class Events : MonoBehaviour
             if (!isFlower)
             {
                 isFlower = true;
+                other.gameObject.GetComponent<AudioSource>().Play();
                 flower = other.gameObject;
                 flower.transform.SetParent(this.transform);
                 flower.transform.position = new Vector3 (this.transform.position.x, this.transform.position.y + 0.2f , this.transform.position.z);
