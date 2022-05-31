@@ -59,12 +59,18 @@ public class KinctMovePlayer : MonoBehaviour
 
     private Vector4 coodRectangle;
     public Vector2 distanceMortalJump;
+    private bool OneSoundYuhoo = true;
+    private int TimeAfterAnimation = 0; 
 
     //audio
-    public GameObject SoundPresentation; 
+    public GameObject SoundPresentation;
+    public GameObject SoundYuhoo;
+
     // Update is called once per frame
+
     void Update()
     {
+
         //If Body detected assign Kineckt gameobject
         if (GameObject.Find("Body_Person") != null)
         {
@@ -198,8 +204,11 @@ public class KinctMovePlayer : MonoBehaviour
             aux.z = 2 * seeNeck.gameObject.transform.position.z + 1 ;
 
             coodRectangle = rectangleLeft; 
-            changeDirection(true);
-           
+            if(Time.time > 17) // finish animation presentation
+                changeDirection(true);
+            else
+                Hada.gameObject.transform.rotation = Quaternion.Euler(0, 270, 0);
+
         }
         else //lado  right
         {
@@ -207,9 +216,11 @@ public class KinctMovePlayer : MonoBehaviour
             aux.y = seeNeck.gameObject.transform.position.y + VectorInPlain.y * (seeNeck.gameObject.transform.position.z - 1) / VectorInPlain.z;
             aux.z = 2 * seeNeck.gameObject.transform.position.z - 1 ;
             coodRectangle = rectangleRight;
+            if (Time.time > 17) // finish animation presentation
+                changeDirection();
+            else
+                Hada.gameObject.transform.rotation = Quaternion.Euler(0, 90, 0);
 
-            changeDirection();
-            
         }
         pointtSideWall = aux;
         cubePoint.gameObject.transform.position = aux;
@@ -230,8 +241,10 @@ public class KinctMovePlayer : MonoBehaviour
         if (OneTime && Time.time <5)
         {
             Hada.gameObject.transform.position = new Vector3 (seeSholder.transform.position.x, seeSholder.transform.position.y , -1);
-            Instantiate(SoundPresentation);
-            OneTime = false;
+            if(Time.time > 2) { 
+                Instantiate(SoundPresentation);
+                OneTime = false;
+            }
         }
 
     }
@@ -244,17 +257,24 @@ public class KinctMovePlayer : MonoBehaviour
         //Debug.Log("Y "+ difY +"X "+difX); 
         if (difY > distanceMortalJump.y && difX > distanceMortalJump.x && timeMortal>0)
         {
-            mortalBool = true; 
+            mortalBool = true;
+            //if (Time.time > 17 && OneSoundYuhoo) { // despues de la animacion de la presentación y una sola vez
+            //    TimeAfterAnimation += 1;
+            //    if (TimeAfterAnimation > 2) { 
+            //        Instantiate(SoundYuhoo);
+            //        OneSoundYuhoo = false;
+            //    }
+            //}
         }
         if (mortalBool && timeMortal > 9)
         {
             timeMortal = 0;
             mortalBool = false;
+            OneSoundYuhoo = true;
+            TimeAfterAnimation = 0; 
 
         }
-            Debug.Log(mortalBool);
-        Debug.Log(timeMortal); 
-
+          
         posYold = Hada.gameObject.transform.position.y;
         posXold = Hada.gameObject.transform.position.x;
 

@@ -5,7 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Update is called once per frame
-    public bool collitionObjectsPlayer = false; 
+    public bool collitionObjectsPlayer = false;
+    public GameObject SoundYuhoo; 
     void Update()
     {
         movement();
@@ -28,7 +29,8 @@ public class Player : MonoBehaviour
         }
         if (other.gameObject.layer == 8) // CHOCA INTERACTIVE
         {
-            collitionObjectsPlayer = false; 
+            collitionObjectsPlayer = false;
+            Instantiate(SoundYuhoo);
         }
     }
 

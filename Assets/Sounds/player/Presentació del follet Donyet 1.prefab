@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8408016926933442036
+--- !u!1 &6197536621837211869
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2221436905963119608}
-  - component: {fileID: 2938854382259939821}
-  - component: {fileID: 3338511174817490864}
+  - component: {fileID: 4357643276717516497}
+  - component: {fileID: 749211746395630788}
+  - component: {fileID: 934939312463094425}
   m_Layer: 0
-  m_Name: "Presentaci\xF3 del follet Donyet"
+  m_Name: "Presentaci\xF3 del follet Donyet 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2221436905963119608
+--- !u!4 &4357643276717516497
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8408016926933442036}
+  m_GameObject: {fileID: 6197536621837211869}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,13 +32,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &2938854382259939821
+--- !u!82 &749211746395630788
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8408016926933442036}
+  m_GameObject: {fileID: 6197536621837211869}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -128,16 +128,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3338511174817490864
+--- !u!114 &934939312463094425
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8408016926933442036}
+  m_GameObject: {fileID: 6197536621837211869}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fec925e884c9a5745949b7d91fe525c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeOfLive: 11
+  timeOfLive: 20
