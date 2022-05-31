@@ -5215,6 +5215,7 @@ MonoBehaviour:
   rectangleLeftInit: {x: -2, y: 1.51, z: 2, w: -0.5}
   rectangleRightInit: {x: -1.1, y: 1.4, z: 1.1, w: -0.33}
   distanceMortalJump: {x: 10, y: 10}
+  SoundPresentation: {fileID: 8408016926933442036, guid: c560b377e5758b34ab116a7211dbccec, type: 3}
 --- !u!1001 &1502802827
 PrefabInstance:
   m_ObjectHideFlags: 0

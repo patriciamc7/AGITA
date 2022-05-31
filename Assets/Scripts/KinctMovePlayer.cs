@@ -58,7 +58,10 @@ public class KinctMovePlayer : MonoBehaviour
     public Vector4 rectangleRightInit; // = new Vector4(-1.1f, 1.1f, -0.33f, 1.07f);  //x1, y1, x2, y2
 
     private Vector4 coodRectangle;
-    public Vector2 distanceMortalJump; 
+    public Vector2 distanceMortalJump;
+
+    //audio
+    public GameObject SoundPresentation; 
     // Update is called once per frame
     void Update()
     {
@@ -227,6 +230,7 @@ public class KinctMovePlayer : MonoBehaviour
         if (OneTime && Time.time <5)
         {
             Hada.gameObject.transform.position = new Vector3 (seeSholder.transform.position.x, seeSholder.transform.position.y , -1);
+            Instantiate(SoundPresentation); 
             OneTime = false;
         }
 
