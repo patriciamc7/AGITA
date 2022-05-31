@@ -230,7 +230,7 @@ public class KinctMovePlayer : MonoBehaviour
         if (OneTime && Time.time <5)
         {
             Hada.gameObject.transform.position = new Vector3 (seeSholder.transform.position.x, seeSholder.transform.position.y , -1);
-            Instantiate(SoundPresentation); 
+            Instantiate(SoundPresentation);
             OneTime = false;
         }
 
