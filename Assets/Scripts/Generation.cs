@@ -69,7 +69,7 @@ public class Generation : MonoBehaviour
         GameObject noRepetitionModule = Instantiate(FirstDepthtWithoutLake, position, Quaternion.identity);
 
         while (!noRepetitionModule.transform.GetChild(0).CompareTag("Floor")
-        && (noRepetitionModule.transform.GetChild(0).CompareTag(tag)
+        || (noRepetitionModule.transform.GetChild(0).CompareTag(tag)
         || noRepetitionModule.transform.GetChild(0).CompareTag(SecondDepth.GetChild(0).tag)))
         {
             Destroy(noRepetitionModule);
