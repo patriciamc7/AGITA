@@ -258,8 +258,9 @@ public class Events : MonoBehaviour
            Animator anim = other.GetComponent<Animator>();
            if (anim != null)
             anim.Play("Grow");
-           other.gameObject.GetComponent<AudioSource>().Play(); 
-           other.gameObject.GetComponent<OneTimeEvent>().OneTime = true;
+           other.gameObject.GetComponent<AudioSource>().Play();
+           this.gameObject.GetComponent<AudioSource>().Play();
+            other.gameObject.GetComponent<OneTimeEvent>().OneTime = true;
         }
 
         //Fountain effects event
@@ -291,6 +292,7 @@ public class Events : MonoBehaviour
                 Destroy(flower);
                 isFlower = false;
                 other.gameObject.GetComponent<OneTimeEvent>().OneTime = true;
+                this.gameObject.GetComponent<AudioSource>().Play();
             }
         }
 
