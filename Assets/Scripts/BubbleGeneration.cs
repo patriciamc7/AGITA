@@ -56,6 +56,7 @@ public class BubbleGeneration : MonoBehaviour
 
                 if (bubble.GetComponentInChildren<BubbleBurst>().destroy)
                 {
+                    BubbleCount--;
                     bubble.GetComponent<AudioSource>().clip = sound[i];
                     bubble.GetComponent<AudioSource>().Play();
                     bubble.GetComponentInChildren<ParticleSystem>().Play();

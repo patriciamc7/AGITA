@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2238600476807333078, guid: 7c8103ce538d5764fad9bc8453b9ca53, type: 3}
-  m_IndirectSpecularColor: {r: 0.25258392, g: 0.059533067, b: 0.045202386, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1663,7 +1663,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1101575162326234129, guid: 9532c005e79232e4c91da3c1f26a4285, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1101575162326234130, guid: 9532c005e79232e4c91da3c1f26a4285, type: 3}
       propertyPath: m_RootOrder
@@ -1727,7 +1727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1101575162326234131, guid: 9532c005e79232e4c91da3c1f26a4285, type: 3}
       propertyPath: ShapeModule.m_Scale.y
-      value: 20
+      value: 5.340028
       objectReference: {fileID: 0}
     - target: {fileID: 1101575162326234131, guid: 9532c005e79232e4c91da3c1f26a4285, type: 3}
       propertyPath: ShapeModule.m_Scale.z
@@ -1736,6 +1736,14 @@ PrefabInstance:
     - target: {fileID: 1101575162326234131, guid: 9532c005e79232e4c91da3c1f26a4285, type: 3}
       propertyPath: CollisionModule.enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1101575162326234131, guid: 9532c005e79232e4c91da3c1f26a4285, type: 3}
+      propertyPath: ShapeModule.m_Position.y
+      value: 2.2224836
+      objectReference: {fileID: 0}
+    - target: {fileID: 1101575162326234131, guid: 9532c005e79232e4c91da3c1f26a4285, type: 3}
+      propertyPath: ShapeModule.m_Rotation.x
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1101575162326234131, guid: 9532c005e79232e4c91da3c1f26a4285, type: 3}
       propertyPath: ShapeModule.radiusThickness
@@ -8320,7 +8328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8495997308856406624, guid: a4228eabd88cee846bf30b48f6ae21bb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8495997308856406625, guid: a4228eabd88cee846bf30b48f6ae21bb, type: 3}
       propertyPath: m_RootOrder
