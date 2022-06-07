@@ -27,11 +27,11 @@ public class Player : MonoBehaviour
         {
             collitionObjectsPlayer = false; 
         }
-        if (other.gameObject.layer == 8) // CHOCA INTERACTIVE
-        {
-            collitionObjectsPlayer = false;
-            Instantiate(SoundYuhoo);
-        }
+        //if (other.gameObject.layer == 8) // CHOCA INTERACTIVE
+        //{
+        //    collitionObjectsPlayer = false;
+        //    //Instantiate(SoundYuhoo);
+        //}
     }
 
 
