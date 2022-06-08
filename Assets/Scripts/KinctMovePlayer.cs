@@ -47,8 +47,6 @@ public class KinctMovePlayer : MonoBehaviour
     private float posYold = 0; 
     private float posXold = 0;
 
-    private float timeMortal;
-    public bool mortalBool = false;
     public Vector3 desplacamentKinect;
 
     private Vector4 rectangleLeft;  //x1, y1, x2, y2
@@ -59,8 +57,13 @@ public class KinctMovePlayer : MonoBehaviour
 
     private Vector4 coodRectangle;
     public Vector2 distanceMortalJump;
-    private bool OneSoundYuhoo = true;
-    private int TimeAfterAnimation = 0; 
+    
+    //mortal jump
+    private int stateMortalJump= 0; 
+    public int[] DistanceXMortalJump = new int[3]; 
+    public int[] DistanceYMortalJump = new int[3];
+    private float timeMortal;
+    public bool mortalBool = false;
 
     //audio
     public GameObject SoundPresentation;
@@ -250,29 +253,29 @@ public class KinctMovePlayer : MonoBehaviour
     }
     private void SalMortal() 
     {
-        
         float difY = (Hada.gameObject.transform.position.y - posYold)*1000; 
         float difX = (Hada.gameObject.transform.position.x - posXold)*1000;
-        timeMortal += 1* Time.deltaTime;
-        //Debug.Log("Y "+ difY +"X "+difX); 
-        if (difY > distanceMortalJump.y && difX > distanceMortalJump.x && timeMortal>0)
-        {
-            mortalBool = true;
-            //if (Time.time > 17 && OneSoundYuhoo) { // despues de la animacion de la presentación y una sola vez
-            //    TimeAfterAnimation += 1;
-            //    if (TimeAfterAnimation > 2) { 
-            //        Instantiate(SoundYuhoo);
-            //        OneSoundYuhoo = false;
-            //    }
-            //}
-        }
-        if (mortalBool && timeMortal > 9)
-        {
-            timeMortal = 0;
-            mortalBool = false;
-            OneSoundYuhoo = true;
-            TimeAfterAnimation = 0; 
 
+        Debug.Log(stateMortalJump); 
+        if (stateMortalJump!=3 && 
+            difY > DistanceYMortalJump[stateMortalJump] && difY < DistanceYMortalJump[stateMortalJump] + 25
+            && difX > DistanceXMortalJump[stateMortalJump] && difX < DistanceXMortalJump[stateMortalJump] + 25)
+        {
+            stateMortalJump += 1;
+        }
+        else
+            stateMortalJump = 0;
+
+        if (stateMortalJump == 3)
+            mortalBool = true;
+        if (mortalBool)
+            timeMortal += 1 * Time.deltaTime;
+
+        if (timeMortal > 2) // 2 second animation change bool to false
+        {
+            mortalBool = false;
+            timeMortal = 0;
+            stateMortalJump = 0; 
         }
           
         posYold = Hada.gameObject.transform.position.y;

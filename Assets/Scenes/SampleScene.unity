@@ -5276,7 +5276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1441788785
 Transform:
   m_ObjectHideFlags: 0
@@ -5318,11 +5318,13 @@ MonoBehaviour:
   pvisible: {fileID: 2070500357}
   cubePoint: {fileID: 1173789411}
   speedPlayer: 0
-  mortalBool: 0
   desplacamentKinect: {x: 1.5, y: 0.5, z: 0}
   rectangleLeftInit: {x: -2, y: 1.51, z: 2, w: -0.5}
   rectangleRightInit: {x: -1.1, y: 1.4, z: 1.1, w: -0.33}
   distanceMortalJump: {x: 10, y: 10}
+  DistanceXMortalJump: 05000000000000000000000000000000
+  DistanceYMortalJump: 00000000000000000000000000000000
+  mortalBool: 0
   SoundPresentation: {fileID: 6197536621837211869, guid: 6ed604673d041094e97c0d3b57a0c84e, type: 3}
   SoundYuhoo: {fileID: 1645066943951093747, guid: bd32ed430d148114a8e733e3707a2f8d, type: 3}
 --- !u!1001 &1502802827
