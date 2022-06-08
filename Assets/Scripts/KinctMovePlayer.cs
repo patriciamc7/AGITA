@@ -256,7 +256,7 @@ public class KinctMovePlayer : MonoBehaviour
         float difY = (Hada.gameObject.transform.position.y - posYold)*1000; 
         float difX = (Hada.gameObject.transform.position.x - posXold)*1000;
 
-        Debug.Log(stateMortalJump); 
+         
         if (stateMortalJump!=3 && 
             difY > DistanceYMortalJump[stateMortalJump] && difY < DistanceYMortalJump[stateMortalJump] + 25
             && difX > DistanceXMortalJump[stateMortalJump] && difX < DistanceXMortalJump[stateMortalJump] + 25)
