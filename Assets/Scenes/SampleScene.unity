@@ -5322,8 +5322,8 @@ MonoBehaviour:
   rectangleLeftInit: {x: -2, y: 1.51, z: 2, w: -0.5}
   rectangleRightInit: {x: -1.1, y: 1.4, z: 1.1, w: -0.33}
   distanceMortalJump: {x: 10, y: 10}
-  DistanceXMortalJump: 05000000000000000000000000000000
-  DistanceYMortalJump: 00000000000000000000000000000000
+  DistanceXMortalJump: 0a0000000a0000000a000000
+  DistanceYMortalJump: 050000000200000008000000
   mortalBool: 0
   SoundPresentation: {fileID: 6197536621837211869, guid: 6ed604673d041094e97c0d3b57a0c84e, type: 3}
   SoundYuhoo: {fileID: 1645066943951093747, guid: bd32ed430d148114a8e733e3707a2f8d, type: 3}
