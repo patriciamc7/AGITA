@@ -35,6 +35,8 @@ TagManager:
   - Frog
   - Branch
   - FloorRabbit
+  - Camping
+  - Fire
   layers:
   - Default
   - TransparentFX

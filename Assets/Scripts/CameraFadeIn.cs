@@ -7,6 +7,7 @@ public class CameraFadeIn : MonoBehaviour
     public Texture Texture;
     public Color FadeColor;
 
+
     [Range(0, 1)]
     public float FadeTime;
     private Color ColorLerp;
