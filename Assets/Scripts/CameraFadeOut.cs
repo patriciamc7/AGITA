@@ -18,6 +18,8 @@ public class CameraFadeOut : MonoBehaviour
     void Update()
     {
         ColorLerp = Color.Lerp(ColorLerp, FadeColor, FadeTime);
+        //AudioSource[] audio= this.GetComponents<AudioSource>();
+        //audio[0].volume = Mathf.Lerp(audio[0].volume, 0, FadeTime);
     }
 
     public void OnGUI()

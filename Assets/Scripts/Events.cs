@@ -325,7 +325,19 @@ public class Events : MonoBehaviour
             other.GetComponent<AudioSource>().Play();
         }
 
+        //Camping event
+        if (other.gameObject.CompareTag("Fire"))
+        {
+            ParticleSystem[] fire = other.gameObject.GetComponentsInChildren<ParticleSystem>();
+            for (int i = 0; i < fire.Length; i++)
+            {
+                fire[i].Play();
+            }
+            other.GetComponent<AudioSource>().Play();
+        }
         
+
+
     }
     void OnTriggerExit(Collider other)
     {

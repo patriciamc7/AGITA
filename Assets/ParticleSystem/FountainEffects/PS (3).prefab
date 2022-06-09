@@ -43,8 +43,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3508707560171741765, guid: 4b0557888f760b246a4a6fd3dcaca01c, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 10.827297
+      objectReference: {fileID: 0}
+    - target: {fileID: 3508707560171741765, guid: 4b0557888f760b246a4a6fd3dcaca01c, type: 3}
       propertyPath: ShapeModule.radius.value
-      value: 0.001
+      value: 0.0038131697
       objectReference: {fileID: 0}
     - target: {fileID: 3508707560171741765, guid: 4b0557888f760b246a4a6fd3dcaca01c, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar

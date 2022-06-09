@@ -45,4 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Texture: {fileID: 2800000, guid: 5b60b5c7bd2fdc743a8b27e77fb902d4, type: 3}
   FadeColor: {r: 0, g: 0, b: 0, a: 1}
-  FadeTime: 0.02
+  CameraRight: {fileID: 0}
+  CameraLeft: {fileID: 0}
+  FadeTime: 0.2
