@@ -4,28 +4,23 @@ using UnityEngine;
 
 public class CameraFadeOut : MonoBehaviour
 {
-    public Texture Texture;
-    public Color FadeColor;
+    public GameObject Fade;
 
     [Range(0, 1)]
     public float FadeTime;
-    private Color ColorLerp;
-    
-    void Start()
-    {
-        ColorLerp = Color.clear;
-    }
+    public bool ActiveFade = false;
+    public Camera camera;
     void Update()
     {
-        ColorLerp = Color.Lerp(ColorLerp, FadeColor, FadeTime);
-        //AudioSource[] audio= this.GetComponents<AudioSource>();
-        //audio[0].volume = Mathf.Lerp(audio[0].volume, 0, FadeTime);
-    }
+        if(ActiveFade)
+        {
+            Fade.transform.Find("CanvasLeft").GetComponent<CanvasGroup>().alpha = Mathf.Lerp(Fade.transform.Find("CanvasLeft").GetComponent<CanvasGroup>().alpha, 1, FadeTime);
+            Fade.transform.Find("CanvasRight").GetComponent<CanvasGroup>().alpha = Mathf.Lerp(Fade.transform.Find("CanvasRight").GetComponent<CanvasGroup>().alpha, 1, FadeTime);
+            camera.GetComponent<AudioSource>().volume = Mathf.Lerp(camera.GetComponent<AudioSource>().volume, 0, FadeTime);
 
-    public void OnGUI()
-    {
-        GUI.color = ColorLerp;
-        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), Texture);
+            if (Fade.transform.Find("CanvasLeft").GetComponent<CanvasGroup>().alpha == 1)
+                Application.Quit();
+        }
     }
 
 }

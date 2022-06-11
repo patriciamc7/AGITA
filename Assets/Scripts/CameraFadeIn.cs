@@ -4,25 +4,26 @@ using UnityEngine;
 
 public class CameraFadeIn : MonoBehaviour
 {
-    public Texture Texture;
-    public Color FadeColor;
+    public GameObject Fade;
 
     [Range(0, 1)]
     public float FadeTime;
-    private Color ColorLerp;
-    void Start()
+    public bool ActiveFade = true;
+
+    void Awake()
     {
-        ColorLerp = FadeColor;
+        Fade.transform.Find("CanvasLeft").GetComponent<CanvasGroup>().alpha = 1;
+        Fade.transform.Find("CanvasRight").GetComponent<CanvasGroup>().alpha = 1;
     }
     void Update()
     {
-        ColorLerp = Color.Lerp(ColorLerp, Color.clear, FadeTime);
-    }
+        if(ActiveFade)
+        {
+            Fade.transform.Find("CanvasLeft").GetComponent<CanvasGroup>().alpha = Mathf.Lerp(Fade.transform.Find("CanvasLeft").GetComponent<CanvasGroup>().alpha, 0, FadeTime);
+            Fade.transform.Find("CanvasRight").GetComponent<CanvasGroup>().alpha = Mathf.Lerp(Fade.transform.Find("CanvasRight").GetComponent<CanvasGroup>().alpha, 0, FadeTime);
 
-    public void OnGUI()
-    {
-        GUI.color = ColorLerp;  
-        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), Texture);
+            if (Fade.transform.Find("CanvasLeft").GetComponent<CanvasGroup>().alpha< 0.1)
+                ActiveFade = false;
+        }
     }
-
 }

@@ -5,7 +5,6 @@ using UnityEngine.VFX;
 
 public class Events : MonoBehaviour
 {
-    public GameObject FadeOut;
     public Material material;
     public Material materialPink;
     public Material materialGreen;
@@ -69,7 +68,7 @@ public class Events : MonoBehaviour
         {
             if (other.GetComponent<IsExtiCave>().isExtiCave)
             {
-                Instantiate(FadeOut, other.gameObject.transform.position, Quaternion.identity);
+                this.GetComponent<CameraFadeOut>().ActiveFade = true;
                 other.GetComponent<OneTimeEvent>().OneTime = true;
             }
         }
