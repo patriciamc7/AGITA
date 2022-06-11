@@ -4,29 +4,18 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    //public float cameraVelocity;
     public float totalDuration;
-    //public KinctMovePlayer KinectScript;
     public GameObject cameraleft; 
     public GameObject sideright;
 
     // Update is called once per frame
     void Update()
     {
-        //if (GameObject.Find("Body_Person") != null)
-        //{
-            
-        //    transform.position += new Vector3(velocitycamera * Time.deltaTime, 0, 0);
-            
-        //    cameraleft.gameObject.transform.position += new Vector3(velocitycamera * Time.deltaTime, 0, 0);
-        //}
-
-        //movimeinto flechas
+ 
         float horizontalInput = Input.GetAxisRaw("Horizontal");
-        float horizontalvertical = Input.GetAxisRaw("Vertical");
-        if (horizontalInput != 0 || horizontalvertical != 0)
+        if (horizontalInput != 0)
         {
-            transform.Translate(Time.deltaTime* horizontalInput, Time.deltaTime * horizontalvertical, 0);
+            transform.Translate(Time.deltaTime* horizontalInput * 0.9f, 0, 0);
         }
     }
 

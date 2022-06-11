@@ -312,8 +312,11 @@ public class Events : MonoBehaviour
             Animator anim = other.GetComponent<Animator>();
             if (anim != null)
                 anim.Play("Jump");
-            other.gameObject.GetComponent<OneTimeEvent>().OneTime = true;
             other.GetComponent<AudioSource>().Play();
+            other.transform.parent.GetComponentInParent<AudioSource>().PlayDelayed(1);
+            Transform ps = other.transform.parent.Find("Particle System");
+            StartCoroutine(DelayedAnimation(ps.gameObject.GetComponent<ParticleSystem>(), 1.1f));
+            other.gameObject.GetComponent<OneTimeEvent>().OneTime = true;
         }
 
         //Rabbit event
