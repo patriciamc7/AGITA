@@ -337,8 +337,19 @@ public class Events : MonoBehaviour
             }
             other.GetComponent<AudioSource>().Play();
         }
-        
 
+        //Flower event
+        if (other.gameObject.CompareTag("Flower"))
+        {
+            if (!isFlower)
+            {
+                isFlower = true;
+                other.gameObject.GetComponent<AudioSource>().Play();
+                flower = other.gameObject;
+                flower.transform.SetParent(this.transform);
+                flower.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.2f, this.transform.position.z);
+            }
+        }
 
     }
     void OnTriggerExit(Collider other)
@@ -350,19 +361,6 @@ public class Events : MonoBehaviour
             other.gameObject.GetComponent<AudioSource>().Play();
         }
         
-        
-        //Flower event
-        if (other.gameObject.CompareTag("Flower"))
-        {
-            if (!isFlower)
-            {
-                isFlower = true;
-                other.gameObject.GetComponent<AudioSource>().Play();
-                flower = other.gameObject;
-                flower.transform.SetParent(this.transform);
-                flower.transform.position = new Vector3 (this.transform.position.x, this.transform.position.y + 0.2f , this.transform.position.z);
-            }
-        }
     }
 
     //The delay coroutine
