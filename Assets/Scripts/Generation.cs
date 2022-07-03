@@ -33,8 +33,11 @@ public class Generation : MonoBehaviour
                 else
                     module = modules[j]; 
                 modules[j].GetComponent<Procedural>().isLeft = false;
-                GameObject rightDepth = Instantiate(module, rightPosition, Quaternion.identity);
-                rightDepth.transform.SetParent(right.transform);
+                if(!test.active)
+                {
+                    GameObject rightDepth = Instantiate(module, rightPosition, Quaternion.identity);
+                    rightDepth.transform.SetParent(right.transform);
+                }
                 modules[j].GetComponent<Procedural>().isLeft = true;
                 GameObject leftObject = Instantiate(module, leftPosition, Quaternion.identity);
                 leftObject.transform.SetParent(left.transform);
