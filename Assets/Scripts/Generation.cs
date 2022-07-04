@@ -48,7 +48,10 @@ public class Generation : MonoBehaviour
         NoRepetition();
 
        //End of the map
-       GameObject End = Instantiate(EndCave, new Vector3((numElements-2)*2,0,0), Quaternion.Euler(Vector3.up * 180));
+       if(!test.active)
+       {
+            GameObject End = Instantiate(EndCave, new Vector3((numElements-2)*2,0,0), Quaternion.Euler(Vector3.up * 180));
+       }
     }
     void Update()
     {
