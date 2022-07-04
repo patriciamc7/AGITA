@@ -6,7 +6,8 @@ public class Player : MonoBehaviour
 {
     // Update is called once per frame
     public bool collitionObjectsPlayer = false;
-    public GameObject SoundYuhoo; 
+    public GameObject SoundYuhoo;
+    public movimentVagon movimentVagon; 
     void Update()
     {
         movement();
@@ -17,7 +18,7 @@ public class Player : MonoBehaviour
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float horizontalvertical = Input.GetAxisRaw("Vertical");
 
-        transform.Translate(0, 0, -horizontalInput * Time.deltaTime);
+        transform.Translate(0, 0, -horizontalInput* movimentVagon.velocitycamera * Time.deltaTime);
         transform.Translate(0, horizontalvertical  * Time.deltaTime, 0);
     }
 

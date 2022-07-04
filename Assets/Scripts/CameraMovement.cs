@@ -6,6 +6,7 @@ public class CameraMovement : MonoBehaviour
 {
     //public float cameraVelocity;
     public float totalDuration;
+    public movimentVagon movimentVagon; 
     //public KinctMovePlayer KinectScript;
     public GameObject cameraleft; 
     public GameObject sideright;
@@ -26,7 +27,7 @@ public class CameraMovement : MonoBehaviour
         float horizontalvertical = Input.GetAxisRaw("Vertical");
         if (horizontalInput != 0 || horizontalvertical != 0)
         {
-            transform.Translate(Time.deltaTime* horizontalInput, Time.deltaTime * horizontalvertical, 0);
+            transform.Translate(Time.deltaTime* horizontalInput* movimentVagon.velocitycamera, Time.deltaTime * horizontalvertical, 0);
         }
     }
 

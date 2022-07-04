@@ -1379,6 +1379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalDuration: 100
+  movimentVagon: {fileID: 1564432169}
   cameraleft: {fileID: 89907452}
   sideright: {fileID: 0}
 --- !u!81 &209244626
@@ -3906,6 +3907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collitionObjectsPlayer: 0
   SoundYuhoo: {fileID: 1645066943951093747, guid: bd32ed430d148114a8e733e3707a2f8d, type: 3}
+  movimentVagon: {fileID: 1564432169}
 --- !u!65 &1083564226
 BoxCollider:
   m_ObjectHideFlags: 0
